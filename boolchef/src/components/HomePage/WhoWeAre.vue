@@ -19,14 +19,14 @@
 section {
   display: flex;
   flex-direction: row;
-  max-width: 1500px;
+
   justify-content: center;
   div {
     width: 50vw;
-    height: 30rem;
   }
   .image-container {
     background-color: red;
+    padding: 10rem;
   }
 }
 </style>
