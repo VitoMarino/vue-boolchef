@@ -12,8 +12,19 @@ export default {
 </script>
 
 <template>
-  <FooterLinks />
-  <EndFooter />
+  <footer>
+    <section class="footer-container">
+      <FooterLinks />
+      <EndFooter />
+    </section>
+  </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+footer {
+  background-color: #182427;
+  .footer-container {
+    max-width: 1400px;
+  }
+}
+</style>
