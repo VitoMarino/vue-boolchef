@@ -3,13 +3,15 @@
 <template>
   <section>
     <div>
-      <h1>lorem</h1>
+      <h2>lorem</h2>
       <span>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem
         obcaecati earum dolore ea nemo minima voluptas similique animi iste,
         molestiae fuga omnis fugiat repellat, ratione, velit temporibus ullam
         architecto corrupti.
-      </span>
+
+        <button>Inizia</button></span
+      >
     </div>
     <div class="image-container"></div>
   </section>
@@ -19,14 +21,26 @@
 section {
   display: flex;
   flex-direction: row;
-  max-width: 1500px;
+
   justify-content: center;
   div {
     width: 50vw;
-    height: 30rem;
+    h2 {
+      font-size: 3rem;
+    }
+    span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      button {
+        width: 5rem;
+        margin: 1rem;
+      }
+    }
   }
   .image-container {
-    background-color: red;
+    background-color: #f29219;
+    padding: 10rem;
   }
 }
 </style>

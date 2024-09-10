@@ -19,12 +19,19 @@ export default {
 
 <template>
   <main>
-    <WhoWeAre />
-    <HowItWorks />
-    <OurChefs />
-    <Reviews />
-    <sponsors />
+    <section class="main-container">
+      <WhoWeAre />
+      <HowItWorks />
+      <OurChefs />
+      <Reviews />
+      <sponsors />
+    </section>
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+</style>
