@@ -18,11 +18,13 @@ export default {
 </script>
 
 <template>
-  <WhoWeAre />
-  <HowItWorks />
-  <OurChefs />
-  <Reviews />
-  <sponsors />
+  <main>
+    <WhoWeAre />
+    <HowItWorks />
+    <OurChefs />
+    <Reviews />
+    <sponsors />
+  </main>
 </template>
 
 <style scoped></style>
