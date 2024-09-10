@@ -2,6 +2,8 @@
 import { RouterLink, RouterView } from "vue-router";
 </script>
 
-<template></template>
+<template>
+  <div class="prova">err</div>
+</template>
 
 <style scoped></style>
