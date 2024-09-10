@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-    <div class="container ">
+    <div class="container p-3">
         <div class="row">
             <div class="col-2 d-flex align-items-center text-center">
                 <h2>
@@ -17,8 +17,8 @@ export default {
                 </h2>
             </div>
 
-            <div class="col-8 text-center">
-                <ul>
+            <div class="col-8 text-center justify-content-center d-flex align-items-center">
+                <ul class="d-flex">
                     <li>Esperienze</li>
                     <li>Trova il tuo Chef</li>
                     <li>Prova</li>
@@ -34,4 +34,13 @@ export default {
 
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+    li{
+        list-style-type: none;
+        margin-right: 5rem;
+    }
+
+    button{
+        margin-right: 2rem;
+    }
+</style>
