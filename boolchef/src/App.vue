@@ -1,5 +1,4 @@
 <script>
-import { RouterLink, RouterView } from "vue-router";
 import MainHeader from "./components/MainHeader.vue";
 import MainFooter from "./components/MainFooter.vue";
 import FooterLinks from "./components/icons/FooterLinks.vue";
@@ -17,10 +16,11 @@ export default {
 </script>
 
 <template>
+  dddd
   <MainHeader />
   <HomePage />
   <FooterLinks />
   <MainFooter />
 </template>
 
-<style scoped></style>
+<style></style>
