@@ -18,7 +18,6 @@ export default {
 <template>
   <MainHeader />
   <HomePage />
-  <FooterLinks />
   <MainFooter />
 </template>
 
