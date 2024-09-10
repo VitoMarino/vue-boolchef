@@ -16,7 +16,6 @@ export default {
 </script>
 
 <template>
-  dddd
   <MainHeader />
   <HomePage />
   <FooterLinks />
