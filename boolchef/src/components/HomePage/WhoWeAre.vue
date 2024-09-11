@@ -17,7 +17,7 @@
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 section {
   display: flex;
   flex-direction: row;

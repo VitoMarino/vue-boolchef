@@ -81,6 +81,7 @@ export default {
       if (this.indexScroll < this.Chefs.length - 2) {
         this.$refs.scrollable.scrollBy({ left: 478, behavior: "smooth" });
 
+<<<<<<< HEAD
         console.log(this.indexScroll);
       } else {
         this.$refs.scrollable.scrollBy({ left: -3500, behavior: "smooth" });
@@ -154,3 +155,6 @@ a {
   padding: 4rem;
 }
 </style>
+=======
+<style scoped lang="scss"></style>
+>>>>>>> 70334c67bfe4009761b88710bbcd1fde20919b4d

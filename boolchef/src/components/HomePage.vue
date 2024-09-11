@@ -30,7 +30,7 @@ export default {
   </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .main-container {
   max-width: 1400px;
   margin: 0 auto;
