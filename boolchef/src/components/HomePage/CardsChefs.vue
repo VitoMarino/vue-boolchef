@@ -177,7 +177,7 @@ a {
 }
 
 .Chefs {
-  background-color: #f29219;
+  background-color: #f4c858;
   padding: 4rem;
 }
 
