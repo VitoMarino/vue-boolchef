@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
 export default {
     data() {
@@ -115,9 +116,23 @@ export default {
             </nav>
         </div>
     </header>
-</template>
+=======
+<script></script>
 
+<template>
+  <header>
+    <nav>
+      <span>LOGO</span>
+      <ul>
+        <li>Home</li>
+        <li>Trova il tuo Chef</li>
+      </ul>
+    </nav>
+  </header>
+>>>>>>> da5b25fa83c6b8fd2d04913cbd3b297ff6dec8ff
+</template>
 <style lang="scss" scoped>
+<<<<<<< HEAD
 @use "../assets/Style/partials/variables.scss" as *;
 
 header {
@@ -156,8 +171,23 @@ ul.my-bg-color {
             color: white;
             background-color: #4154ff;
         }
+=======
+header {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+>>>>>>> da5b25fa83c6b8fd2d04913cbd3b297ff6dec8ff
     }
 }
+<<<<<<< HEAD
 
 a.my-color-font-a {
     font-size: 1.15rem;
@@ -204,4 +234,6 @@ input {
 i.my-color {
     color: white;
 }
+=======
+>>>>>>> da5b25fa83c6b8fd2d04913cbd3b297ff6dec8ff
 </style>
