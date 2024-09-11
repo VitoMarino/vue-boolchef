@@ -93,16 +93,22 @@ export default {
 </script>
 
 <template>
-  <h1>i nostri chef</h1>
-  <a @click="scrollLeft()" class="left"> s</a>
-  <a @click="scrollRight()" class="right"> > </a>
-  <div class="chefs-container" ref="scrollable">
-    <div v-for="chef in Chefs" class="single-chef">
-      {{ chef.nome }}
-      {{ chef.cognome }}
-      {{ chef.specializazione }}
+  <section class="Chefs">
+    <h1>i nostri chef</h1>
+    <a @click="scrollLeft()" class="left">
+      <i class="fa-solid fa-angle-left"></i
+    ></a>
+    <a @click="scrollRight()" class="right">
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+    <div class="chefs-container" ref="scrollable">
+      <div v-for="chef in Chefs" class="single-chef">
+        {{ chef.nome }}
+        {{ chef.cognome }}
+        {{ chef.specializazione }}
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
@@ -115,15 +121,36 @@ export default {
   .single-chef {
     display: flex;
     flex-direction: column;
-    height: 20rem;
-    width: 100%;
-    min-width: 10rem;
+    height: 25rem;
+
+    min-width: 20rem;
+    background-color: green;
+    border: solid 1px black;
+    margin-left: 0.4rem;
   }
 }
 .left {
-  display: flex;
   position: absolute;
-  top: 30;
-  right: 60rem;
+  margin-top: 6rem;
+  left: 4rem;
+}
+.right {
+  position: absolute;
+  right: 4rem;
+  margin-top: 6rem;
+}
+
+a {
+  text-decoration: none;
+  font-size: 3rem;
+  color: gray;
+  &:hover {
+    color: black;
+  }
+}
+
+.Chefs {
+  background-color: #f29219;
+  padding: 4rem;
 }
 </style>
