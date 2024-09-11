@@ -121,7 +121,7 @@ export default {
 
 <template>
   <section class="Chefs">
-    <h1>i nostri chef</h1>
+    <h1>I nostri chef</h1>
     <a @click="scrollLeft()" class="left">
       <i class="fa-solid fa-angle-left"></i
     ></a>
@@ -129,11 +129,16 @@ export default {
       <i class="fa-solid fa-angle-right"></i>
     </a>
     <div class="chefs-container" ref="scrollable">
-      <div v-for="chef in Chefs" class="single-chef">
-        {{ chef.nome }}
-        {{ chef.cognome }}
-        {{ chef.specializazione }}
-      </div>
+      <router-link
+        :to="{ name: 'single-chef' }"
+        v-for="chef in Chefs"
+        class="single-chef"
+      >
+        <span class="image-container">IMG</span>
+        <span>{{ chef.nome }}</span>
+        <span>{{ chef.cognome }}</span>
+        <span>{{ chef.specialità }}</span>
+      </router-link>
     </div>
   </section>
 </template>
@@ -145,15 +150,30 @@ export default {
   flex-direction: row;
   width: 100%;
   flex-wrap: nowrap;
+  align-items: center;
   .single-chef {
     display: flex;
     flex-direction: column;
     height: 25rem;
-
+    align-items: center;
+    font-size: 1rem;
     min-width: 20rem;
-    background-color: green;
-    border: solid 1px black;
+    background-color: white;
+
     margin-left: 0.4rem;
+
+    span {
+      margin: 1rem;
+    }
+    .image-container {
+      border: 1px black solid;
+      height: 4rem;
+      width: 4rem;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 .left {
@@ -177,7 +197,7 @@ a {
 }
 
 .Chefs {
-  background-color: #f4c858;
+  background-color: goldenrod;
   padding: 4rem;
 }
 

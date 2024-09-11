@@ -3,17 +3,28 @@
 <template>
   <section>
     <div class="pharagraph">
-      <h2>lorem</h2>
-      <span>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem
-        obcaecati earum dolore ea nemo minima voluptas similique animi iste,
-        molestiae fuga omnis fugiat repellat, ratione, velit temporibus ullam
-        architecto corrupti.
-
-        <button>Inizia</button></span
-      >
+      <h2>Chi Siamo:</h2>
+      <p>
+        Siamo un sito dedicato all'affitto di chef professionisti offre un
+        servizio esclusivo per chi desidera un'esperienza culinaria
+        personalizzata direttamente a casa o in occasione di eventi speciali.
+        Attraverso la piattaforma, è possibile scegliere tra una selezione di
+        chef specializzati in diverse cucine, dai piatti tradizionali italiani a
+        quelli internazionali, che possono adattare i menù in base alle
+        preferenze alimentari e alle esigenze degli ospiti. Gli chef non solo
+        cucinano, ma si occupano anche di acquistare gli ingredienti freschi,
+        preparare i piatti sul posto e, in alcuni casi, gestire la presentazione
+        e il servizio. Il sito rende semplice e conveniente trasformare
+        qualsiasi evento in un’esperienza gastronomica unica, con la comodità di
+        avere un professionista che cura ogni dettaglio.
+      </p>
+      <router-link :to="{ name: 'search-chef' }" class="button-container">
+        <button class="chef-button">Cerca il tuo chef</button>
+      </router-link>
     </div>
-    <div class="image-container"></div>
+    <div class="image-container">
+      <img src="@/assets/img/ChefWorking.jpg" />
+    </div>
   </section>
 </template>
 
@@ -21,9 +32,9 @@
 section {
   display: flex;
   flex-direction: row;
-  background-color: #f29219;
+  background-color: goldenrod;
   justify-content: center;
-  padding: 2rem;
+
   flex-wrap: wrap;
 
   div {
@@ -33,22 +44,28 @@ section {
       font-size: 3rem;
     }
 
-    span {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .button-container {
+      display: block;
+      margin-top: 1rem;
+    }
+    .chef-button {
+      width: 10rem;
+      padding: 0.4rem;
 
-      button {
-        width: 5rem;
-        margin: 1rem;
-      }
+      border-radius: 1rem;
+      border: none;
     }
   }
 
   .image-container {
-    background-color: red;
-    padding: 10rem;
+    img {
+      width: 43.7rem;
+      height: 31rem;
+    }
   }
+}
+.pharagraph {
+  padding: 2rem;
 }
 @media (max-width: 767px) {
   section {
@@ -58,6 +75,11 @@ section {
     width: 100vw;
 
     align-items: center;
+    .image-container {
+      img {
+        display: none;
+      }
+    }
   }
   .pharagraph {
     width: 25rem;

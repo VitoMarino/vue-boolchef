@@ -4,7 +4,7 @@ import CardsInfo from "../components/HomePage/CardsInfo.vue";
 import Jumbotron from "../components/HomePage/Jumbotron.vue";
 import Reviews from "../components/HomePage/Reviews.vue";
 import Sponsors from "../components/HomePage/Sponsors.vue";
-
+import BecomeAChef from "../components/HomePage/BecomeAChef.vue";
 export default {
   name: "",
   components: {
@@ -13,6 +13,7 @@ export default {
     CardsChefs,
     Reviews,
     Sponsors,
+    BecomeAChef,
   },
 };
 </script>
@@ -23,8 +24,9 @@ export default {
       <Jumbotron />
       <CardsInfo />
       <CardsChefs />
-      <Reviews />
+      <BecomeAChef />
       <Sponsors />
+      <Reviews />
     </main>
   </section>
 </template>
