@@ -2,7 +2,12 @@
 export default {
     data() {
         return {
-        
+        navLinkNames : [
+            {
+                label: 'Homepage',
+                name: ''
+            }
+        ]
         }
     }
 }
@@ -19,15 +24,9 @@ export default {
 
             <div class="col-8 text-center justify-content-center d-flex align-items-center">
                 <ul class="d-flex">
-                    <li>Esperienze</li>
+                    <li>Homepage</li>
                     <li>Trova il tuo Chef</li>
-                    <li>Prova</li>
                 </ul>
-            </div>
-
-            <div class="col-2 d-flex align-items-center text-center">
-                <button>Accedi</button>
-                <button>Registrati</button>
             </div>
         </div>
     </div>
