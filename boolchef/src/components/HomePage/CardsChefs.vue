@@ -1,4 +1,6 @@
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -115,6 +117,26 @@ export default {
         }
       }
     },
+
+    // CHIAMATA API
+    methods: {
+      getChefs() {
+        axios
+          .get("http://127.0.0.1:8000/api/chefs")
+          .then((response) => {
+            console.log(response);
+            this.chefs = response.data.result.data;
+            this.currentPage = response.data.result.currentPage;
+          })
+          .catch((error) => {
+            this.$router.push({ name: "404" });
+            console.log(error);
+          });
+      },
+    },
+    created() {
+      this.getChefs();
+    },
   },
 };
 </script>
@@ -176,6 +198,7 @@ export default {
     }
   }
 }
+
 .left {
   position: absolute;
   margin-top: 6rem;
