@@ -38,7 +38,7 @@ export default {
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .sponsors-container {
   display: flex;
   flex-direction: column;
