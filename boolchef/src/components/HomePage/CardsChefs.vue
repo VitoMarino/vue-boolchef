@@ -5,10 +5,6 @@ export default {
   data() {
     return {
       indexScroll: 0,
-<<<<<<< HEAD
-      chefs:
-        [ ],
-=======
       Mobile: window.matchMedia("(max-width: 767px)"),
 
       Chefs: [
@@ -69,7 +65,6 @@ export default {
           specialità: "Cucina spagnola e molecolare",
         },
       ],
->>>>>>> 1d9aa501d6da28140f38edd9d03e442c2e9fbcc5
     };
   },
 
