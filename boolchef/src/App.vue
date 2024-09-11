@@ -1,7 +1,7 @@
 <script>
 import MainHeader from "./components/MainHeader.vue";
 import MainFooter from "./components/MainFooter.vue";
-import FooterLinks from "./components/icons/FooterLinks.vue";
+
 import HomePage from "./components/HomePage.vue";
 
 export default {
@@ -9,7 +9,7 @@ export default {
   components: {
     MainFooter,
     MainHeader,
-    FooterLinks,
+
     HomePage,
   },
 };
@@ -18,7 +18,6 @@ export default {
 <template>
   <MainHeader />
   <HomePage />
-  <FooterLinks />
   <MainFooter />
 </template>
 

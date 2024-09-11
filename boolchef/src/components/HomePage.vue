@@ -1,7 +1,7 @@
 <script>
 import HowItWorks from "./HomePage/HowItWorks.vue";
 import OurChefs from "./HomePage/OurChefs.vue";
-import sponsors from "./HomePage/sponsors.vue";
+import Sponsors from "./HomePage/Sponsors.vue";
 import WhoWeAre from "./HomePage/WhoWeAre.vue";
 import Reviews from "./HomePage/Reviews.vue";
 
@@ -11,7 +11,7 @@ export default {
     HowItWorks,
     WhoWeAre,
     OurChefs,
-    sponsors,
+    Sponsors,
     Reviews,
   },
 };
@@ -24,7 +24,7 @@ export default {
       <HowItWorks />
       <OurChefs />
       <Reviews />
-      <sponsors />
+      <Sponsors />
     </section>
   </main>
 </template>

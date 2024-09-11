@@ -21,10 +21,12 @@
 section {
   display: flex;
   flex-direction: row;
-
+  background-color: #f29219;
   justify-content: center;
+  padding: 2rem;
+  flex-wrap: wrap;
   div {
-    width: 50vw;
+    width: 40vw;
     h2 {
       font-size: 3rem;
     }
@@ -39,7 +41,7 @@ section {
     }
   }
   .image-container {
-    background-color: #f29219;
+    background-color: red;
     padding: 10rem;
   }
 }
