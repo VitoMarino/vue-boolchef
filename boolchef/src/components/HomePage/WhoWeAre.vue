@@ -26,7 +26,7 @@ section {
   padding: 2rem;
   flex-wrap: wrap;
   div {
-    width: 40vw;
+    width: 40rem;
     h2 {
       font-size: 3rem;
     }

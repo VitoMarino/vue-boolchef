@@ -1,7 +1,6 @@
 <script>
 import MainHeader from "./components/MainHeader.vue";
 import MainFooter from "./components/MainFooter.vue";
-
 import HomePage from "./components/HomePage.vue";
 
 export default {

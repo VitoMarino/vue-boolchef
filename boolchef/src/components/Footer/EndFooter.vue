@@ -4,7 +4,6 @@
   <section class="end-footer">
     <span> LOGO </span>
 
-<<<<<<< HEAD
     <span> Lorem ipsum dolor sit amet consectetur adipisicing elit </span>
   </section>
 </template>
@@ -22,6 +21,5 @@
   }
 }
 </style>
-=======
+
 <style scoped lang="scss"></style>
->>>>>>> 70334c67bfe4009761b88710bbcd1fde20919b4d
