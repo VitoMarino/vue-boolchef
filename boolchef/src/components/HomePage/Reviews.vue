@@ -105,6 +105,7 @@ export default {
 }
 </script>
 
+<<<<<<< HEAD
 <template>
     <div class="container">
         <div class="row">
@@ -195,3 +196,6 @@ export default {
     }
 
 </style>
+=======
+<style scoped lang="scss"></style>
+>>>>>>> 70334c67bfe4009761b88710bbcd1fde20919b4d

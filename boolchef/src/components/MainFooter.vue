@@ -20,7 +20,7 @@ export default {
   </footer>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 footer {
   background-color: #182427;
   display: flex;
