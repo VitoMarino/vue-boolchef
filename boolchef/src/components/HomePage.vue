@@ -4,7 +4,7 @@ import OurChefs from "./HomePage/OurChefs.vue";
 import Sponsors from "./HomePage/Sponsors.vue";
 import WhoWeAre from "./HomePage/WhoWeAre.vue";
 import Reviews from "./HomePage/Reviews.vue";
-
+import BecomeUS from "./HomePage/BecomeUs.vue";
 export default {
   name: "",
   components: {
@@ -13,6 +13,7 @@ export default {
     OurChefs,
     Sponsors,
     Reviews,
+  BecomeUS
   },
 };
 </script>
