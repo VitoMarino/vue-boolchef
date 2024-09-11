@@ -1,9 +1,9 @@
 <script>
-import CardsChefs from "@/components/homepage/CardsChefs.vue";
-import CardsInfo from "@/components/homepage/CardsInfo.vue";
-import Jumbotron from "@/components/homepage/Jumbotron.vue";
-import Reviews from "@/components/homepage/Reviews.vue";
-import Sponsors from "@/components/homepage/Sponsors.vue";
+import CardsChefs from "../components/HomePage/CardsChefs.vue";
+import CardsInfo from "../components/HomePage/CardsInfo.vue";
+import Jumbotron from "../components/HomePage/Jumbotron.vue";
+import Reviews from "../components/HomePage/Reviews.vue";
+import Sponsors from "../components/HomePage/Sponsors.vue";
 
 export default {
   name: "",
