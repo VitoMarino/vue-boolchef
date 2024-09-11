@@ -65,4 +65,14 @@ export default {
     justify-content: center;
   }
 }
+
+@media (max-width: 767px) {
+  .sponsors-container {
+    .sponsors {
+      span {
+        padding: 4rem;
+      }
+    }
+  }
+}
 </style>

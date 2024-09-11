@@ -3,6 +3,8 @@ export default {
   data() {
     return {
       indexScroll: 0,
+      Mobile: window.matchMedia("(max-width: 767px)"),
+
       Chefs: [
         {
           nome: "Massimo",
@@ -66,26 +68,51 @@ export default {
 
   methods: {
     scrollLeft() {
-      this.indexScroll--;
-      if (this.indexScroll >= 0) {
-        this.$refs.scrollable.scrollBy({ left: -478, behavior: "smooth" });
-        console.log(this.indexScroll);
+      if (this.Mobile.matches) {
+        this.indexScroll--;
+        if (this.indexScroll >= 0) {
+          this.$refs.scrollable.scrollBy({ left: -327, behavior: "smooth" });
+          console.log(this.indexScroll);
+        } else {
+          this.$refs.scrollable.scrollBy({ left: 4910, behavior: "smooth" });
+          this.indexScroll = this.Chefs.length - 2;
+          console.log(this.indexScroll);
+        }
       } else {
-        this.$refs.scrollable.scrollBy({ left: 3500, behavior: "smooth" });
-        this.indexScroll = this.Chefs.length - 2;
-        console.log(this.indexScroll);
+        this.indexScroll--;
+        if (this.indexScroll >= 0) {
+          this.$refs.scrollable.scrollBy({ left: -327, behavior: "smooth" });
+          console.log(this.indexScroll);
+        } else {
+          this.$refs.scrollable.scrollBy({ left: 5600, behavior: "smooth" });
+          this.indexScroll = this.Chefs.length - 2;
+          console.log(this.indexScroll);
+        }
       }
     },
     scrollRight() {
-      this.indexScroll++;
-      if (this.indexScroll < this.Chefs.length - 2) {
-        this.$refs.scrollable.scrollBy({ left: 478, behavior: "smooth" });
+      if (this.Mobile.matches) {
+        this.indexScroll++;
+        if (this.indexScroll < this.Chefs.length - 2) {
+          this.$refs.scrollable.scrollBy({ left: 327, behavior: "smooth" });
 
-        console.log(this.indexScroll);
+          console.log(this.indexScroll);
+        } else {
+          this.$refs.scrollable.scrollBy({ left: -4700, behavior: "smooth" });
+          this.indexScroll = 0;
+          console.log(this.indexScroll);
+        }
       } else {
-        this.$refs.scrollable.scrollBy({ left: -3500, behavior: "smooth" });
-        this.indexScroll = 0;
-        console.log(this.indexScroll);
+        this.indexScroll++;
+        if (this.indexScroll < this.Chefs.length - 2) {
+          this.$refs.scrollable.scrollBy({ left: 478, behavior: "smooth" });
+
+          console.log(this.indexScroll);
+        } else {
+          this.$refs.scrollable.scrollBy({ left: -3500, behavior: "smooth" });
+          this.indexScroll = 0;
+          console.log(this.indexScroll);
+        }
       }
     },
   },
@@ -152,5 +179,18 @@ a {
 .Chefs {
   background-color: #f29219;
   padding: 4rem;
+}
+
+@media (max-width: 767px) {
+  .chefs-container {
+    width: 20.6rem;
+    display: flex;
+  }
+}
+
+.Chefs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

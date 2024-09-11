@@ -1,9 +1,9 @@
 <script>
-import CardsChefs from '@/components/homepage/CardsChefs.vue';
-import CardsInfo from '@/components/homepage/CardsInfo.vue';
-import Jumbotron from '@/components/homepage/Jumbotron.vue'
-import Reviews from '@/components/homepage/Reviews.vue';
-import Sponsors from '@/components/homepage/Sponsors.vue';
+import CardsChefs from "@/components/homepage/CardsChefs.vue";
+import CardsInfo from "@/components/homepage/CardsInfo.vue";
+import Jumbotron from "@/components/homepage/Jumbotron.vue";
+import Reviews from "@/components/homepage/Reviews.vue";
+import Sponsors from "@/components/homepage/Sponsors.vue";
 
 export default {
   name: "",
@@ -12,21 +12,21 @@ export default {
     CardsInfo,
     CardsChefs,
     Reviews,
-    Sponsors
+    Sponsors,
   },
 };
 </script>
 
 <template>
-  <main>
-    <section class="main-container">
-      <Jumbotron/>
-      <CardsInfo/>
-      <CardsChefs/>
-      <Reviews/>
-      <Sponsors/>
-    </section>
-  </main>
+  <section class="main-container">
+    <main>
+      <Jumbotron />
+      <CardsInfo />
+      <CardsChefs />
+      <Reviews />
+      <Sponsors />
+    </main>
+  </section>
 </template>
 
 <style scoped>
