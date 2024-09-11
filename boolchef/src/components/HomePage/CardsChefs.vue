@@ -1,66 +1,12 @@
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       indexScroll: 0,
-      Chefs: [
-        {
-          nome: "Massimo",
-          cognome: "Bottura",
-          specialità: "Cucina italiana contemporanea",
-        },
-        {
-          nome: "Gordon",
-          cognome: "Ramsay",
-          specialità: "Cucina britannica e francese",
-        },
-        {
-          nome: "Yannick",
-          cognome: "Alléno",
-          specialità: "Cucina francese moderna",
-        },
-        {
-          nome: "Hélène",
-          cognome: "Darroze",
-          specialità: "Cucina francese e basca",
-        },
-        {
-          nome: "Nobu",
-          cognome: "Matsuhisa",
-          specialità: "Cucina giapponese fusion",
-        },
-        { nome: "Alain", cognome: "Ducasse", specialità: "Cucina francese" },
-        { nome: "Carlo", cognome: "Cracco", specialità: "Cucina italiana" },
-        {
-          nome: "René",
-          cognome: "Redzepi",
-          specialità: "Cucina nordica e molecolare",
-        },
-        { nome: "Anne-Sophie", cognome: "Pic", specialità: "Cucina francese" },
-        {
-          nome: "José",
-          cognome: "Andrés",
-          specialità: "Cucina spagnola e molecolare",
-        },
-        {
-          nome: "Nobu",
-          cognome: "Matsuhisa",
-          specialità: "Cucina giapponese fusion",
-        },
-        { nome: "Alain", cognome: "Ducasse", specialità: "Cucina francese" },
-        { nome: "Carlo", cognome: "Cracco", specialità: "Cucina italiana" },
-        {
-          nome: "René",
-          cognome: "Redzepi",
-          specialità: "Cucina nordica e molecolare",
-        },
-        { nome: "Anne-Sophie", cognome: "Pic", specialità: "Cucina francese" },
-        {
-          nome: "José",
-          cognome: "Andrés",
-          specialità: "Cucina spagnola e molecolare",
-        },
-      ],
+      chefs:
+        [ ],
     };
   },
 
@@ -88,8 +34,27 @@ export default {
         console.log(this.indexScroll);
       }
     },
-  },
-};
+
+    // CHIAMATA API
+    methods: {
+        getChefs() {
+            axios.get('http://127.0.0.1:8000/api/chefs')
+                .then((response) => {
+                    console.log(response);
+                    this.chefs = (response.data.result.data);
+                    this.currentPage = response.data.result.currentPage;
+                })
+                .catch((error) => {
+                    this.$router.push({name: '404'});
+                    console.log(error);
+                });
+        },
+    },
+    created() {
+        this.getChefs();
+    }
+  }
+}
 </script>
 
 <template>
@@ -97,11 +62,14 @@ export default {
   <a @click="scrollLeft()" class="left"> s</a>
   <a @click="scrollRight()" class="right"> > </a>
   <div class="chefs-container" ref="scrollable">
-    <div v-for="chef in Chefs" class="single-chef">
-      {{ chef.nome }}
-      {{ chef.cognome }}
-      {{ chef.specializazione }}
-    </div>
+    <!--
+      <div v-for="chef in Chefs" class="single-chef">
+        {{ chef.name }}
+        {{ chef.lastname }}
+        {{ chef.specializazione }}
+      </div>
+    -->
+
   </div>
 </template>
 
@@ -112,6 +80,7 @@ export default {
   flex-direction: row;
   width: 100%;
   flex-wrap: nowrap;
+
   .single-chef {
     display: flex;
     flex-direction: column;
@@ -120,6 +89,7 @@ export default {
     min-width: 10rem;
   }
 }
+
 .left {
   display: flex;
   position: absolute;
