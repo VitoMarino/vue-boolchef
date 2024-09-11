@@ -2,7 +2,7 @@
 
 <template>
   <section>
-    <div>
+    <div class="pharagraph">
       <h2>lorem</h2>
       <span>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem
@@ -58,6 +58,9 @@ section {
     width: 100vw;
 
     align-items: center;
+  }
+  .pharagraph {
+    width: 25rem;
   }
 }
 </style>
