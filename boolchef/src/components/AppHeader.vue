@@ -11,6 +11,10 @@ export default {
                     label: 'Trova il tuo chef',
                     name: 'search-chef'
                 },
+                {
+                    label: 'Dashboard',
+                    name: 'dashboard'
+                },
             ]
         }
     }
@@ -23,7 +27,7 @@ export default {
             <span>LOGO</span>
             <ul>
                 <li class="ms-3" v-for="navItem in navLinkNames">
-                    <router-link :to="{ name: navItem.name }">
+                    <router-link class="router-link" :to="{ name: navItem.name }">
                         {{ navItem.label }}
                     </router-link>
                 </li>
@@ -32,6 +36,11 @@ export default {
     </header>
 </template>
 <style lang="scss" scoped>
+.router-link{
+    text-decoration: none;
+    color: black;
+}
+
 header {
     display: flex;
     max-width: 1400px;
