@@ -9,7 +9,6 @@ export default {
   components: {
     MainFooter,
     MainHeader,
-
     HomePage,
   },
 };
@@ -17,8 +16,9 @@ export default {
 
 <template>
   <MainHeader />
-  <HomePage />
-  <MainFooter />
+  <router-view></router-view>
+  <HomePage/>
+  <MainFooter/>
 </template>
 
 <style></style>
