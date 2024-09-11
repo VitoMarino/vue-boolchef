@@ -79,18 +79,26 @@ export default {
     },
     methods: {
         nextReview: function(){
-            if(this.currentCard < this.recensioni.length -1){
-                this.currentCard++;
+            this.currentCard++;
+            if (this.currentCard < this.recensioni.length - 1){
+                this.$refs.scrollable.scrollBy({left:478, behavior: "smooth" });
+                console.log(this.currentCard);
             } else {
+                this.$refs.scrollable.scrollBy({left: -3500, behavior: "smooth" });
                 this.currentCard = 0;
+                console.log(this.currentCard);
             }
         },
 
         prevReview: function(){
-            if(this.currentCard > 0){
-                this.currentCard --;
+            this.currentCard--;
+            if (this.currentCard >= 0) {
+                this.$refs.scrollable.scrollBy({left: -478, behavior: "smooth" });
+                console.log(this.currentCard);
             } else {
+                this.$refs.scrollable.scrollBy({left: 3500, behavior: "smooth" });
                 this.currentCard = this.recensioni.length - 1;
+                console.log(this.currentCard);
             }
         }
     }
@@ -137,19 +145,15 @@ export default {
 
         <hr class="color">
 
-        <div class="row d-flex justify-content-around">
-            <div class="button col-2">
-                <button class="prev" @click="prevReview"> < </button>
-            </div>
-            <div class="col-4 ">
-                <div v-for="(recensione, index) in recensioni" :key="index" v-show="index ===currentCard" class="card misiure-carta">
+        <div class="row">
+            <button class="next" @click="nextReview"> > </button>
+            <button class="prev" @click="prevReview"> < </button>
+            <div class="col-8 d-flex review-container" ref="scrollable">
+                <div v-for="recensione in recensioni" class="card single-review">
                     <div class="card-body">
                         {{ recensione.title }}
                     </div>
                 </div>
-            </div>
-            <div class="button col-2">
-                <button class="next" @click="nextReview"> > </button>
             </div>
         </div>
 
@@ -158,6 +162,22 @@ export default {
 </template>
 
 <style scoped lang="scss">
+    .review-container{
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        flex-wrap: nowrap;
+        .single-review{
+            display: flex;
+            flex-direction: column;
+            height: 20rem;
+            width: 100%;
+            min-width: 30rem;
+        }
+    }
+
+
     .red{
         background-color: grey;
         height: 100px;
@@ -174,7 +194,4 @@ export default {
         margin-bottom: 3rem;
     }
 
-    .misiure-carta{
-        
-    }
 </style>
