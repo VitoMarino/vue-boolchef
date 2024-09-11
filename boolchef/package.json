@@ -14,13 +14,18 @@
     "bootstrap": "^5.3.3",
     "bootstrap-vue": "^2.23.1",
     "vue": "^3.5.4",
-    "vue-router": "^4.4.4"
+    "vue-router": "^4.4.4",
+    "vue3-popper": "^1.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
+<<<<<<< HEAD
     "sas": "^3.0.4",
     "sass": "^1.78.0",
     "sass-loader": "^16.0.1",
+=======
+    "sass-embedded": "^1.78.0",
+>>>>>>> 1d9aa501d6da28140f38edd9d03e442c2e9fbcc5
     "vite": "^5.3.1"
   }
 }

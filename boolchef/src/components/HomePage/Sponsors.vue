@@ -38,7 +38,7 @@ export default {
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .sponsors-container {
   display: flex;
   flex-direction: column;
@@ -63,6 +63,16 @@ export default {
       padding: 7rem;
     }
     justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .sponsors-container {
+    .sponsors {
+      span {
+        padding: 4rem;
+      }
+    }
   }
 }
 </style>
