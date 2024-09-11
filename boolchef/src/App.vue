@@ -1,24 +1,22 @@
 <script>
-import MainHeader from "./components/MainHeader.vue";
-import MainFooter from "./components/MainFooter.vue";
-
-import HomePage from "./components/HomePage.vue";
+import AppHeader from "./components/AppHeader.vue";
+import AppFooter from "./components/AppFooter.vue";
 
 export default {
   name: "",
   components: {
-    MainFooter,
-    MainHeader,
-    HomePage,
+    AppHeader,
+    AppFooter,
   },
 };
 </script>
 
 <template>
-  <MainHeader />
+  <AppHeader/>
   <router-view></router-view>
-  <HomePage/>
-  <MainFooter/>
+  <AppFooter/>
 </template>
 
-<style></style>
+<style scoped>
+
+</style>
