@@ -21,6 +21,11 @@ export default {
 
     <!--PRIMO FLEX CARD-->
     <div class="d-flex justify-content-center">
+      <router-link class="router-link" :to="{ name: 'modify-profile' }">
+        <p>Modifica profilo</p>
+      </router-link>
+    </div>
+    <div class="d-flex justify-content-center">
       <!--CARD MESSAGGI-->
       <!--Router link, con link statico-->
       <div class="card my_card m-3" style="width: 18rem">
@@ -85,6 +90,7 @@ export default {
 hr {
   border: solid goldenrod 2px;
 }
+
 .router-link {
   text-decoration: none;
   color: black;
