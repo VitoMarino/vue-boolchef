@@ -12,7 +12,13 @@
       </p>
     </div>
     <div>
-      <button>Registrati gratuitatemente</button>
+
+      <router-link :to="{name: 'access'}">
+        <button>
+          Registrati gratuitatemente
+        </button>
+      </router-link>
+
     </div>
   </section>
 </template>
