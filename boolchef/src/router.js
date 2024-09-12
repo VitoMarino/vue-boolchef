@@ -17,7 +17,14 @@ import Messages from './pages/user/Messages.vue';
 import Review from './pages/user/Review.vue';
 import SponsorShip from './pages/user/SponsorShip.vue';
 import Statistics from './pages/user/Statistics.vue';
+<<<<<<< HEAD
+import Access from './pages/user/auth/Access.vue';
+import Registration from './pages/user/auth/Registration.vue';
+import Profile from './pages/user/auth/Profile.vue';
+=======
+import ModifyProfile from './pages/user/ModifyProfile.vue';
 
+>>>>>>> origin/branch-lorenzo
 
 //* Con la costante stiamo salvando i dati di Vue Router
 const router = createRouter({
@@ -74,6 +81,27 @@ const router = createRouter({
             path: '/statics',
             name: 'statics',
             component: Statistics
+        },
+        {
+<<<<<<< HEAD
+            path: '/access',
+            name: 'access',
+            component: Access
+        },
+        {
+            path: '/registration',
+            name: 'registration',
+            component: Registration
+        },
+        {
+            path: '/profile',
+            name: 'profile',
+            component: Profile
+=======
+            path: '/modify-profile',
+            name: 'modify-profile',
+            component: ModifyProfile
+>>>>>>> origin/branch-lorenzo
         },
     ]
 });
