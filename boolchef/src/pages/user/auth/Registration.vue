@@ -23,7 +23,7 @@
 
             <!--Email-->
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <label for="exampleInputEmail1" class="form-label">E-mail</label>
                 <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
             </div>
 
