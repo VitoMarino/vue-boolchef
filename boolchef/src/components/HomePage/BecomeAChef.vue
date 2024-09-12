@@ -15,7 +15,7 @@
 
       <router-link :to="{name: 'access'}">
         <button>
-          Registrati gratuitatemente
+          Registrati gratuitatemente o accedi
         </button>
       </router-link>
 
