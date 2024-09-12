@@ -63,16 +63,16 @@ export default {
           <h6>Seguici su</h6>
           <ul>
             <li>
-              <a><i class="fa-brands fa-facebook"></i></a>
+              <a href="https://it-it.facebook.com/reg/"><i class="fa-brands fa-facebook"></i></a>
             </li>
             <li>
-              <a><i class="fa-brands fa-twitter"></i></a>
+              <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiaXQifQ%3D%3D%22%7D"><i class="fa-brands fa-x-twitter"></i></a>
             </li>
             <li>
-              <a><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.instagram.com/accounts/login/"><i class="fa-brands fa-instagram"></i></a>
             </li>
             <li>
-              <a><i class="fa-brands fa-tiktok"></i></a>
+              <a href="https://www.tiktok.com/login?redirect_url=https%3A%2F%2Fwww.tiktok.com%2Fupload%3Flang%3Dit-IT&lang=it-IT&enter_method=mandatory"><i class="fa-brands fa-tiktok"></i></a>
             </li>
           </ul>
         </div>
@@ -85,6 +85,14 @@ export default {
 </template>
 
 <style scoped>
+a {
+  text-decoration: none;
+  color: goldenrod;
+    &:hover {
+      text-decoration: underline;
+    }
+}
+
 footer {
   background-color: #182427;
   display: flex;
@@ -102,10 +110,12 @@ footer {
       justify-content: space-between;
       align-items: center;
       border-bottom: gray 1px solid;
+
       img {
         width: 30rem;
         height: 10rem;
       }
+
       .link-container {
         display: flex;
         flex-direction: row;
@@ -113,6 +123,7 @@ footer {
       }
     }
   }
+
   .bottom-footer {
     display: flex;
     flex-direction: row;
@@ -123,12 +134,14 @@ footer {
       font-size: 0.8rem;
       margin-top: 10rem;
     }
+
     .socials {
       display: flex;
       flex-direction: row;
       font-size: 0.8rem;
       color: lightgray;
       margin-top: 2rem;
+
       ul {
         list-style: none;
         display: flex;
@@ -138,6 +151,7 @@ footer {
           margin-left: 1rem;
         }
       }
+
       a {
         text-decoration: none;
         color: white;
@@ -151,6 +165,7 @@ footer {
   .logo {
     display: none;
   }
+
   footer {
     .bottom-footer {
       display: none;
