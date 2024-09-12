@@ -1,5 +1,16 @@
 <script>
+import axios from 'axios';
 
+export default {
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+
+    }
+}
 </script>
 
 <template>
@@ -15,11 +26,11 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Foto profilo</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="file" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Telefono</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="file" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Descrizione piatti</label>

@@ -20,8 +20,8 @@ export default {
         <hr>
 
         <div class="d-flex justify-content-center">
-            <router-link class="router-link" :to="{ name: 'create-profile' }">
-                <p>Crea profilo</p>
+            <router-link class="router-link" :to="{ name: 'modify-profile' }">
+                <p>Modifica profilo</p>
             </router-link>
         </div>
         <!--PRIMO FLEX CARD-->
