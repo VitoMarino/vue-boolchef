@@ -17,6 +17,7 @@ import Messages from './pages/user/Messages.vue';
 import Review from './pages/user/Review.vue';
 import SponsorShip from './pages/user/SponsorShip.vue';
 import Statistics from './pages/user/Statistics.vue';
+import CreateProfile from './pages/user/CreateProfile.vue';
 
 
 //* Con la costante stiamo salvando i dati di Vue Router
@@ -74,6 +75,11 @@ const router = createRouter({
             path: '/statics',
             name: 'statics',
             component: Statistics
+        },
+        {
+            path: '/create-profile',
+            name: 'create-profile',
+            component: CreateProfile
         },
     ]
 });
