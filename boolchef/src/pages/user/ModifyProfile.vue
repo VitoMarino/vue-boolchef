@@ -43,7 +43,14 @@ export default {
                     <option value="2">Non visibile</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                <!--QUANDO DOBBIAMO TORNARE A UNA ROTTA ATTRAVERSO UN TAG, IL TAG VA MESSO DENTRO IL TAG ROUTER-LINK.-->
+                <!--SE PRESENTI ALTRI BOTTONI CHE INVIANO DATI, PUO' FARE CONFLITTO, QUINDI INSERIAMO UN TAG CHE NON SIA BUTTON. -->
+                <router-link class="router-link" :to="{ name: 'dashboard' }">
+                    <h3><span class="badge text-bg-danger">Annulla modifiche</span></h3>
+                </router-link>
+            </div>
         </form>
     </div>
 </template>
