@@ -63,16 +63,16 @@ export default {
           <h6>Seguici su</h6>
           <ul>
             <li>
-              <a><i class="fa-brands fa-facebook"></i></a>
+              <a href="https://it-it.facebook.com/reg/"><i class="fa-brands fa-facebook"></i></a>
             </li>
             <li>
-              <a><i class="fa-brands fa-twitter"></i></a>
+              <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiaXQifQ%3D%3D%22%7D"><i class="fa-brands fa-x-twitter"></i></a>
             </li>
             <li>
-              <a><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.instagram.com/accounts/login/"><i class="fa-brands fa-instagram"></i></a>
             </li>
             <li>
-              <a><i class="fa-brands fa-tiktok"></i></a>
+              <a href="https://www.tiktok.com/login?redirect_url=https%3A%2F%2Fwww.tiktok.com%2Fupload%3Flang%3Dit-IT&lang=it-IT&enter_method=mandatory"><i class="fa-brands fa-tiktok"></i></a>
             </li>
           </ul>
         </div>
