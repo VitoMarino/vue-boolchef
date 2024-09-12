@@ -85,6 +85,14 @@ export default {
 </template>
 
 <style scoped>
+a {
+  text-decoration: none;
+  color: goldenrod;
+    &:hover {
+      text-decoration: underline;
+    }
+}
+
 footer {
   background-color: #182427;
   display: flex;
@@ -102,10 +110,12 @@ footer {
       justify-content: space-between;
       align-items: center;
       border-bottom: gray 1px solid;
+
       img {
         width: 30rem;
         height: 10rem;
       }
+
       .link-container {
         display: flex;
         flex-direction: row;
@@ -113,6 +123,7 @@ footer {
       }
     }
   }
+
   .bottom-footer {
     display: flex;
     flex-direction: row;
@@ -123,12 +134,14 @@ footer {
       font-size: 0.8rem;
       margin-top: 10rem;
     }
+
     .socials {
       display: flex;
       flex-direction: row;
       font-size: 0.8rem;
       color: lightgray;
       margin-top: 2rem;
+
       ul {
         list-style: none;
         display: flex;
@@ -138,6 +151,7 @@ footer {
           margin-left: 1rem;
         }
       }
+
       a {
         text-decoration: none;
         color: white;
@@ -151,6 +165,7 @@ footer {
   .logo {
     display: none;
   }
+
   footer {
     .bottom-footer {
       display: none;

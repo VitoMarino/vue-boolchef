@@ -3,7 +3,7 @@
 <template>
   <section>
     <div class="pharagraph">
-      <h2>Chi Siamo:</h2>
+      <h2>Chi Siamo</h2>
       <p>
         Siamo un sito dedicato all'affitto di chef professionisti offre un
         servizio esclusivo per chi desidera un'esperienza culinaria
