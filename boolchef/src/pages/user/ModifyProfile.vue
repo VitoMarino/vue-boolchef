@@ -15,6 +15,7 @@ export default {
 
 <template>
     <div class="container w-25">
+        <h3 class="mb-3">Modifica profilo</h3>
         <form>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Indirizzo</label>
