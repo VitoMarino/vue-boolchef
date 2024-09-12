@@ -4,14 +4,17 @@ export default {
   data() {
     return {
       sponsors: [
-        "Boolflix",
-        "Boolzapp",
-        "Booleaner",
-        "Boolean",
-        "Lyricsmus",
-        "Boolean",
-        "Bool-Comics",
-        "ProjeXpert",
+        { title: "Boolflix", img: "/src/assets/img/boolflix-logo.png" },
+        { title: "Boolzapp", img: "/src/assets/img/boolzapp-logo.png" },
+        { title: "Booleaner", img: "/src/assets/img/booleaner-logo.png" },
+        { title: "Boolean", img: "/src/assets/img/Boolean-logo.png" },
+        { title: "Lyricsmus", img: "/src/assets/img/lyricsmus-logo.png" },
+        {
+          title: "Future of Esports",
+          img: "/src/assets/img/future-of-esports-logo.png",
+        },
+        { title: "Bool-Comics", img: "/src/assets/img/bool-comics-logo.png" },
+        { title: "ProjeXpert", img: "/src/assets/img/projexpert-logo.png" },
       ],
     };
   },
@@ -21,18 +24,12 @@ export default {
 <template>
   <section class="sponsors-container">
     <div class="content">
-      <h4>Sponsors</h4>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi dolore
-        perferendis nisi, beatae cupiditate assumenda accusamus maiores totam
-        commodi consequatur reiciendis nihil distinctio earum inventore saepe ex
-        fugit maxime. Recusandae.
-      </p>
+      <h4>Sponsors:</h4>
     </div>
 
     <div class="sponsors">
       <span v-for="sponsor in sponsors">
-        {{ sponsor }}
+        <img :src="sponsor.img" :alt="sponsor.title" />
       </span>
     </div>
   </section>
@@ -44,7 +41,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 4rem;
-  background-color: #f29219;
+  background-color: goldenrod;
   .content {
     display: flex;
     flex-direction: column;
@@ -60,9 +57,23 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     span {
-      padding: 7rem;
+      padding: 3rem;
+      img {
+        width: 10rem;
+        height: 3rem;
+      }
     }
     justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .sponsors-container {
+    .sponsors {
+      span {
+        padding: 2rem;
+      }
+    }
   }
 }
 </style>
