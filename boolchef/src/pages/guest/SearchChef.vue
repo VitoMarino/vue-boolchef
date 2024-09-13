@@ -1,11 +1,13 @@
 <script>
 import axios from "axios";
+import { array } from "i/lib/util";
 export default {
   data() {
     return {
       chefs: [],
       specializations: [],
       users: [],
+      GetFilteredReviews: [],
     };
   },
   methods: {
@@ -71,8 +73,28 @@ export default {
   <section class="chef-card-container">
     <h1>I NOSTRI CHEF!!!!</h1>
     <nav class="filters">
-      <span v-for="specialization in specializations">
-        {{ specialization.name }}
+      <div class="btn-group" role="group">
+        <span v-for="specialization in specializations">
+          <input
+            type="checkbox"
+            class="btn-check"
+            autocomplete="off"
+            :id="specialization.id"
+            :name="specialization.name"
+          />
+          <label :for="specialization.id" class="btn btn-outline-primary">
+            {{ specialization.name }}</label
+          >
+        </span>
+      </div>
+
+      <span class="more-filters">
+        <h4>Più filtri</h4>
+        <span> media voti <input type="number" id="votes" /></span>
+        <span
+          >numero recensioni
+          <input type="number" id="reviews" v-model="GetFilteredReviews"
+        /></span>
       </span>
     </nav>
 
@@ -83,12 +105,24 @@ export default {
         <span>{{ chef.user.lastname }}</span>
         {{ chef.description_of_dishes }}
         <span v-for="index in chef.specializations"> {{ index.name }}</span>
+        <span v-for="index in chef.votes"
+          >{{ index.vote }}
+          <span>{{ index.label }}</span>
+        </span>
+        {{ chef.reviews.length }}
       </div>
     </section>
   </section>
 </template>
 
 <style lang="scss" scoped>
+.more-filters {
+  width: 30rem;
+  padding: 1rem;
+  background-color: lightgray;
+  border-radius: 1rem;
+}
+
 .chef-card-container {
   max-width: 1400px;
   display: flex;
@@ -99,6 +133,10 @@ export default {
   .filters {
     flex-wrap: wrap;
     display: flex;
+    div {
+      display: flex;
+      flex-wrap: wrap;
+    }
     span {
       margin: 1rem;
     }
