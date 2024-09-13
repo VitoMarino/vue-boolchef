@@ -22,6 +22,7 @@ import Registration from './pages/user/auth/Registration.vue';
 import Profile from './pages/user/auth/Profile.vue';
 import ModifyProfile from './pages/user/ModifyProfile.vue';
 
+
 //* Con la costante stiamo salvando i dati di Vue Router
 const router = createRouter({
     
@@ -92,8 +93,8 @@ const router = createRouter({
             path: '/profile',
             name: 'profile',
             component: Profile
-        },
-        {    
+        }, 
+        {
             path: '/modify-profile',
             name: 'modify-profile',
             component: ModifyProfile
