@@ -7,7 +7,7 @@ export default {
       chefs: [],
       specializations: [],
       users: [],
-      GetFilteredReviews: [],
+      Filter: [1],
     };
   },
   methods: {
@@ -60,6 +60,7 @@ export default {
           // always executed
         });
     },
+    
   },
   created() {
     this.getChefs();
@@ -98,18 +99,26 @@ export default {
       </span>
     </nav>
 
-    <section class="chef-cards">
-      <div class="card" v-for="chef in chefs">
+    <section class="chef-cards" >
+      <div  v-for="chef in chefs">
+
+<div v-if="chef.id == Filter" class="card">
         <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
         {{ chef.description_of_dishes }}
-        <span v-for="index in chef.specializations"> {{ index.name }}</span>
+       
         <span v-for="index in chef.votes"
           >{{ index.vote }}
           <span>{{ index.label }}</span>
         </span>
-        {{ chef.reviews.length }}
+        {{ chef.reviews.length }}</div>
+
+
+<div v-else>
+      </div>
+
+
       </div>
     </section>
   </section>
