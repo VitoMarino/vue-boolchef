@@ -93,9 +93,7 @@ const router = createRouter({
             path: '/profile',
             name: 'profile',
             component: Profile
-        },
-        {    
-        },
+        }, 
         {
             path: '/modify-profile',
             name: 'modify-profile',
