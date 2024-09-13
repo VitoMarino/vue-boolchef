@@ -3,6 +3,20 @@
 </script>
 
 <template>
+
+</template>
+
+<style>
+
+</style>
+
+<!--
+<script>
+
+</script>
+
+
+<template>
     <h3 class="text-center">
         Accedi o registrati gratuitamente
     </h3>
@@ -21,7 +35,8 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Ricordati</label>
             </div>
-            <!--Commento momentaneo: Bisogna creare un if per indicare che se l'utente si logga può entrare-->
+            
+            (Commento momentaneo: Bisogna creare un if per indicare che se l'utente si logga può entrare)
             <router-link :to="{name: 'dashboard'}">
                 <button type="submit" class="btn btn-warning mb-3">Accedi</button>
             </router-link>
@@ -45,3 +60,5 @@ a{
 }
 
 </style>
+
+-->
