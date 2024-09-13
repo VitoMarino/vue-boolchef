@@ -46,16 +46,17 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 2rem;
     h4 {
       font-size: 2rem;
       padding-bottom: 1rem;
     }
-    padding-bottom: 2rem;
   }
   .sponsors {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     span {
       padding: 3rem;
       img {
@@ -63,7 +64,6 @@ export default {
         height: 3rem;
       }
     }
-    justify-content: center;
   }
 }
 
