@@ -6,9 +6,7 @@
 
 </template>
 
-<style>
-
-</style>
+<style></style>
 
 <!--
 <script>
@@ -105,7 +103,7 @@ export default {
 
      
         <form @submit.prevent="validateForm">
-            <!--Name-->
+            Name
 
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
