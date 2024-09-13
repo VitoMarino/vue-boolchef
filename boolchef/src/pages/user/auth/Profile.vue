@@ -221,8 +221,8 @@ export default {
                 </label>
                 <div class="d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
                     <div v-for="(specialization, index) in specializationsList" :key="specialization.id">
-                        <input type="checkbox" name="specializations[]" :id="specialization + specialization.id" v-model="form.specializations" class="btn-check" autocomplete="off">
-                        <label class="btn btn-outline-primary m-1" :for="specialization + specialization.id">
+                        <input type="checkbox" name="specializations[]" :id="'specialization-' + specialization.id" :value="specialization.id" v-model="form.specializations" class="btn-check" autocomplete="off">
+                        <label class="btn btn-outline-primary m-1" :for="'specialization-' + specialization.id">
                             {{ specialization.name }}
                         </label>
                     </div>
