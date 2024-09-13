@@ -1,4 +1,17 @@
 <script>
+
+</script>
+
+<template>
+
+</template>
+
+<style>
+
+</style>
+
+<!--
+<script>
 import axios from 'axios';
 
 export default {
@@ -169,37 +182,37 @@ export default {
 
     <div class="d-flex justify-content-center">
         <form @submit.prevent="submitForm">
-            <!--Address-->
+            
             <div class="mb-3">
                 <label for="address" class="form-label">Indirizzo</label>
                 <input type="text" class="form-control" name="address" v-model="form.address" id="address" aria-describedby="emailHelp">
             </div>
 
-            <!--Telephone-->
+            
             <div class="mb-3">
                 <label for="telephone" class="form-label">Numero di telefono</label>
                 <input type="text" class="form-control" name="telephone" v-model="form.telephone" id="telephone" aria-describedby="emailHelp">
             </div>
 
-            <!--Piatti-->
+            
             <div class="mb-3">
                 <label for="description_of_dishes" class="form-label">Descrizione piatti</label>
                 <textarea class="form-control mb-3" name="description_of_dishes" v-model="form.description_of_dishes" id="description_of_dishes"></textarea>
             </div>
 
-            <!--Foto profilo-->
+            
             <div class="mb-3">
                 <label for="photograph" class="form-label">Carica foto profilo</label>
                 <input class="form-control mb-3" type="file" name="photograph" id="photograph" @change="prendiFileUpload($event, 'CV')">
             </div>
 
-            <!--CV-->
+            
             <div class="mb-3">
                 <label for="CV" class="form-label">Carica CV</label>
                 <input class="form-control mb-3" type="file" name="CV" id="CV" @change="prendiFileUpload($event, 'CV')">
             </div>
 
-            <!--Visibilità-->
+            
             <div>
                 <label for="visibility">
                     Seleziona visibilità
@@ -214,7 +227,7 @@ export default {
                 </select>
             </div>
 
-            <!--Specializzazione-->
+            
             <div>
                 <label for="specializations">
                     Seleziona la specializzazione
@@ -229,7 +242,7 @@ export default {
                 </div>
             </div>
 
-            <!--Fine form-->
+            
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Ricordati</label>
@@ -243,3 +256,4 @@ export default {
 </template>
 
 <style></style>
+-->

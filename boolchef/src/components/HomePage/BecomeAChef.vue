@@ -13,7 +13,7 @@
     </div>
     <div>
 
-      <a class="btn btn-primary" href="http://127.0.0.1:8000/login">Registrati o accedi</a>
+      <a class="btn btn-primary" href="http://127.0.0.1:8000/">Registrati o accedi</a>
 
     </div>
   </section>
