@@ -7,7 +7,8 @@ export default {
       chefs: [],
       specializations: [],
       users: [],
-      Filter: [], // Should be an array since it's handling multiple filters (checkboxes)
+      Filter: [],
+      TempChef:[] // Should be an array since it's handling multiple filters (checkboxes)
     };
   },
   methods: {
@@ -39,21 +40,27 @@ export default {
     },
 
     getUser() {
-      axios
-        .get("http://127.0.0.1:8000/api/users")
-        .then((response) => {
-          this.users = response.data.results;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    axios.get('http://127.0.0.1:8000/api/chefs')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
     },
+     
   },
   created() {
     this.getChefs();
     this.getSpecializations();
     this.getUser();
   },
+
 };
 </script>
 
@@ -72,7 +79,7 @@ export default {
             v-model="Filter" 
             
           />
-          <label :for="specialization.id" class="btn btn-outline-warning check-chef">
+          <label :for="specialization.id" class="btn btn-outline-warning check-chef" >
             {{ specialization.name }}
           </label>
         </span>
@@ -81,8 +88,8 @@ export default {
     </nav>
 
     <section class="chef-cards" >
-      <div  v-for="chef in chefs">
-
+      <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none">
+            
 <div  class="card">
         <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
         <span>{{ chef.user.name }}</span>
@@ -98,7 +105,7 @@ export default {
 
 </div>
 
-      </div>
+      </router-link>
     </section>
   </section>
 </template>

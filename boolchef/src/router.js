@@ -43,7 +43,7 @@ const router = createRouter({
             component: SearchChef
         },
         {
-            path: '/singlechef',
+            path: '/chefs/:id',
             name: 'single-chef',
             component: SingleChef
         },
