@@ -62,7 +62,8 @@ export default {
    <main>
     <section>
         <h1>Scrivi la tua recensione</h1>
-   <form @submit.prevent="postMessage" class="form-group card">
+        <div class="card">
+   <form @submit.prevent="postMessage" class="form-group">
     <!-- Altri campi del messaggio -->
     
     <input type="hidden" name="chef_id" :value="chef_id" > 
@@ -82,8 +83,7 @@ export default {
 
     <button type="submit" >Invia Recensione</button>
 </form>
-</section>
-</main>
+
 
 
 <form @submit.prevent="postVote">
@@ -101,12 +101,12 @@ export default {
         <option value="9">9</option>
         <option value="10">10</option>
     </select>
-    <input type="submit">
+    <button type="submit">Invia voto!</button>
 </form>
 
-
+</div></section>
+</main>
 </template>
-
 
 
 <style lang="scss" scoped>
@@ -120,9 +120,9 @@ section{
     align-items: center;
     
    form{
-    padding: 4rem;
-    margin: 6rem;
+   
     width: 80rem;
+    padding: 2rem;
     input{
         margin-bottom: 0.6rem;
     }
