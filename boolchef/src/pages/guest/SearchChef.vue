@@ -112,7 +112,7 @@ export default {
             {{ specialization.name }}
           </label>
         </span>
-        <button @click="getChefs" class="button-search">Click ME!!</button> <!-- Trigger the getChefs method -->
+   
       </div>
       <div class="more-filters">
        <div>
@@ -137,8 +137,10 @@ export default {
             <span v-else> Max </span>
           </option>
         </select>
+        <button @click="getChefs" class="button-search">Click ME!!</button>
 </div>
       </div>
+     
     </nav>
 
     <section class="chef-cards" >
