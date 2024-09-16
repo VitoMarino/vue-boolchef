@@ -9,16 +9,32 @@ export default {
       user_name: '',
       email: '',
       chef_id: null,
+
+      vote_id: null,
     };
   },
   methods: {
-    postMessage(id){
+    postMessage(){
         axios
         .post("http://127.0.0.1:8000/api/reviews", {
             review_title: this.review_title,
             review: this.review,
             user_name: this.user_name,
             email: this.email,
+            chef_id: this.chef_id,
+        })
+        .then((response) => {
+          console.log(response.data.results);
+          this.users = response.data.results;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    postVote(){
+        axios
+        .post("http://127.0.0.1:8000/api/votes", {
+            vote_id: this.vote_id,
             chef_id: this.chef_id,
         })
         .then((response) => {
@@ -49,8 +65,7 @@ export default {
    <form @submit.prevent="postMessage" class="form-group card">
     <!-- Altri campi del messaggio -->
     
-    <input type="hidden" name="chef_id" :value="chef_id" > <!-- Campo nascosto con l'ID dello chef -->
-
+    <input type="hidden" name="chef_id" :value="chef_id" > 
     <label for="review_title">Titolo:</label>
     <input type="text" name="review_title" id="review_title" v-model="review_title" required class="form-control">
 
@@ -65,13 +80,33 @@ export default {
     
 
 
-
     <button type="submit" >Invia Recensione</button>
 </form>
 </section>
 </main>
 
+
+<form @submit.prevent="postVote">
+    <input type="hidden" name="chef_id" :value="chef_id" > 
+    
+    <select name="votes" id="votes" v-model="vote_id">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+    <input type="submit">
+</form>
+
+
 </template>
+
 
 
 <style lang="scss" scoped>
