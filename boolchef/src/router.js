@@ -14,13 +14,13 @@ import SingleChef from './pages/guest/SingleChef.vue';
 // User
 import Dashboard from './pages/user/Dashboard.vue';
 import Messages from './pages/user/Messages.vue';
-import Review from './pages/user/Review.vue';
+
 import SponsorShip from './pages/user/SponsorShip.vue';
 import Statistics from './pages/user/Statistics.vue';
 import Access from './pages/user/auth/Access.vue';
 import Registration from './pages/user/auth/Registration.vue';
 import Profile from './pages/user/auth/Profile.vue';
-
+import Reviews from './pages/guest/Reviews.vue';
 //* Con la costante stiamo salvando i dati di Vue Router
 const router = createRouter({
     
@@ -62,11 +62,7 @@ const router = createRouter({
             name: 'messages',
             component: Messages
         },
-        {
-            path: '/review',
-            name: 'review',
-            component: Review
-        },
+      
         {
             path: '/sponsorship',
             name: 'sponsorship',
@@ -92,6 +88,11 @@ const router = createRouter({
             name: 'profile',
             component: Profile
         },
+        {
+            path:'/reviews/:id',
+            name: "reviews",
+            component: Reviews
+        }
     ]
 });
 

@@ -50,12 +50,15 @@ export default {
         <span>{{ chef.user.lastname }}</span>
         {{ chef.description_of_dishes }}
        
-        <span v-for="index in chef.votes"
-          >{{ index.vote }}
-         {{ index.label }}
+        <span
+          >{{ Number(chef.average_vote).toFixed() }}
+        
         </span>
       {{ chef.reviews.length }}
-
+  <span>
+    Hai gia provato questo chef? Allora scrivi una recensione
+    <RouterLink  :to="{name:'reviews', params:{ id: chef.id }}"><button>ddd</button></RouterLink>
+  </span>
     
 </div>
     </section>
