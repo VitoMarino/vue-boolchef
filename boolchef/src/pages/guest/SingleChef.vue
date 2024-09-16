@@ -56,8 +56,8 @@ export default {
         </span>
       {{ chef.reviews.length }}
   <span>
-    Hai gia provato questo chef? Allora scrivi una recensione
-    <RouterLink  :to="{name:'reviews', params:{ id: chef.id }}"><button>ddd</button></RouterLink>
+    Hai gia provato questo chef? 
+    <RouterLink  :to="{name:'reviews', params:{ id: chef.id }}"><button>Scrivi una recensione</button></RouterLink>
   </span>
     <span>
     Contatta lo chef
@@ -66,6 +66,7 @@ export default {
 </div>
     </section>
 </main>
+
 
 
 </template>
