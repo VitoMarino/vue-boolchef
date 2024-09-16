@@ -13,11 +13,7 @@
     </div>
     <div>
 
-      <router-link :to="{ name: 'access' }">
-        <button>
-          Registrati o accedi
-        </button>
-      </router-link>
+      <a class="btn btn-primary" href="http://127.0.0.1:8000/">Registrati o accedi</a>
 
     </div>
   </section>

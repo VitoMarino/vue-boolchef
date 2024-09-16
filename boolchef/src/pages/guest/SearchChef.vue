@@ -1,71 +1,95 @@
 <script>
 import axios from "axios";
-import { array } from "i/lib/util";
+
 export default {
   data() {
     return {
       chefs: [],
       specializations: [],
       users: [],
-      GetFilteredReviews: [],
+      Filter: [], // Should be an array since it's handling multiple filters (checkboxes)
+      votes: [],
+      reviews: [],
+      selectedVote: null,
+      selectedReview: null,
+
     };
   },
   methods: {
     getChefs() {
+      const filterString = this.Filter.join(","); // Join filter array into a comma-separated string
+
       axios
-        .get("http://127.0.0.1:8000/api/chefs", {
-          params: {},
+        .get("http://127.0.0.1:8000/api/specialization/search", {
+          params: { 
+            id: this.Filter,
+            vote: this.selectedVote, 
+            reviews: this.selectedReview
+          }, // Pass Filter array as 'id[]' in the query
         })
         .then((response) => {
           console.log(response.data.results);
           this.chefs = response.data.results;
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
-        })
-        .finally(function () {
-          // always executed
         });
     },
 
     getSpecializations() {
       axios
-        .get("http://127.0.0.1:8000/api/specializations", {
-          params: {},
-        })
+        .get("http://127.0.0.1:8000/api/specializations")
         .then((response) => {
           console.log(response.data.results);
           this.specializations = response.data.results;
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
-        })
-        .finally(function () {
-          // always executed
         });
     },
+
     getUser() {
       axios
-        .get("http://127.0.0.1:8000/api/users", {
-          params: {},
-        })
+        .get("http://127.0.0.1:8000/api/users")
         .then((response) => {
           console.log(response.data.results);
           this.users = response.data.results;
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
-        })
-        .finally(function () {
-          // always executed
         });
     },
+    getVotes() {
+      axios
+        .get("http://127.0.0.1:8000/api/votes")
+        .then((response) => {
+          console.log(response.data.results);
+          this.votes = response.data.results;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getReviews() {
+      axios
+        .get("http://127.0.0.1:8000/api/reviews")
+        .then((response) => {
+          console.log(response.data.results);
+          this.reviews = response.data.results;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      },
   },
   created() {
     this.getChefs();
     this.getSpecializations();
     this.getUser();
+    this.getVotes();
+    this.getReviews();
   },
+
 };
 </script>
 
@@ -74,48 +98,87 @@ export default {
     <h1>I NOSTRI CHEF!!!!</h1>
     <nav class="filters">
       <div class="btn-group" role="group">
-        <span v-for="specialization in specializations">
+        <span v-for="specialization in specializations" :key="specialization.id">
           <input
             type="checkbox"
             class="btn-check"
             autocomplete="off"
             :id="specialization.id"
-            :name="specialization.name"
+            :value="specialization.id" 
+            v-model="Filter" 
+            
           />
-          <label :for="specialization.id" class="btn btn-outline-primary">
-            {{ specialization.name }}</label
-          >
+          <label :for="specialization.id" class="btn btn-outline-warning check-chef" >
+            {{ specialization.name }}
+          </label>
         </span>
+        <button @click="getChefs" class="button-search">Click ME!!</button> <!-- Trigger the getChefs method -->
       </div>
+      <div>
+        <label for="vote-filter">Filtra per il voto medio:</label>
+        <select name="vote-filter" id="vote-filter" v-model="selectedVote">
+          <option value="">Seleziona un voto</option selected>
+          <option v-for="(vote,index) in votes" :key="vote.id" :value="vote.id" :id="'vote-filter-' + vote.id" >
+            <span v-if="index < votes.length - 1">{{ vote.id }} o + </span>
+            <span v-else>{{ vote.id }} </span>
+          </option>
+        </select>
 
-      <span class="more-filters">
-        <h4>Più filtri</h4>
-        <span> media voti <input type="number" id="votes" /></span>
-        <span
-          >numero recensioni
-          <input type="number" id="reviews" v-model="GetFilteredReviews"
-        /></span>
-      </span>
+        <label for="reviews-filter">Filtra per il numero di review:</label>
+        <select name="reviews-filter" id="reviews-filter" v-model="selectedReview">
+          <option value="" selected>Seleziona un numero di recensioni</option>
+          <option v-for="(review,index) in reviews" :key="review.id" :value="review.id" :id="'review-filter-' + review.id">
+            <span v-if="index < reviews.length - 1">{{ review.id }} o + </span>
+            <span v-else> Max </span>
+          </option>
+        </select>
+
+      </div>
     </nav>
 
-    <section class="chef-cards">
-      <div class="card" v-for="chef in chefs">
+    <section class="chef-cards" >
+      <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none">
+            
+<div  class="card">
         <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
-        {{ chef.description_of_dishes }}
-        <span v-for="index in chef.specializations"> {{ index.name }}</span>
-        <span v-for="index in chef.votes"
-          >{{ index.vote }}
-          <span>{{ index.label }}</span>
-        </span>
-        {{ chef.reviews.length }}
-      </div>
+          <span v-for="specialization in chef.specializations" :key="specialization.id">
+            {{ specialization.name }}
+          </span>
+        <span>{{ chef.description_of_dishes }}</span>
+        <div>
+          <strong>Media Voti:</strong> {{ Number(chef.average_vote).toFixed() }}
+        </div>
+        <div>
+          <strong>Numero di Recensioni:</strong> {{ chef.reviews_count }}
+        </div>
+
+
+
+</div>
+
+      </router-link>
     </section>
   </section>
 </template>
 
 <style lang="scss" scoped>
+.button-search{
+border-radius: 1rem;
+background-color: goldenrod;
+border: 0;
+width: 6rem;
+height: 2rem;
+margin-top: 1rem;
+&:hover{
+  background-color: white;
+  border: 1px solid goldenrod;
+  
+}
+
+}
+
 .more-filters {
   width: 30rem;
   padding: 1rem;
@@ -167,5 +230,11 @@ export default {
       justify-content: center;
     }
   }
+
+ .check-chef{
+  border: goldenrod !important;
+ }
+
+
 }
 </style>
