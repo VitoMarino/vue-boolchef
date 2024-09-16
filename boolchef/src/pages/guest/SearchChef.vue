@@ -21,9 +21,9 @@ export default {
 
       axios
         .get("http://127.0.0.1:8000/api/specialization/search", {
-          params: { 
+          params: {
             id: this.Filter,
-            vote: this.selectedVote, 
+            vote: this.selectedVote,
             reviews: this.selectedReview
           }, // Pass Filter array as 'id[]' in the query
         })
@@ -80,7 +80,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-      },
+    },
   },
   created() {
     this.getChefs();
@@ -96,24 +96,15 @@ export default {
 <template>
   
   <section class="chef-card-container">
-    <h1>I NOSTRI CHEF!!!!</h1>
     <nav class="filters">
       <div class="btn-group" role="group">
         <span v-for="specialization in specializations" :key="specialization.id">
-          <input
-            type="checkbox"
-            class="btn-check"
-            autocomplete="off"
-            :id="specialization.id"
-            :value="specialization.id" 
-            v-model="Filter" 
-            
-          />
-          <label :for="specialization.id" class="btn btn-outline-warning check-chef" >
+          <input type="checkbox" class="btn-check" autocomplete="off" :id="specialization.id" :value="specialization.id"
+            v-model="Filter" />
+          <label :for="specialization.id" class="btn btn-outline-warning check-chef">
             {{ specialization.name }}
           </label>
         </span>
-        <button @click="getChefs" class="button-search">Click ME!!</button> <!-- Trigger the getChefs method -->
       </div>
       <div class="more-filters">
        <div>
@@ -133,14 +124,14 @@ export default {
         <label for="reviews-filter">Filtra per il numero di review:</label>
         <select name="reviews-filter" id="reviews-filter" v-model="selectedReview" class="form-select w-25">
           <option value="" selected>Seleziona un numero di recensioni</option>
-          <option v-for="(review,index) in reviews" :key="review.id" :value="review.id" :id="'review-filter-' + review.id">
+          <option v-for="(review, index) in reviews" :key="review.id" :value="review.id"
+            :id="'review-filter-' + review.id">
             <span v-if="index < reviews.length - 1">{{ review.id }} o + </span>
             <span v-else> Max </span>
           </option>
         </select>
 </div>
-      </div>
-    </nav>
+      </div></nav>
 
     <section class="chef-cards" >
       <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none">
@@ -274,10 +265,12 @@ div{
   .filters {
     flex-wrap: wrap;
     display: flex;
+
     div {
       display: flex;
       flex-wrap: wrap;
     }
+
     span {
       margin: 1rem;
     }
@@ -288,9 +281,11 @@ div{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
   img {
     font-size: 0.5rem;
   }
+
   .card {
     width: 20rem;
     padding: 2rem;
@@ -300,6 +295,7 @@ div{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     span {
       padding-bottom: 1rem;
       border-bottom: 1px solid lightgray;
@@ -318,9 +314,9 @@ div{
     }
   }
 
- .check-chef{
-  border: goldenrod !important;
- }
+  .check-chef {
+    border: goldenrod !important;
+  }
 
 
 
