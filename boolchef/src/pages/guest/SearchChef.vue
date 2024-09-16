@@ -94,6 +94,7 @@ export default {
 </script>
 
 <template>
+  
   <section class="chef-card-container">
     <h1>I NOSTRI CHEF!!!!</h1>
     <nav class="filters">
@@ -114,25 +115,30 @@ export default {
         </span>
         <button @click="getChefs" class="button-search">Click ME!!</button> <!-- Trigger the getChefs method -->
       </div>
-      <div>
+      <div class="more-filters">
+       <div>
         <label for="vote-filter">Filtra per il voto medio:</label>
-        <select name="vote-filter" id="vote-filter" v-model="selectedVote">
-          <option value="">Seleziona un voto</option selected>
+        <select name="vote-filter" id="vote-filter" v-model="selectedVote" class="form-select w-25" >
+          <option value="" selected>Seleziona un voto</option>
           <option v-for="(vote,index) in votes" :key="vote.id" :value="vote.id" :id="'vote-filter-' + vote.id" >
-            <span v-if="index < votes.length - 1">{{ vote.id }} o + </span>
-            <span v-else>{{ vote.id }} </span>
+            <span v-if="index < votes.length - 1">
+              
+              
+              {{ vote.id / 2}} o + </span>
+            <span v-else>{{ vote.id /2  }} </span>
           </option>
         </select>
-
+</div>
+<div>
         <label for="reviews-filter">Filtra per il numero di review:</label>
-        <select name="reviews-filter" id="reviews-filter" v-model="selectedReview">
+        <select name="reviews-filter" id="reviews-filter" v-model="selectedReview" class="form-select w-25">
           <option value="" selected>Seleziona un numero di recensioni</option>
           <option v-for="(review,index) in reviews" :key="review.id" :value="review.id" :id="'review-filter-' + review.id">
             <span v-if="index < reviews.length - 1">{{ review.id }} o + </span>
             <span v-else> Max </span>
           </option>
         </select>
-
+</div>
       </div>
     </nav>
 
@@ -143,15 +149,70 @@ export default {
         <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
-          <span v-for="specialization in chef.specializations" :key="specialization.id">
-            {{ specialization.name }}
-          </span>
+       <span > 
+        <div v-for="specialization in chef.specializations" :key="specialization.id" >
+           <p> {{ specialization.name }}</p>
+          </div></span> 
         <span>{{ chef.description_of_dishes }}</span>
         <div>
-          <strong>Media Voti:</strong> {{ Number(chef.average_vote).toFixed() }}
+          <strong>Media Voti:</strong>
+
+           <span v-if=" Number(chef.average_vote).toFixed() / 2   == 5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </span>
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half"></i>
+            </span>
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"
+              ><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </span>
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"
+              ><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+
+              <i class="fa-solid fa-star-half"></i>
+            </span>
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </span>
+
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half"></i>
+            </span>
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </span>
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1.5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half"></i>
+            </span>
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1" class="stars">
+              <i class="fa-solid fa-star"></i>
+            </span>
+            <span v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
+              <i class="fa-solid fa-star-half"></i>
+            </span>
         </div>
         <div>
-          <strong>Numero di Recensioni:</strong> {{ chef.reviews_count }}
+          <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
         </div>
 
 
@@ -164,6 +225,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.stars{
+  color: gold;
+}
+
 .button-search{
 border-radius: 1rem;
 background-color: goldenrod;
@@ -184,6 +250,18 @@ margin-top: 1rem;
   padding: 1rem;
   background-color: lightgray;
   border-radius: 1rem;
+  vertical-align: middle;
+div{
+  display: flex;
+ 
+  align-items: center;
+  flex-direction: row;
+  vertical-align: middle;
+  margin: 1rem;
+  select{
+    margin-left: 0.5rem;
+  }
+}
 }
 
 .chef-card-container {
@@ -229,12 +307,38 @@ margin-top: 1rem;
       display: flex;
       justify-content: center;
     }
+    div{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      p{
+        font-size: 0.8rem;
+        margin: 0.4rem;
+      }
+    }
   }
 
  .check-chef{
   border: goldenrod !important;
  }
 
+
+
+
+}
+@media(max-width:767px){
+
+  .chef-card-container{
+    .chef-cards{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+.filters{
+  justify-content: center;
+}
 
 }
 </style>
