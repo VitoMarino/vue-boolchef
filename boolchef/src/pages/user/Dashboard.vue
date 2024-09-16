@@ -1,4 +1,17 @@
 <script>
+
+</script>
+
+<template>
+
+</template>
+
+<style>
+
+</style>
+
+<!--
+<script>
 export default {
   data() {
     return {};
@@ -10,7 +23,7 @@ export default {
   <div class="my_div-max-width">
     <h1 class="text-center mb-3">
       Benvenuto Chef tizio
-      <!--Al posto di tizio ci andrà il nome dell'utente loggato-->
+      Al posto di tizio ci andrà il nome dell'utente loggato
     </h1>
 
     <h5 class="text-center text-body-secondary">
@@ -19,7 +32,7 @@ export default {
     </h5>
     <hr />
 
-    <!--PRIMO FLEX CARD-->
+    PRIMO FLEX CARD
     <div class="d-flex justify-content-center">
       <router-link class="router-link" :to="{ name: 'modify-profile' }">
         <p>Modifica profilo</p>
@@ -27,8 +40,8 @@ export default {
     </div>
     <div class="d-flex justify-content-center">
 
-      <!--CARD MESSAGGI-->
-      <!--Router link, con link statico-->
+      CARD MESSAGGI
+      (Router link, con link statico)
       <div class="card my_card m-3" style="width: 18rem">
         <router-link class="router-link" :to="{ name: 'messages' }">
           <div class="card-body">
@@ -42,7 +55,7 @@ export default {
         </router-link>
       </div>
 
-      <!--CARD REVIEW-->
+      CARD REVIEW
       <div class="card my_card m-3" style="width: 18rem">
         <router-link class="router-link" :to="{ name: 'review' }">
           <div class="card-body">
@@ -56,9 +69,9 @@ export default {
       </div>
     </div>
 
-    <!--SECONDO FLEX CARD-->
+    SECONDO FLEX CARD
     <div class="d-flex justify-content-center">
-      <!--CARD SPONSORSHIP-->
+      CARD SPONSORSHIP
       <div class="card my_card m-3" style="width: 18rem">
         <router-link class="router-link" :to="{ name: 'sponsorship' }">
           <div class="card-body">
@@ -71,7 +84,7 @@ export default {
         </router-link>
       </div>
 
-      <!--CARD STATICS-->
+      CARD STATICS
       <div class="card my_card m-3" style="width: 18rem">
         <router-link class="router-link" :to="{ name: 'statics' }">
           <div class="card-body">
@@ -111,3 +124,4 @@ div.my_card {
   }
 }
 </style>
+-->
