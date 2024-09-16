@@ -8,7 +8,7 @@ export default {
       review: '',
       user_name: '',
       email: '',
-      chef_id: 1,
+      chef_id: null,
     };
   },
   methods: {
@@ -19,7 +19,7 @@ export default {
             review: this.review,
             user_name: this.user_name,
             email: this.email,
-            chef_id: this.chef_id,
+            chef_id: this.chef.id,
         })
         .then((response) => {
           console.log(response.data.results);
@@ -31,7 +31,7 @@ export default {
     },
   },
   created() {
-    
+    this.chef_id = this.$route.params.id;
   },
 
 };
@@ -44,7 +44,7 @@ export default {
     <form @submit.prevent="postMessage">
     <!-- Altri campi del messaggio -->
     
-    <input type="hidden" name="chef_id" value="{{ $chef->id }}"> <!-- Campo nascosto con l'ID dello chef -->
+    <input type="hidden" name="chef_id" :value="chef_id" > <!-- Campo nascosto con l'ID dello chef -->
 
     <label for="review_title">Titolo:</label>
     <input type="text" name="review_title" id="review_title" v-model="review_title" required>
@@ -57,7 +57,7 @@ export default {
 
     <label for="review">Recensione</label>
     <textarea name="review" id="review" v-model="review" required></textarea>
-    
+
 
 
 
