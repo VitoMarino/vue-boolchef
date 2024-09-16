@@ -50,9 +50,9 @@ export default {
         <span>{{ chef.user.lastname }}</span>
         {{ chef.description_of_dishes }}
        
-        <span v-for="index in chef.votes"
-          >{{ index.vote }}
-         {{ index.label }}
+        <span
+          >{{ Number(chef.average_vote).toFixed() }}
+        
         </span>
       {{ chef.reviews.length }}
   <span>

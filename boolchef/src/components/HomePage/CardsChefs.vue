@@ -115,10 +115,7 @@ getChef() {
         <span>{{ chef.user.lastname }}</span>
         {{ chef.description_of_dishes }}
        
-        <span v-for="index in chef.votes"
-          >{{ index.vote }}
-          <span>{{ index.label }}</span>
-        </span>
+     
       {{ chef.reviews.length }}
       </router-link>
     </div>
