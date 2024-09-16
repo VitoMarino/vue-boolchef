@@ -1,66 +1,53 @@
 <script>
 import axios from "axios";
-import { array } from "i/lib/util";
+
 export default {
   data() {
     return {
       chefs: [],
       specializations: [],
       users: [],
-      Filter: [1],
+      Filter: [], // Should be an array since it's handling multiple filters (checkboxes)
     };
   },
   methods: {
     getChefs() {
+      const filterString = this.Filter.join(","); // Join filter array into a comma-separated string
+
       axios
-        .get("http://127.0.0.1:8000/api/chefs", {
-          params: {},
+        .get("http://127.0.0.1:8000/api/specialization/search", {
+          params: { id: this.Filter }, // Pass Filter array as 'id[]' in the query
         })
         .then((response) => {
           console.log(response.data.results);
           this.chefs = response.data.results;
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
-        })
-        .finally(function () {
-          // always executed
         });
     },
 
     getSpecializations() {
       axios
-        .get("http://127.0.0.1:8000/api/specializations", {
-          params: {},
-        })
+        .get("http://127.0.0.1:8000/api/specializations")
         .then((response) => {
-          console.log(response.data.results);
           this.specializations = response.data.results;
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
-        })
-        .finally(function () {
-          // always executed
         });
     },
+
     getUser() {
       axios
-        .get("http://127.0.0.1:8000/api/users", {
-          params: {},
-        })
+        .get("http://127.0.0.1:8000/api/users")
         .then((response) => {
-          console.log(response.data.results);
           this.users = response.data.results;
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
-        })
-        .finally(function () {
-          // always executed
         });
     },
-    
   },
   created() {
     this.getChefs();
@@ -75,34 +62,28 @@ export default {
     <h1>I NOSTRI CHEF!!!!</h1>
     <nav class="filters">
       <div class="btn-group" role="group">
-        <span v-for="specialization in specializations">
+        <span v-for="specialization in specializations" :key="specialization.id">
           <input
             type="checkbox"
             class="btn-check"
             autocomplete="off"
             :id="specialization.id"
-            :name="specialization.name"
+            :value="specialization.id" 
+            v-model="Filter" 
+            
           />
-          <label :for="specialization.id" class="btn btn-outline-primary">
-            {{ specialization.name }}</label
-          >
+          <label :for="specialization.id" class="btn btn-outline-warning check-chef">
+            {{ specialization.name }}
+          </label>
         </span>
+        <button @click="getChefs" class="button-search">Click ME!!</button> <!-- Trigger the getChefs method -->
       </div>
-
-      <span class="more-filters">
-        <h4>Più filtri</h4>
-        <span> media voti <input type="number" id="votes" /></span>
-        <span
-          >numero recensioni
-          <input type="number" id="reviews" v-model="GetFilteredReviews"
-        /></span>
-      </span>
     </nav>
 
     <section class="chef-cards" >
       <div  v-for="chef in chefs">
 
-<div v-if="chef.id == Filter" class="card">
+<div  class="card">
         <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
@@ -112,12 +93,10 @@ export default {
           >{{ index.vote }}
           <span>{{ index.label }}</span>
         </span>
-        {{ chef.reviews.length }}</div>
+      {{ chef.reviews.length }}
 
 
-<div v-else>
-      </div>
-
+</div>
 
       </div>
     </section>
@@ -125,6 +104,21 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.button-search{
+border-radius: 1rem;
+background-color: goldenrod;
+border: 0;
+width: 6rem;
+height: 2rem;
+margin-top: 1rem;
+&:hover{
+  background-color: white;
+  border: 1px solid goldenrod;
+  
+}
+
+}
+
 .more-filters {
   width: 30rem;
   padding: 1rem;
@@ -176,5 +170,11 @@ export default {
       justify-content: center;
     }
   }
+
+ .check-chef{
+  border: goldenrod !important;
+ }
+
+
 }
 </style>
