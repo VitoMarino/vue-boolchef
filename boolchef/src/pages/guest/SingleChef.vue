@@ -48,20 +48,73 @@ export default {
  <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name" /></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
-        {{ chef.description_of_dishes }}
+        <span>{{ chef.description_of_dishes }}</span>
        
-        <span
-          >{{ Number(chef.average_vote).toFixed() }}
+        <span class="column"
+          >   <strong >Media voti</strong>  
+           <p v-if=" Number(chef.average_vote).toFixed() / 2   == 5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"
+              ><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"
+              ><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+
+              <i class="fa-solid fa-star-half"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </p>
+
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 2" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 1.5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 1" class="stars">
+              <i class="fa-solid fa-star"></i>
+            </p>
+            <p v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
+              <i class="fa-solid fa-star-half"></i>
+            </p>
         
         </span>
-      {{ chef.reviews.length }}
-  <span>
+      <span class="column"><strong>Numero recensioni</strong>{{ chef.reviews.length }}</span>
+  <span class="column">
     Hai gia provato questo chef? 
-    <RouterLink  :to="{name:'reviews', params:{ id: chef.id }}"><button>Scrivi una recensione</button></RouterLink>
+    <RouterLink  :to="{name:'reviews', params:{ id: chef.id }}"><button class="review-button">Scrivi una recensione</button></RouterLink>
   </span>
-    <span>
+    <span class="column">
     Contatta lo chef
-    <RouterLink  :to="{name:'message', params:{ id: chef.id }}"><button>ddd</button></RouterLink>
+    <RouterLink  :to="{name:'message', params:{ id: chef.id }}"><button class="message-button"> Contatta lo chef</button></RouterLink>
   </span>
 </div>
     </section>
@@ -83,24 +136,47 @@ export default {
   div{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+     justify-content: center;
     align-items: center;
     padding: 2rem;
     img{
       font-size: 0.5rem;
     }
-    width: 25rem;
-    height: 30rem;
+    width: 35rem;
+    
     span{
       margin-bottom: 1rem;
         border-bottom: 1px solid lightgray;
         width: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
+        margin: 1rem 0rem;
     }
   }
 }
-
-
+button{
+        
+     
+        padding: 0.3rem;
+        border-radius: 1rem;
+        background-color: goldenrod;
+        border: 1px solid goldenrod;
+        &:hover{
+            background-color: white;
+           
+          
+        }
+    }
+.button-review{
+  width: 12rem;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+  button{
+    margin: 1rem;
+  }
+}
 
 </style>

@@ -90,16 +90,16 @@ export default {
     <input type="hidden" name="chef_id" :value="chef_id" > 
     
     <select name="votes" id="votes" v-model="vote_id">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+        <option value="1">0.5</option>
+        <option value="2">1</option>
+        <option value="3">1.5</option>
+        <option value="4">2</option>
+        <option value="5">2.5</option>
+        <option value="6">3</option>
+        <option value="7">3.5</option>
+        <option value="8">4</option>
+        <option value="9">4.5</option>
+        <option value="10">5</option>
     </select>
     <button type="submit">Invia voto!</button>
 </form>
@@ -118,13 +118,18 @@ section{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    div{
+        margin: 2rem;
+    }
    form{
    
     width: 80rem;
     padding: 2rem;
     input{
         margin-bottom: 0.6rem;
+    }
+    select{
+        margin-right: 1rem;
     }
     button{
         margin-top: 1rem;
@@ -143,6 +148,14 @@ section{
     
 }
 
+@media(max-width:767px){
 
+section{
+    form{
+        width: 20rem;
+    }
+}
+
+}
 
 </style>

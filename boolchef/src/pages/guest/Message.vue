@@ -96,7 +96,13 @@ section{
    }
     
 }
+@media(max-width:767px){
 
-
+section{
+    form{
+        width: 20rem;
+    }
+}
+}
 
 </style>
