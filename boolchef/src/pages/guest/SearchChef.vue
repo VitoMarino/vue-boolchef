@@ -3,28 +3,37 @@ import axios from "axios";
 
 export default {
   data() {
-    return {
-      chefs: [],
-      specializations: [],
-      users: [],
-      Filter: [], // Should be an array since it's handling multiple filters (checkboxes)
-      votes: [],
-      reviews: [],
-      selectedVote: null,
-      selectedReview: null,
-
-    };
-  },
+  let specializations = this.$route.query.specialization || [];
+  if (!Array.isArray(specializations)) {
+    specializations = [specializations];
+  }
+  return {
+    chefs: [],
+    specializations: [],
+    users: [],
+    votes: [],
+    reviews: [],
+    selectedVote: null,
+    selectedReview: null,
+    selectedSpecializations: specializations,
+  };
+},
   methods: {
-    getChefs() {
-      const filterString = this.Filter.join(","); // Join filter array into a comma-separated string
-
+    getChefs(specializationId) {
+      this.$router.replace({
+      name: 'search-chef',
+      query: {
+        specialization: this.selectedSpecializations,
+        vote: this.selectedVote,
+        reviews: this.selectedReview
+        }
+      });
       axios
         .get("http://127.0.0.1:8000/api/specialization/search", {
           params: { 
-            id: this.Filter,
-            vote: this.selectedVote, 
-            reviews: this.selectedReview
+            id: this.selectedSpecializations,
+            vote: this.selectedVote || null, 
+            reviews: this.selectedReview || null,
           }, // Pass Filter array as 'id[]' in the query
         })
         .then((response) => {
@@ -82,14 +91,29 @@ export default {
         });
       },
   },
+  watch: {
+    
+  },
   created() {
-    this.getChefs();
     this.getSpecializations();
     this.getUser();
     this.getVotes();
     this.getReviews();
-  },
 
+    this.getChefs();
+  },
+  beforeRouteUpdate(to, from, next) {
+    // Update filters based on new route parameters
+    let specializations = to.query.specialization || [];
+    if (!Array.isArray(specializations)) {
+      specializations = [specializations];
+    }
+    this.selectedSpecializations = specializations;
+    this.selectedVote = to.query.vote || null;
+    this.selectedReview = to.query.reviews || null;
+    // Do not call getChefs() here to avoid fetching data until the user clicks the button
+    next();
+  }
 };
 </script>
 
@@ -99,14 +123,14 @@ export default {
     <h1>I NOSTRI CHEF!!!!</h1>
     <nav class="filters">
       <div class="btn-group" role="group">
-        <span v-for="specialization in specializations" :key="specialization.id" @change="getChefs()">
+        <span v-for="specialization in specializations" :key="specialization.id">
           <input
             type="checkbox"
             class="btn-check"
             autocomplete="off"
             :id="specialization.id"
             :value="specialization.id" 
-            v-model="Filter" 
+            v-model="selectedSpecializations" 
           />
           <label :for="specialization.id" class="btn btn-outline-warning check-chef">
             {{ specialization.name }}
@@ -143,7 +167,7 @@ export default {
      
     </nav>
 
-    <section class="chef-cards" >
+    <section v-if="chefs.length" class="chef-cards" >
       <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none">
             
 <div  class="card">
@@ -221,6 +245,11 @@ export default {
 </div>
 
       </router-link>
+    </section>
+    <section v-else >
+      <h2>
+        La Ricerca non ha prodotto risultati
+      </h2>
     </section>
   </section>
 </template>
