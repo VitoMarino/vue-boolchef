@@ -112,8 +112,8 @@ footer {
       border-bottom: gray 1px solid;
 
       img {
-        width: 30rem;
-        height: 10rem;
+        width: 100%;
+        height: 100%;
       }
 
       .link-container {
@@ -155,7 +155,7 @@ footer {
       a {
         text-decoration: none;
         color: white;
-        font-size: 1rem;
+        font-size: 16px;
       }
     }
   }
@@ -171,5 +171,14 @@ footer {
       display: none;
     }
   }
+
+  a {
+    font-size: 11px;
+    color: goldenrod;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
 }
 </style>

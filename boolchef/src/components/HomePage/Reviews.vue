@@ -89,7 +89,7 @@ export default {
     nextReview: function () {
       this.currentCard++;
       if (this.currentCard < this.recensioni.length - 1) {
-        this.$refs.scrollable.scrollBy({ left: 478, behavior: "smooth" });
+        this.$refs.scrollable.scrollBy({ left: 200, behavior: "smooth" });
         console.log(this.currentCard);
       } else {
         this.$refs.scrollable.scrollBy({ left: -3500, behavior: "smooth" });
@@ -116,7 +116,7 @@ export default {
 <template>
   <div class="container">
     <div class="row top-review">
-      <div class="col-4">
+      <div class="col-lg-8 col-md-10">
         <div class="text">
           <h3>Più di 45500 ospiti hanno già goduto dell'esperienza</h3>
         </div>
@@ -134,7 +134,7 @@ export default {
         <i class="fa-solid fa-angle-left"></i>
       </a>
 
-      <div class="review-container" ref="scrollable">
+      <div class="review-container col-lg-8 col-md-6" ref="scrollable">
         <div v-for="recensione in recensioni" class="card single-review">
           <div class="card-body">
             {{ recensione.title }}
@@ -212,7 +212,7 @@ export default {
 .reviews {
   display: flex;
   flex-direction: row;
-  width: 80vw;
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -227,9 +227,9 @@ export default {
   .single-review {
     display: flex;
     flex-direction: column;
-    height: 20rem;
+    height: 15rem;
     width: 100%;
-    min-width: 20rem;
+    min-width: 13rem;
     margin-left: 0.5rem;
     .card-body {
       display: flex;
@@ -282,8 +282,7 @@ export default {
     justify-content: center;
   }
   .reviews {
-    width: 24rem;
-    margin-left: 4rem;
+    width: 100%;
   }
   .review-container {
     display: flex;
