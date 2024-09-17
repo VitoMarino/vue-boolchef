@@ -61,7 +61,6 @@ export default {
       padding: 3rem;
       img {
         width: 10rem;
-        height: 3rem;
       }
     }
   }

@@ -49,11 +49,25 @@ section {
       margin-top: 1rem;
     }
     .chef-button {
-      width: 10rem;
+      /* width: 10rem;
       padding: 0.4rem;
 
       border-radius: 1rem;
+      border: none; */
+      padding: 5px 10px;
+      font-size: 14px;
+      color: black;
+      background-color: rgb(255, 255, 255);
       border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+
+      &:hover {
+        background-color: #5f340f;
+        transform: scale(1.1);
+        color: white;
+      }
     }
   }
 
@@ -82,7 +96,13 @@ section {
     }
   }
   .pharagraph {
-    width: 25rem;
+    width: 100%;
   }
 }
+
+@media (max-width: 576px) {
+  .pharagraph {
+    width: 100%;
+  }
+  }
 </style>
