@@ -104,8 +104,13 @@ export default {
       <i class="fa-solid fa-angle-right"></i>
     </a>
     <div class="chefs-container" ref="scrollable">
-      <router-link :to="{ name: 'single-chef', params: { id: chef.id } }" v-for="chef in chefs" class="single-chef">
-        <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name" /></span>
+      <router-link
+        :to="{ name: 'single-chef', params:{ id: chef.id } }"
+        v-for="chef in chefs"
+        class="single-chef"
+      >
+           <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph == null"/>
+          <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
         {{ chef.description_of_dishes }}
@@ -142,7 +147,7 @@ export default {
     }
 
     .image-container {
-      border: 1px black solid;
+    
       height: 3rem;
       width: 3rem;
       border-radius: 100%;
@@ -196,4 +201,9 @@ a {
   flex-direction: column;
   align-items: center;
 }
+
+.logo{
+  width: 8rem;
+}
+
 </style>

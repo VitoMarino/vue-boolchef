@@ -42,10 +42,11 @@ export default {
 
 <template>
 
-  <main>
-    <section class="chef-container card-container">
-      <div v-for="chef in chefs" class="card">
-        <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name" /></span>
+<main>
+  <section class="chef-container card-container">
+<div v-for="chef in chefs" class="card">
+ <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph == null"/>
+          <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
         <span>{{ chef.description_of_dishes }}</span>
@@ -126,8 +127,9 @@ export default {
 
 
 
-<style lang="scss">
-.chef-container {
+<style lang="scss" scoped>
+
+.chef-container{
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
@@ -156,32 +158,30 @@ export default {
     }
   }
 }
-
-button {
-
-
-  padding: 0.3rem;
-  border-radius: 1rem;
-  background-color: goldenrod;
-  border: 1px solid goldenrod;
-
-  &:hover {
-    background-color: white;
-
-
-  }
-}
-
-.button-review {
+button{
+        
+     
+        padding: 0.3rem;
+        border-radius: 1rem;
+        background-color: goldenrod;
+        border: 1px solid goldenrod;
+        &:hover{
+            background-color: white;
+           
+          
+        }
+    }
+.button-review{
   width: 12rem;
 }
-
-.column {
+.column{
   display: flex;
   flex-direction: column;
-
-  button {
+  button{
     margin: 1rem;
   }
+}
+.logo{
+  width: 15rem;
 }
 </style>
