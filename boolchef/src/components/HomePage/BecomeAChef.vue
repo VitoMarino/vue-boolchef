@@ -25,9 +25,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   .pharagraph {
     width: 40rem;
   }
+
   div {
     display: flex;
     flex-direction: column;
@@ -39,6 +41,7 @@
       border-radius: 1rem;
       border: none;
       background-color: #daa520;
+
       &:hover {
         color: white;
       }
@@ -50,6 +53,7 @@
   .become-a-chef {
     div {
       justify-content: center;
+
       button {
         margin-left: 1rem;
       }
