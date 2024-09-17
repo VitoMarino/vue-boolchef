@@ -1,4 +1,15 @@
 <script>
+
+</script>
+
+<template>
+
+</template>
+
+<style></style>
+
+<!--
+<script>
 import axios from 'axios';
 
 export default {
@@ -89,43 +100,41 @@ export default {
     </h3>
 
     <div class="d-flex justify-content-center">
+
+     
         <form @submit.prevent="validateForm">
-            <!--Name-->
+            Name
+
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
                 <input type="text" class="form-control" name="name" v-model="form.name" id="name" aria-describedby="emailHelp">
                 <p v-if="errors.name" class="text-danger">{{ errors.name }}</p>
             </div>
 
-            <!--Lastname-->
             <div class="mb-3">
                 <label for="lastname" class="form-label">Cognome</label>
                 <input type="text" class="form-control" name="lastname" v-model="form.lastname" id="lastname" aria-describedby="emailHelp">
                 <p v-if="errors.lastname" class="text-danger">{{ errors.lastname }}</p>
             </div>
 
-            <!--Email-->
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">E-mail</label>
                 <input type="email" class="form-control" name="email" v-model="form.email" id="email" aria-describedby="emailHelp">
                 <p v-if="errors.email" class="text-danger">{{ errors.email }}</p>
             </div>
 
-            <!--Password-->
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" name="password" v-model="form.password" id="password">
                 <p v-if="errors.password" class="text-danger">{{ errors.password }}</p>
             </div>
 
-            <!--Confirm Password-->
             <div class="mb-3">
                 <label for="passwordConfirmation" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" name="passwordConfirmation" v-model="form.password_confirmation" id="passwordConfirmation">
                 <p v-if="errors.password_confirmation" class="text-danger">{{ errors.password_confirmation }}</p>
             </div>
 
-            <!--Fine form-->
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Ricordati</label>
@@ -139,3 +148,4 @@ export default {
 </template>
 
 <style lang="scss" scoped></style>
+-->

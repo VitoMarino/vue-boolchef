@@ -6,69 +6,35 @@ export default {
     return {
       indexScroll: 0,
       Mobile: window.matchMedia("(max-width: 767px)"),
+      chefs:[],
 
-      Chefs: [
-        {
-          nome: "Massimo",
-          cognome: "Bottura",
-          specialità: "Cucina italiana contemporanea",
-        },
-        {
-          nome: "Gordon",
-          cognome: "Ramsay",
-          specialità: "Cucina britannica e francese",
-        },
-        {
-          nome: "Yannick",
-          cognome: "Alléno",
-          specialità: "Cucina francese moderna",
-        },
-        {
-          nome: "Hélène",
-          cognome: "Darroze",
-          specialità: "Cucina francese e basca",
-        },
-        {
-          nome: "Nobu",
-          cognome: "Matsuhisa",
-          specialità: "Cucina giapponese fusion",
-        },
-        { nome: "Alain", cognome: "Ducasse", specialità: "Cucina francese" },
-        { nome: "Carlo", cognome: "Cracco", specialità: "Cucina italiana" },
-        {
-          nome: "René",
-          cognome: "Redzepi",
-          specialità: "Cucina nordica e molecolare",
-        },
-        { nome: "Anne-Sophie", cognome: "Pic", specialità: "Cucina francese" },
-        {
-          nome: "José",
-          cognome: "Andrés",
-          specialità: "Cucina spagnola e molecolare",
-        },
-        {
-          nome: "Nobu",
-          cognome: "Matsuhisa",
-          specialità: "Cucina giapponese fusion",
-        },
-        { nome: "Alain", cognome: "Ducasse", specialità: "Cucina francese" },
-        { nome: "Carlo", cognome: "Cracco", specialità: "Cucina italiana" },
-        {
-          nome: "René",
-          cognome: "Redzepi",
-          specialità: "Cucina nordica e molecolare",
-        },
-        { nome: "Anne-Sophie", cognome: "Pic", specialità: "Cucina francese" },
-        {
-          nome: "José",
-          cognome: "Andrés",
-          specialità: "Cucina spagnola e molecolare",
-        },
-      ],
+    
     };
   },
 
   methods: {
+
+getChef() {
+     axios.get('http://127.0.0.1:8000/api/chefs')
+  .then( (response)  =>{
+    console.log(response.data.results);
+     this.chefs = response.data.results;
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });  
+},
+
+     
+ 
+
+
+
+
+
     scrollLeft() {
       if (this.Mobile.matches) {
         this.indexScroll--;
@@ -77,7 +43,7 @@ export default {
           console.log(this.indexScroll);
         } else {
           this.$refs.scrollable.scrollBy({ left: 4910, behavior: "smooth" });
-          this.indexScroll = this.Chefs.length - 2;
+          this.indexScroll = this.chefs.length - 2;
           console.log(this.indexScroll);
         }
       } else {
@@ -87,7 +53,7 @@ export default {
           console.log(this.indexScroll);
         } else {
           this.$refs.scrollable.scrollBy({ left: 5600, behavior: "smooth" });
-          this.indexScroll = this.Chefs.length - 2;
+          this.indexScroll = this.chefs.length - 2;
           console.log(this.indexScroll);
         }
       }
@@ -95,7 +61,7 @@ export default {
     scrollRight() {
       if (this.Mobile.matches) {
         this.indexScroll++;
-        if (this.indexScroll < this.Chefs.length - 2) {
+        if (this.indexScroll < this.chefs.length - 2) {
           this.$refs.scrollable.scrollBy({ left: 327, behavior: "smooth" });
 
           console.log(this.indexScroll);
@@ -106,7 +72,7 @@ export default {
         }
       } else {
         this.indexScroll++;
-        if (this.indexScroll < this.Chefs.length - 2) {
+        if (this.indexScroll < this.chefs.length - 2) {
           this.$refs.scrollable.scrollBy({ left: 478, behavior: "smooth" });
 
           console.log(this.indexScroll);
@@ -119,24 +85,12 @@ export default {
     },
 
     // CHIAMATA API
-    methods: {
-      getChefs() {
-        axios
-          .get("http://127.0.0.1:8000/api/chefs")
-          .then((response) => {
-            console.log(response);
-            this.chefs = response.data.result.data;
-            this.currentPage = response.data.result.currentPage;
-          })
-          .catch((error) => {
-            this.$router.push({ name: "404" });
-            console.log(error);
-          });
-      },
-    },
-    created() {
-      this.getChefs();
-    },
+   
+ 
+  }, created() {
+    this.getChef();
+   
+ 
   },
 };
 </script>
@@ -152,14 +106,17 @@ export default {
     </a>
     <div class="chefs-container" ref="scrollable">
       <router-link
-        :to="{ name: 'single-chef' }"
-        v-for="chef in Chefs"
+        :to="{ name: 'single-chef', params:{ id: chef.id } }"
+        v-for="chef in chefs"
         class="single-chef"
       >
-        <span class="image-container">IMG</span>
-        <span>{{ chef.nome }}</span>
-        <span>{{ chef.cognome }}</span>
-        <span>{{ chef.specialità }}</span>
+           <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name" /></span>
+        <span>{{ chef.user.name }}</span>
+        <span>{{ chef.user.lastname }}</span>
+        {{ chef.description_of_dishes }}
+       
+     
+      {{ chef.reviews.length }}
       </router-link>
     </div>
   </section>
@@ -176,7 +133,7 @@ export default {
   .single-chef {
     display: flex;
     flex-direction: column;
-    height: 25rem;
+    height: 28rem;
     align-items: center;
     font-size: 1rem;
     min-width: 20rem;
@@ -189,12 +146,15 @@ export default {
     }
     .image-container {
       border: 1px black solid;
-      height: 4rem;
-      width: 4rem;
+      height: 3rem;
+      width: 3rem;
       border-radius: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
+      img{
+        font-size: 0.5rem;
+      }
     }
   }
 }
@@ -236,4 +196,5 @@ a {
   flex-direction: column;
   align-items: center;
 }
+
 </style>

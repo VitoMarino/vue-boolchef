@@ -3,6 +3,15 @@
 </script>
 
 <template>
+
+</template>
+
+<style>
+
+</style>
+
+<!--
+<template>
     <div class="my_div-max-width">
         <h1 class="text-center mb-3">
             Messaggi <i class="fa-regular fa-message"></i>
@@ -26,3 +35,4 @@ div.my_div-max-width{
     height: 100vh;
 }
 </style>
+-->

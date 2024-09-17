@@ -1,4 +1,19 @@
 <script>
+
+</script>
+
+<template>
+
+</template>
+
+<style>
+
+</style>
+
+
+
+<!--
+<script>
 import axios from 'axios';
 
 export default {
@@ -45,8 +60,8 @@ export default {
             </div>
             <div class="d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary mb-3">Submit</button>
-                <!--QUANDO DOBBIAMO TORNARE A UNA ROTTA ATTRAVERSO UN TAG, IL TAG VA MESSO DENTRO IL TAG ROUTER-LINK.-->
-                <!--SE PRESENTI ALTRI BOTTONI CHE INVIANO DATI, PUO' FARE CONFLITTO, QUINDI INSERIAMO UN TAG CHE NON SIA BUTTON. -->
+                (QUANDO DOBBIAMO TORNARE A UNA ROTTA ATTRAVERSO UN TAG, IL TAG VA MESSO DENTRO IL TAG ROUTER-LINK.)
+                (SE PRESENTI ALTRI BOTTONI CHE INVIANO DATI, PUO' FARE CONFLITTO, QUINDI INSERIAMO UN TAG CHE NON SIA BUTTON.)
                 <router-link class="router-link" :to="{ name: 'dashboard' }">
                     <h3><span class="badge text-bg-danger fw-normal">Annulla modifiche</span></h3>
                 </router-link>
@@ -56,3 +71,4 @@ export default {
 </template>
 
 <style></style>
+-->
