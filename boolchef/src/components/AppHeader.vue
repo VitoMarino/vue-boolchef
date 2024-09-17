@@ -18,6 +18,29 @@ export default {
 </script>
 
 <template>
+    <nav class="navbar bg-body-tertiary hamburgermenu">
+    <div class="container-fluid">
+      <img src="../assets/img/STRECHED-LOGO.png" class="mobile" alt="logo" />
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Boolchef</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul>
+            <li class="mb-3" v-for="navItem in navLinkNames">
+              <router-link :to="{ name: navItem.name }">
+                {{ navItem.label }}
+              </router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
   <header>
     <nav>
       <span>
@@ -79,5 +102,27 @@ header {
   .desktop {
     display: none;
   }
+}
+
+@media (max-width: 576px) {
+  header{
+    display: none;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 1199.98px) {
+  .mobile {
+    display: inline-block;
+    width: 6rem;
+    height: 4rem;
+  }
+  .desktop {
+    display: none;
+  }
+  
+  .hamburgermenu {
+    display: none;
+  }
+
 }
 </style>
