@@ -21,9 +21,9 @@ export default {
 
       axios
         .get("http://127.0.0.1:8000/api/specialization/search", {
-          params: { 
+          params: {
             id: this.Filter,
-            vote: this.selectedVote, 
+            vote: this.selectedVote,
             reviews: this.selectedReview
           }, // Pass Filter array as 'id[]' in the query
         })
@@ -80,7 +80,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-      },
+    },
   },
   created() {
     this.getChefs();
@@ -94,98 +94,91 @@ export default {
 </script>
 
 <template>
-  
+
   <section class="chef-card-container">
-    <h1>I NOSTRI CHEF!!!!</h1>
+    <h1>Trova lo Chef che fa per te</h1>
     <nav class="filters">
       <div class="btn-group" role="group">
         <span v-for="specialization in specializations" :key="specialization.id" @change="getChefs()">
-          <input
-            type="checkbox"
-            class="btn-check"
-            autocomplete="off"
-            :id="specialization.id"
-            :value="specialization.id" 
-            v-model="Filter" 
-          />
+          <input type="checkbox" class="btn-check" autocomplete="off" :id="specialization.id" :value="specialization.id"
+            v-model="Filter" />
           <label :for="specialization.id" class="btn btn-outline-warning check-chef">
             {{ specialization.name }}
           </label>
         </span>
-   
+
       </div>
       <div class="more-filters">
-       <div>
-        <label for="vote-filter">Filtra per il voto medio:</label>
-        <select name="vote-filter" id="vote-filter" v-model="selectedVote" class="form-select w-25" >
-          <option value="" selected>Seleziona un voto</option>
-          <option v-for="(vote,index) in votes" :key="vote.id" :value="vote.id" :id="'vote-filter-' + vote.id" >
-            <span v-if="index < votes.length - 1">
-              
-              
-              {{ vote.id / 2}} o + </span>
-            <span v-else>{{ vote.id /2  }} </span>
-          </option>
-        </select>
-</div>
-<div>
-        <label for="reviews-filter">Filtra per il numero di review:</label>
-        <select name="reviews-filter" id="reviews-filter" v-model="selectedReview" class="form-select w-25">
-          <option value="" selected>Seleziona un numero di recensioni</option>
-          <option v-for="(review,index) in reviews" :key="review.id" :value="review.id" :id="'review-filter-' + review.id">
-            <span v-if="index < reviews.length - 1">{{ review.id }} o + </span>
-            <span v-else> Max </span>
-          </option>
-        </select>
-        <button @click="getChefs" class="button-search">Click ME!!</button>
-</div>
+        <div>
+          <label for="vote-filter">
+            <strong>
+              Filtra per voto medio
+            </strong>
+          </label>
+          <select name="vote-filter" id="vote-filter" v-model="selectedVote" class="form-select w-25">
+            <option value="" selected>Seleziona un voto</option>
+            <option v-for="(vote, index) in votes" :key="vote.id" :value="vote.id" :id="'vote-filter-' + vote.id">
+              <span v-if="index < votes.length - 1">
+
+
+                {{ vote.id / 2 }} o + </span>
+              <span v-else>{{ vote.id / 2 }} </span>
+            </option>
+          </select>
+        </div>
+        <div>
+          <label for="reviews-filter">
+            <strong>
+              Filtra per numero di recensioni
+            </strong>
+          </label>
+          <select name="reviews-filter" id="reviews-filter" v-model="selectedReview" class="form-select w-25">
+            <option value="" selected>Seleziona un numero di recensioni</option>
+            <option v-for="(review, index) in reviews" :key="review.id" :value="review.id"
+              :id="'review-filter-' + review.id">
+              <span v-if="index < reviews.length - 1">{{ review.id }} o + </span>
+              <span v-else> Max </span>
+            </option>
+          </select>
+          <button @click="getChefs" class="button-search">Filtra</button>
+        </div>
       </div>
-     
+
     </nav>
 
-    <section class="chef-cards" >
-      <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none">
-            
-<div  class="card">
-        <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
-        <span>{{ chef.user.name }}</span>
-        <span>{{ chef.user.lastname }}</span>
-       <span > 
-        <div v-for="specialization in chef.specializations" :key="specialization.id" >
-           <p> {{ specialization.name }}</p>
-          </div></span> 
-        <span>{{ chef.description_of_dishes }}</span>
-        <div>
-          <strong>Media Voti:</strong>
+    <section class="chef-cards">
+      <router-link v-for="chef in chefs" :to="{ name: 'single-chef', params: { id: chef.id } }"
+        class="text-decoration-none">
 
-           <span v-if=" Number(chef.average_vote).toFixed() / 2   == 5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"
-              ><i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"
-              ><i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+        <div class="card">
+          <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
+          <span>{{ chef.user.name }}</span>
+          <span>{{ chef.user.lastname }}</span>
+          <span>
+            <div v-for="specialization in chef.specializations" :key="specialization.id">
+              <p> {{ specialization.name }}</p>
+            </div>
+          </span>
+          <span>{{ chef.description_of_dishes }}</span>
+          <div>
+            <strong>Media Voti:</strong>
 
-              <i class="fa-solid fa-star-half"></i>
+            <span v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
             </span>
+
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"><i
+                class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </span>
+
             <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star"></i>
@@ -211,14 +204,14 @@ export default {
             <span v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
               <i class="fa-solid fa-star-half"></i>
             </span>
+          </div>
+          <div>
+            <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
+          </div>
+
+
+
         </div>
-        <div>
-          <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
-        </div>
-
-
-
-</div>
 
       </router-link>
     </section>
@@ -226,23 +219,23 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
-.stars{
+.stars {
   color: gold;
 }
 
-.button-search{
-border-radius: 1rem;
-background-color: goldenrod;
-border: 0;
-width: 6rem;
-height: 2rem;
-margin-top: 1rem;
-&:hover{
-  background-color: white;
-  border: 1px solid goldenrod;
-  
-}
+.button-search {
+  border-radius: 1rem;
+  background-color: goldenrod;
+  border: 0;
+  width: 6rem;
+  height: 2rem;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: white;
+    border: 1px solid goldenrod;
+
+  }
 
 }
 
@@ -252,17 +245,19 @@ margin-top: 1rem;
   background-color: lightgray;
   border-radius: 1rem;
   vertical-align: middle;
-div{
-  display: flex;
- 
-  align-items: center;
-  flex-direction: row;
-  vertical-align: middle;
-  margin: 1rem;
-  select{
-    margin-left: 0.5rem;
+
+  div {
+    display: flex;
+
+    align-items: center;
+    flex-direction: row;
+    vertical-align: middle;
+    margin: 1rem;
+
+    select {
+      margin-left: 0.5rem;
+    }
   }
-}
 }
 
 .chef-card-container {
@@ -275,10 +270,12 @@ div{
   .filters {
     flex-wrap: wrap;
     display: flex;
+
     div {
       display: flex;
       flex-wrap: wrap;
     }
+
     span {
       margin: 1rem;
     }
@@ -289,9 +286,11 @@ div{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
   img {
     font-size: 0.5rem;
   }
+
   .card {
     width: 20rem;
     padding: 2rem;
@@ -301,6 +300,7 @@ div{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     span {
       padding-bottom: 1rem;
       border-bottom: 1px solid lightgray;
@@ -308,38 +308,42 @@ div{
       display: flex;
       justify-content: center;
     }
-    div{
+
+    div {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      p{
+
+      p {
         font-size: 0.8rem;
         margin: 0.4rem;
       }
     }
   }
 
- .check-chef{
-  border: goldenrod !important;
- }
+  .check-chef {
+    border: goldenrod !important;
+  }
 
 
 
 
 }
-@media(max-width:767px){
 
-  .chef-card-container{
-    .chef-cards{
+@media(max-width:767px) {
+
+  .chef-card-container {
+    .chef-cards {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
   }
-.filters{
-  justify-content: center;
-}
+
+  .filters {
+    justify-content: center;
+  }
 
 }
 </style>
