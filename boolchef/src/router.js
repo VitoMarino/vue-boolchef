@@ -10,10 +10,10 @@ import HomePage from './pages/HomePage.vue';
 // Guest
 import SearchChef from './pages/guest/SearchChef.vue';
 import SingleChef from './pages/guest/SingleChef.vue';
-
+import Message from './pages/guest/Message.vue'
 // User
 import Dashboard from './pages/user/Dashboard.vue';
-import Messages from './pages/user/Messages.vue';
+
 
 import SponsorShip from './pages/user/SponsorShip.vue';
 import Statistics from './pages/user/Statistics.vue';
@@ -58,9 +58,9 @@ const router = createRouter({
             component: Dashboard
         },
         {
-            path: '/messages',
-            name: 'messages',
-            component: Messages
+            path: '/message/:id',
+            name: 'message',
+            component: Message
         },
       
         {

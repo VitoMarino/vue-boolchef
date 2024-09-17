@@ -99,7 +99,7 @@ export default {
     <h1>I NOSTRI CHEF!!!!</h1>
     <nav class="filters">
       <div class="btn-group" role="group">
-        <span v-for="specialization in specializations" :key="specialization.id">
+        <span v-for="specialization in specializations" :key="specialization.id" @change="getChefs()">
           <input
             type="checkbox"
             class="btn-check"
@@ -107,13 +107,12 @@ export default {
             :id="specialization.id"
             :value="specialization.id" 
             v-model="Filter" 
-            
           />
-          <label :for="specialization.id" class="btn btn-outline-warning check-chef" >
+          <label :for="specialization.id" class="btn btn-outline-warning check-chef">
             {{ specialization.name }}
           </label>
         </span>
-        <button @click="getChefs" class="button-search">Click ME!!</button> <!-- Trigger the getChefs method -->
+   
       </div>
       <div class="more-filters">
        <div>
@@ -138,8 +137,10 @@ export default {
             <span v-else> Max </span>
           </option>
         </select>
+        <button @click="getChefs" class="button-search">Click ME!!</button>
 </div>
       </div>
+     
     </nav>
 
     <section class="chef-cards" >
