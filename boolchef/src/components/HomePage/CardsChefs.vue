@@ -6,30 +6,30 @@ export default {
     return {
       indexScroll: 0,
       Mobile: window.matchMedia("(max-width: 767px)"),
-      chefs:[],
+      chefs: [],
 
-    
+
     };
   },
 
   methods: {
 
-getChef() {
-     axios.get('http://127.0.0.1:8000/api/chefs')
-  .then( (response)  =>{
-    console.log(response.data.results);
-     this.chefs = response.data.results;
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });  
-},
+    getChef() {
+      axios.get('http://127.0.0.1:8000/api/chefs')
+        .then((response) => {
+          console.log(response.data.results);
+          this.chefs = response.data.results;
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        .finally(function () {
+          // always executed
+        });
+    },
 
-     
- 
+
+
 
 
 
@@ -85,12 +85,12 @@ getChef() {
     },
 
     // CHIAMATA API
-   
- 
+
+
   }, created() {
     this.getChef();
-   
- 
+
+
   },
 };
 </script>
@@ -99,24 +99,19 @@ getChef() {
   <section class="Chefs">
     <h1>I nostri chef</h1>
     <a @click="scrollLeft()" class="left">
-      <i class="fa-solid fa-angle-left"></i
-    ></a>
+      <i class="fa-solid fa-angle-left"></i></a>
     <a @click="scrollRight()" class="right">
       <i class="fa-solid fa-angle-right"></i>
     </a>
     <div class="chefs-container" ref="scrollable">
-      <router-link
-        :to="{ name: 'single-chef', params:{ id: chef.id } }"
-        v-for="chef in chefs"
-        class="single-chef"
-      >
-           <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name" /></span>
+      <router-link :to="{ name: 'single-chef', params: { id: chef.id } }" v-for="chef in chefs" class="single-chef">
+        <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name" /></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
         {{ chef.description_of_dishes }}
-       
-     
-      {{ chef.reviews.length }}
+
+
+        {{ chef.reviews.length }}
       </router-link>
     </div>
   </section>
@@ -130,6 +125,7 @@ getChef() {
   width: 100%;
   flex-wrap: nowrap;
   align-items: center;
+
   .single-chef {
     display: flex;
     flex-direction: column;
@@ -144,6 +140,7 @@ getChef() {
     span {
       margin: 1rem;
     }
+
     .image-container {
       border: 1px black solid;
       height: 3rem;
@@ -152,7 +149,8 @@ getChef() {
       display: flex;
       align-items: center;
       justify-content: center;
-      img{
+
+      img {
         font-size: 0.5rem;
       }
     }
@@ -164,6 +162,7 @@ getChef() {
   margin-top: 6rem;
   left: 4rem;
 }
+
 .right {
   position: absolute;
   right: 4rem;
@@ -174,6 +173,7 @@ a {
   text-decoration: none;
   font-size: 3rem;
   color: gray;
+
   &:hover {
     color: black;
   }
@@ -196,5 +196,4 @@ a {
   flex-direction: column;
   align-items: center;
 }
-
 </style>

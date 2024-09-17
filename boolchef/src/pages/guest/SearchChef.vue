@@ -117,13 +117,22 @@ export default {
           </label>
           <select name="vote-filter" id="vote-filter" v-model="selectedVote" class="form-select w-25">
             <option value="" selected>Seleziona un voto</option>
+            <!--Spiegazione:
+              1. votes.map(v => Math.floor(v.id / 2)): Prima di fare il v-for, arrotondiamo ogni voto a un numero intero usando Math.floor().
+              2. new Set(): Questo rimuove i duplicati dall'array. I Set in JavaScript permettono solo valori unici.
+              3. [...new Set(...)]: Trasforma nuovamente il Set in un array, in modo che Vue possa eseguire il loop con v-for.-->
+            <option v-for="vote in [...new Set(votes.map(v => Math.floor(v.id / 2)))]" :key="vote" :value="vote">
+              {{ vote }}
+            </option>
+
+            <!--
+            CODICE VECCHIO
             <option v-for="(vote, index) in votes" :key="vote.id" :value="vote.id" :id="'vote-filter-' + vote.id">
               <span v-if="index < votes.length - 1">
+                {{  vote.id / 2}}</span>
+              <span v-else>{{ vote.id / 2}} </span>
+            </option>-->
 
-
-                {{ vote.id / 2 }} o + </span>
-              <span v-else>{{ vote.id / 2 }} </span>
-            </option>
           </select>
         </div>
         <div>
@@ -134,10 +143,14 @@ export default {
           </label>
           <select name="reviews-filter" id="reviews-filter" v-model="selectedReview" class="form-select w-25">
             <option value="" selected>Seleziona un numero di recensioni</option>
-            <option v-for="(review, index) in reviews" :key="review.id" :value="review.id"
+            <!--Spiegazione:
+              reviews.filter(review => review.id % 5 === 0): Usa il metodo filter() per selezionare solo gli elementi dell'array reviews il cui id è divisibile per 5, ovvero i multipli di 5. La condizione % 5 === 0 restituisce true per i numeri che sono multipli di 5.
+              v-for: Il ciclo v-for genera solo le opzioni per i numeri di recensioni che soddisfano la condizione (essere multipli di 5).-->
+            <option v-for="review in reviews.filter(review => review.id % 5 === 0)" :key="review.id" :value="review.id"
               :id="'review-filter-' + review.id">
-              <span v-if="index < reviews.length - 1">{{ review.id }} o + </span>
-              <span v-else> Max </span>
+              <span>
+                {{ review.id }}
+              </span>
             </option>
           </select>
           <button @click="getChefs" class="button-search">Filtra</button>
@@ -160,6 +173,7 @@ export default {
             </div>
           </span>
           <span>{{ chef.description_of_dishes }}</span>
+
           <div>
             <strong>Media Voti:</strong>
 
@@ -170,7 +184,13 @@ export default {
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star"></i>
             </span>
-
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half"></i>
+            </span>
             <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"><i
                 class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star"></i>
@@ -178,7 +198,13 @@ export default {
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star"></i>
             </span>
+            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"><i
+                class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
 
+              <i class="fa-solid fa-star-half"></i>
+            </span>
             <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star"></i>
@@ -208,8 +234,6 @@ export default {
           <div>
             <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
           </div>
-
-
 
         </div>
 
@@ -324,9 +348,6 @@ export default {
   .check-chef {
     border: goldenrod !important;
   }
-
-
-
 
 }
 
