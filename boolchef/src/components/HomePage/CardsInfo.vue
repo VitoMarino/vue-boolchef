@@ -42,7 +42,7 @@ export default {
 <template>
   <div class="container">
     <div class="row text-center mt-5">
-      <h2>Prenotare il proprio chef personale non è mai stato così semplice</h2>
+      <h1>Prenotare il <span class="text-style">proprio chef personale</span> non è mai stato così semplice</h1>
     </div>
     <div class="row">
       <div class="cards-container">
@@ -80,6 +80,15 @@ export default {
 </template>
 
 <style scoped lang="scss">
+
+h1 {
+  font-weight: 200;
+
+  .text-style {
+    color: #f39b2f;
+    font-weight: 700;
+  }
+}
 
 
 .misure {
@@ -152,7 +161,7 @@ export default {
   padding: 5px 10px;
   font-size: 14px;
   color: black;
-  background-color: #daa520;
+  background-color: #f39b2f;
   border: none;
   border-radius: 50px;
   cursor: pointer;

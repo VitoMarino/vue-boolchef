@@ -48,7 +48,7 @@ export default {
         <img src="../assets/img/STRECHED-LOGO.png" class="mobile" alt="logo" />
       </span>
       <ul>
-        <li class="ms-3" v-for="navItem in navLinkNames">
+        <li class="ms-3 nav-button" v-for="navItem in navLinkNames">
           <router-link :to="{ name: navItem.name }">
             {{ navItem.label }}
           </router-link>
@@ -73,8 +73,9 @@ header {
     a {
       color: black;
       text-decoration: none;
+
       &:hover {
-        color: goldenrod;
+        color: white;
       }
     }
 
@@ -93,6 +94,23 @@ header {
 .mobile {
   display: none;
 }
+
+.nav-button {
+      padding: 5px 10px;
+      font-size: 14px;
+      color: black;
+      background-color: #f4e3bd;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+
+      &:hover {
+        background-color: #5f340f;
+        transform: scale(1.1);
+        color: white;
+      }
+    }
 @media (max-width: 767px) {
   .mobile {
     display: inline-block;
@@ -110,7 +128,7 @@ header {
   }
 }
 
-@media (min-width: 576px) and (max-width: 1199.98px) {
+@media (min-width: 576px) and (max-width: 1700.00px) {
   .mobile {
     display: inline-block;
     width: 6rem;

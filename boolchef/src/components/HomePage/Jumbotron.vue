@@ -26,34 +26,49 @@
       <img src="@/assets/img/ChefWorking.jpg" />
     </div>
   </section>
+  
+
+<svg viewBox="0 0 500 200">
+  <path d="M 0 50 C 150 150 300 0 500 80 L 500 0 L 0 0" fill="#5f340f"></path>
+  <path d="M 0 50 C 150 150 330 -30 500 50 L 500 0 L 0 0" fill="#f39b2f" ></path>
+  <path d="M 0 50 C 215 150 250 0 500 100 L 500 0 L 0 0" fill="#f39b2f" opacity="0.5"></path>
+</svg>
+
+
 </template>
 
 <style scoped>
+
+
 section {
   display: flex;
   flex-direction: row;
-  background-color: goldenrod;
+  background-color: #f39b2f;
   justify-content: center;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  overflow: hidden;
+
 
   flex-wrap: wrap;
 
   div {
     width: 40vw;
 
+    p {
+      font-size: 14px;
+    }
+
     h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
 
     .button-container {
       display: block;
       margin-top: 1rem;
+      width: 24%;
     }
     .chef-button {
-      /* width: 10rem;
-      padding: 0.4rem;
-
-      border-radius: 1rem;
-      border: none; */
       padding: 5px 10px;
       font-size: 14px;
       color: black;
@@ -73,8 +88,10 @@ section {
 
   .image-container {
     img {
-      width: 43.7rem;
-      height: 31rem;
+      width: 100%;
+      height: 100%;
+      padding: 2rem;
+      border-radius: 50px;
     }
   }
 }
