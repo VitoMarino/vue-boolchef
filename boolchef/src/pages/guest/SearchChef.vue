@@ -147,10 +147,12 @@ export default {
       <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none">
             
 <div  class="card">
-        <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
+        <span><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph == null"/>
+          <img v-else src="../../assets/img/LOGO.png" class="logo">
+        </span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
-       <span > 
+       <span class="flex"> 
         <div v-for="specialization in chef.specializations" :key="specialization.id" >
            <p> {{ specialization.name }}</p>
           </div></span> 
@@ -270,7 +272,6 @@ div{
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  align-items: center;
 
   .filters {
     flex-wrap: wrap;
@@ -289,12 +290,12 @@ div{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  img {
-    font-size: 0.5rem;
-  }
+  align-items: center;
+  justify-content: center;
+
   .card {
     width: 20rem;
-    padding: 2rem;
+    padding: 0rem 1rem;
     height: 30rem;
     display: flex;
     margin: 0.5rem;
@@ -342,4 +343,12 @@ div{
 }
 
 }
+.logo{
+  width:  8rem;
+}
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 </style>

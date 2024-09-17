@@ -86,7 +86,7 @@ export default {
 
 
 
-<form @submit.prevent="postVote">
+<form @submit.prevent="postVote" >
     <input type="hidden" name="chef_id" :value="chef_id" > 
     
     <select name="votes" id="votes" v-model="vote_id">
@@ -101,7 +101,9 @@ export default {
         <option value="9">4.5</option>
         <option value="10">5</option>
     </select>
-    <button type="submit">Invia voto!</button>
+ 
+<button type="submit">Invia voto!</button>
+
 </form>
 
 </div></section>
