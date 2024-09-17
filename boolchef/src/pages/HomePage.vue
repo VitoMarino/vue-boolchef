@@ -5,6 +5,7 @@ import Jumbotron from "../components/HomePage/Jumbotron.vue";
 import Reviews from "../components/HomePage/Reviews.vue";
 import Sponsors from "../components/HomePage/Sponsors.vue";
 import BecomeAChef from "../components/HomePage/BecomeAChef.vue";
+import HomeSearchChef from "./guest/HomeSearchChef.vue";
 export default {
   name: "",
   components: {
@@ -14,6 +15,7 @@ export default {
     Reviews,
     Sponsors,
     BecomeAChef,
+    HomeSearchChef,
   },
   
 };
@@ -26,6 +28,7 @@ export default {
       <CardsInfo />
       <CardsChefs />
       <BecomeAChef />
+      <HomeSearchChef/>
       <Sponsors />
       <Reviews />
     </main>
