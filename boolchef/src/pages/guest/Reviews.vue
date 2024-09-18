@@ -13,7 +13,7 @@ export default {
       verifyMessage: null,
       verifyVote: null,
       vote_id: null,
-      
+
     };
   },
   methods: {
@@ -29,6 +29,7 @@ export default {
         .then((response) => {
           console.log(response.data.results);
           this.users = response.data.results;
+
         
 
            const ReviewDiv= document.createElement("div");
@@ -55,39 +56,69 @@ LastButton.classList.remove('review-not-visible');
 }
 }
 
-else{
-  
+
+
+          const ReviewDiv = document.createElement("div");
+          const ContainerConfirm = document.getElementById("confirmReview");
+          const NotConfirmed = document.getElementById("not-confirmReview")
+          const Confirm = document.createTextNode("Recensione inviata con successo");
+          const ReviewButton = document.getElementById("review-form");
+          const LastButton = document.getElementById("last-button");
+          if (ContainerConfirm == null) {
+            const createcontainer = document.createElement("div");
+            const Container = document.getElementById("ReviewValidator")
+            createcontainer.classList.add("confirm")
+            ReviewDiv.appendChild(Confirm);
+
+            createcontainer.appendChild(ReviewDiv);
+
+            createcontainer.setAttribute('id', 'confirm')
+            Container.appendChild(createcontainer)
+            if (NotConfirmed !== null) {
+              NotConfirmed.remove()
+              ReviewButton.classList.add('not-active');
+              LastButton.classList.remove('review-not-visible');
+            }
+          }
+
+          else {
 
 
 
 
 
 
-  ReviewDiv.appendChild(Confirm);
-  
-  ContainerConfirm.appendChild(ReviewDiv);
 
-if(NotConfirmed !== null){
-ReviewButton.classList.add('not-active');
-LastButton.classList.remove('review-not-visible');
- NotConfirmed.remove()}}
+            ReviewDiv.appendChild(Confirm);
+
+            ContainerConfirm.appendChild(ReviewDiv);
+
+            if (NotConfirmed !== null) {
+              ReviewButton.classList.add('not-active');
+              LastButton.classList.remove('review-not-visible');
+              NotConfirmed.remove()
+            }
+          }
 
         })
         .catch((error) => {
           console.log(error);
-          const ReviewDiv= document.createElement("div");
+          const ReviewDiv = document.createElement("div");
 
-  
+
+
 
   const NotConfirmed= document.getElementById("not-confirmReview");
     const Confirm= document.createTextNode("Errore Recensione non inviata");
      NotConfirmed.classList.add("not-confirmed")
 
-        ReviewDiv.appendChild(Confirm);
 
-  ReviewDiv.appendChild(Confirm);
-  
-  NotConfirmed.appendChild(ReviewDiv);
+
+          ReviewDiv.appendChild(Confirm);
+
+          ReviewDiv.appendChild(Confirm);
+
+          NotConfirmed.appendChild(ReviewDiv);
 
 
 
@@ -103,6 +134,7 @@ LastButton.classList.remove('review-not-visible');
         .then((response) => {
           console.log(response.data.success);
           this.users = response.data.results;
+
           this.verifyVote= response.data.success;
     
 
@@ -131,62 +163,67 @@ LastButton.classList.remove('vote-not-visibile');
 }
 }
 
-else{
-  
 
 
 
 
 
 
-  VoteDiv.appendChild(Confirm);
-  
-  ContainerConfirm.appendChild(VoteDiv);
+            VoteDiv.appendChild(Confirm);
 
-if(NotConfirmed !== null){
-VoteButton.classList.add('not-active');
-LastButton.classList.remove('vote-not-visibile');
- NotConfirmed.remove()}}
+            ContainerConfirm.appendChild(VoteDiv);
 
-  
+            if (NotConfirmed !== null) {
+              VoteButton.classList.add('not-active');
+              LastButton.classList.remove('vote-not-visibile');
+              NotConfirmed.remove()
+            }
+          }
+
+
         })
         //---> ERRORE NELLA LETTURA DELL'API <---
         .catch((error) => {
           console.log(error);
-          
-//  --->  Creazione del div di conferma <----
- const VoteDiv= document.createElement("div");
 
-  
+          //  --->  Creazione del div di conferma <----
+          const VoteDiv = document.createElement("div");
+
+
+
+          const NotConfirmed = document.getElementById("not-confirm");
+          const Confirm = document.createTextNode("Errore voto non inviato");
 
   const NotConfirmed= document.getElementById("not-confirm");
   NotConfirmed.classList.add("not-confirmed")
     const Confirm= document.createTextNode("Errore voto non inviato");
      
 
-        VoteDiv.appendChild(Confirm);
 
-  VoteDiv.appendChild(Confirm);
-  
-  NotConfirmed.appendChild(VoteDiv);
+          VoteDiv.appendChild(Confirm);
+
+          VoteDiv.appendChild(Confirm);
+
+          NotConfirmed.appendChild(VoteDiv);
 
 
 
- ContainerConfirm.remove()
- 
-   
+          ContainerConfirm.remove()
+
+
 
 
         });
-      
-  
-  
+
+
+
 
 
 
     },
 
   
+
 
 
   },
@@ -208,6 +245,7 @@ LastButton.classList.remove('vote-not-visibile');
     </h1>
 
     <section>
+
 
         <form @submit.prevent="postVote" id="vote-form">
           <input type="hidden" name="chef_id" :value="chef_id">
@@ -274,6 +312,7 @@ LastButton.classList.remove('vote-not-visibile');
  
         </div> 
        <RouterLink class="last-button" :to="{name:'single-chef', params:{ id: chef_id }}"> <button class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button></RouterLink>
+
     </section>
   </main>
 </template>
@@ -322,15 +361,19 @@ section {
   }
 
 }
-.not-active{
+
+.not-active {
   display: none;
 }
-.review-not-visible{
+
+.review-not-visible {
   display: none;
 }
-.vote-not-visibile{
+
+.vote-not-visibile {
   display: none;
 }
+
 @media(max-width:767px) {
 
   section {
