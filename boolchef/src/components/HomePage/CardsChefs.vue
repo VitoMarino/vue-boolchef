@@ -196,7 +196,9 @@ a {
 .Chefs {
   background-color: #f39b2f;
   border-radius: 15px;
-  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  margin-top: 12rem;
 
   h1 {
     padding-top: 1rem;

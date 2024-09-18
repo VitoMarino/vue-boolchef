@@ -116,14 +116,18 @@ export default {
 <template>
   <div class="container">
     <div class="row top-review">
-      <div class="col-lg-8 col-md-10">
+      <div class="col-lg-8 col-md-10 my-margin">
         <div class="text">
-          <h3>Più di 45500 ospiti hanno già goduto dell'esperienza</h3>
+          <h3>Più di <span>45500</span> ospiti hanno già goduto dell'esperienza</h3>
         </div>
         <div class="punteggio">
           <h1>5.00</h1>
           <p>Punteggio medio basato su 9349 recensioni</p>
         </div>
+      </div>
+      <div class="review-img">
+        <img src="@/assets/img/piatto1.webp" alt="">
+        <img class="position" src="@/assets/img/piatto2.webp" alt="">
       </div>
     </div>
 
@@ -137,7 +141,7 @@ export default {
       <div class="review-container col-lg-8 col-md-6" ref="scrollable">
         <div v-for="recensione in recensioni" class="card single-review">
           <div class="card-body">
-            {{ recensione.title }}
+            <span class="color-title">{{ recensione.title }}</span>
             <span>{{ recensione.description }}</span>
             <span>{{ recensione.author }}</span>
 
@@ -206,6 +210,9 @@ export default {
 </template>
 
 <style scoped lang="scss">
+
+
+
 .container {
   margin-top: 3rem;
 }
@@ -217,28 +224,102 @@ export default {
   justify-content: center;
 }
 
+
+.top-review {
+  justify-content: center;
+  align-items: center;
+}
+
+.review-img {
+
+  width: 30%;
+
+  img {
+    border-radius: 15px;
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+    width: 40%;
+    margin-left: 2rem
+  }
+}
+
+.my-margin {
+  margin: 5rem 0 1rem 0;
+}
+
+.text {
+
+  span {
+    font-weight: 700;
+    color: #f39b2f
+  }
+
+  h3 {
+    font-weight: 200;
+  }
+}
+
+.punteggio {
+  margin-top: 3rem;
+  background-color: #f39b2f;
+  border-radius: 15px;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  width: 50%;
+  padding: 1rem;
+
+  h1, p {
+    margin-left: 1rem;
+    color: white;
+    font-weight: 200;
+  }
+}
+
 .review-container {
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  width: 70vw;
+  width: 100%;
   flex-wrap: nowrap;
   margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  padding: 2rem 0 2rem 0;
   .single-review {
+    font-size: 14px;
     display: flex;
     flex-direction: column;
-    height: 15rem;
+    height: 16rem;
     width: 100%;
     min-width: 13rem;
-    margin-left: 0.5rem;
+    margin-left: 1.5rem;
+    overflow: hidden;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+
+    &:hover {
+      transform: scale(1.10, 1.10);
+      border-color: #f39b2f;
+      background-color: rgba(243, 155, 47, 0.6);
+
+      .card-body {
+        span{
+          color: #5f340f;
+        }
+
+        .stars {
+        color: gold;
+      }
+      }
+    }
+
+    .stars {
+        color: gold;
+      }
+
+
     .card-body {
       display: flex;
       flex-direction: column;
+      height: 50%;
       span {
         margin-top: 1rem;
-      }
-      .stars {
-        color: gold;
       }
     }
   }
@@ -255,23 +336,31 @@ export default {
 }
 
 .color {
-  color: grey;
+  color: rgb(243, 155, 47);
   margin-top: 3rem;
   margin-bottom: 3rem;
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(243, 155, 47, 0), rgba(243, 155, 47, 0.75), rgba(243, 155, 47, 0));
 }
+
 
 .next {
   font-size: 3rem;
   color: gray;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
   &:hover {
-    color: black;
+    color: #f39b2f;
+    transform: scale(1.10, 1.10);
   }
 }
 .prev {
   font-size: 3rem;
   color: gray;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
   &:hover {
-    color: black;
+    color: #f39b2f;
+    transform: scale(1.10, 1.10);
   }
 }
 
