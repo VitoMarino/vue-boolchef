@@ -265,11 +265,7 @@ LastButton.classList.remove('vote-not-visibile');
           </label>
           <textarea name="review" id="review" v-model="review" required class="form-control"></textarea>
 
-<<<<<<< HEAD
-          <button type="submit">
-=======
           <button type="submit" @click="ShowConfirmReview">
->>>>>>> origin/Sicurezza-branch
             Invia Recensione
           </button>
         </form>
@@ -281,10 +277,6 @@ LastButton.classList.remove('vote-not-visibile');
         <button class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button>
     </section>
   </main>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Sicurezza-branch
 </template>
 
 
