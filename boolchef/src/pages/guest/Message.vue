@@ -20,6 +20,8 @@ export default {
         .then((response) => {
           console.log(response.data.results);
           this.users = response.data.results;
+
+          
         })
         .catch((error) => {
           console.log(error);
