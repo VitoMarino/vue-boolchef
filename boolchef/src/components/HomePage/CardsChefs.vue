@@ -15,7 +15,7 @@ export default {
   methods: {
 
     getChef() {
-      axios.get('http://127.0.0.1:8000/api/chefs')
+      axios.get('http://127.0.0.1:8000/api/sponsorships')
         .then((response) => {
           console.log(response.data.results);
           this.chefs = response.data.results;
