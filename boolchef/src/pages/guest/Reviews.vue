@@ -34,6 +34,7 @@ export default {
            const ReviewDiv= document.createElement("div");
   const ContainerConfirm = document.getElementById("confirmReview");
   const NotConfirmed = document.getElementById("not-confirmReview")
+  ContainerConfirm.classList.add("confirm")
  const Confirm= document.createTextNode("Recensione inviata con successo");
   const ReviewButton= document.getElementById("review-form");
   const LastButton= document.getElementById("last-button");
@@ -80,7 +81,7 @@ LastButton.classList.remove('review-not-visible');
 
   const NotConfirmed= document.getElementById("not-confirmReview");
     const Confirm= document.createTextNode("Errore Recensione non inviata");
-     
+     NotConfirmed.classList.add("not-confirmed")
 
         ReviewDiv.appendChild(Confirm);
 
@@ -109,6 +110,7 @@ LastButton.classList.remove('review-not-visible');
  const VoteDiv= document.createElement("div");
  const LastButton = document.getElementById("last-button")
   const ContainerConfirm = document.getElementById("confirm");
+  ContainerConfirm.classList.add("confirm")
   const NotConfirmed = document.getElementById("not-confirm")
  const Confirm= document.createTextNode("Voto inviato con successo");
   const VoteButton= document.getElementById("vote-form");
@@ -158,6 +160,7 @@ LastButton.classList.remove('vote-not-visibile');
   
 
   const NotConfirmed= document.getElementById("not-confirm");
+  NotConfirmed.classList.add("not-confirmed")
     const Confirm= document.createTextNode("Errore voto non inviato");
      
 
@@ -184,11 +187,7 @@ LastButton.classList.remove('vote-not-visibile');
     },
 
   
- ShowConfirmReview(){
-  console.log('Per ora funziona dio bastardo')
-  
 
-  }
 
   },
   created() {
@@ -228,8 +227,8 @@ LastButton.classList.remove('vote-not-visibile');
           </button>
         </form>
         <div id="VoteValidator" >
-                <div class="confirm " id="confirm"></div>
-               <div class="not-confirmed " id="not-confirm"></div> 
+                <div id="confirm"></div>
+               <div  id="not-confirm"></div> 
  
         </div> 
         
@@ -270,11 +269,11 @@ LastButton.classList.remove('vote-not-visibile');
           </button>
         </form>
          <div id="ReviewValidator" >
-                <div class="confirm " id="confirmReview"></div>
-               <div class="not-confirmed " id="not-confirmReview"></div> 
+                <div id="confirmReview"></div>
+               <div id="not-confirmReview"></div> 
  
         </div> 
-        <button class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button>
+       <RouterLink class="last-button"> <button class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button></RouterLink>
     </section>
   </main>
 </template>
@@ -340,5 +339,39 @@ section {
     }
   }
 
+}
+.last-button{
+    button{
+  margin: 1rem;
+      width: 15rem;
+      padding: 0.3rem;
+      border-radius: 1rem;
+      background-color: goldenrod;
+      border: 1px solid goldenrod;
+
+      &:hover {
+        background-color: white;
+
+        width: 16rem;
+      }}
+}
+
+.confirm{
+
+  width: 40rem;
+  padding: 3rem 1rem;
+  display: flex;
+  background-color: #98fa97;
+  border-radius: 1rem;
+
+}
+.not-confirmed{
+
+    width: 40rem;
+  padding: 3rem 1rem;
+  display: flex;
+  background-color: #ff5252;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
 }
 </style>

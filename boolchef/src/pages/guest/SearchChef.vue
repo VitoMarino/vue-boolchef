@@ -195,7 +195,8 @@ export default {
       <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none">
             
       <div  class="card">
-        <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
+        <span><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph == null"/>
+          <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
        <span > 

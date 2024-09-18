@@ -18,13 +18,79 @@ export default {
           chef_id: this.chef_id,
         })
         .then((response) => {
+         
           console.log(response.data.results);
+         
+         
           this.users = response.data.results;
+           
+          
+          const MessageDiv= document.createElement("div");
+ 
+ 
+            const LastButton = document.getElementById("last-button")
+ 
+ 
+ const ContainerConfirm = document.getElementById("confirm");
+ 
+ 
+  const NotConfirmed = document.getElementById("not-confirm")
+ 
+   ContainerConfirm.classList.add("confirm")
+  const Confirm= document.createTextNode("Messaggio inviato con successo");
+  
+ 
+ const MessageButton= document.getElementById("messagge-form");
+if(ContainerConfirm == null){
+    const createcontainer = document.createElement("div");
+    const Container = document.getElementById("MessageValidator")
+  createcontainer.classList.add("confirm")
+MessageDiv.appendChild(Confirm);
 
+  createcontainer.appendChild(MessageDiv);
+
+createcontainer.setAttribute('id','confirm')
+Container.appendChild(createcontainer)
+ if(NotConfirmed !== null){
+NotConfirmed.remove()
+MessageButton.classList.add('not-active');
+LastButton.classList.remove('not-visible');
+}
+}
+
+else{
+  
+
+
+
+
+
+
+  MessageDiv.appendChild(Confirm);
+  
+  ContainerConfirm.appendChild(MessageDiv);
+
+if(NotConfirmed !== null){
+MessageButton.classList.add('not-active');
+LastButton.classList.remove('not-visible');
+ NotConfirmed.remove()}}
           
         })
         .catch((error) => {
           console.log(error);
+          
+  
+ const MessageDiv= document.createElement("div");
+  const NotConfirmed= document.getElementById("not-confirm");
+    const Confirm= document.createTextNode("Errore Messaggio non inviato");
+     
+    NotConfirmed.classList.add("not-confirmed");
+
+        MessageDiv.appendChild(Confirm);
+
+  MessageDiv.appendChild(Confirm);
+  
+  NotConfirmed.appendChild(MessageDiv);
         });
     }
 
@@ -45,7 +111,7 @@ export default {
 
     <section>
 
-      <form @submit.prevent="postMessage">
+      <form @submit.prevent="postMessage" id="messagge-form">
         <!-- Altri campi del messaggio -->
 
         <input type="hidden" name="chef_id" :value="chef_id">
@@ -69,6 +135,11 @@ export default {
           Invia
         </button>
       </form>
+      <div id="MessageValidator">
+        <div  id="confirm"></div>
+        <div  id="not-confirm"> </div>
+      </div>
+     <RouterLink class="last-button" > <button id="last-button" class="not-visible">Torna indietro</button></RouterLink>
     </section>
   </main>
 </template>
@@ -84,7 +155,7 @@ section {
 
   form {
     padding: 4rem;
-    margin: 6rem;
+    
     width: 80rem;
 
     input {
@@ -117,4 +188,47 @@ section {
     }
   }
 }
+.not-visible{
+  display: none;
+}
+.not-active{
+  display: none;
+}
+
+.last-button{
+    button{
+  margin: 1rem;
+      width: 10rem;
+      padding: 0.3rem;
+      border-radius: 1rem;
+      background-color: goldenrod;
+      border: 1px solid goldenrod;
+
+      &:hover {
+        background-color: white;
+
+        width: 11rem;
+      }}
+}
+
+.confirm{
+
+  width: 40rem;
+  padding: 3rem 1rem;
+  display: flex;
+  background-color: #98fa97;
+  border-radius: 1rem;
+
+}
+.not-confirmed{
+
+    width: 40rem;
+  padding: 3rem 1rem;
+  display: flex;
+  background-color: #ff5252;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+ 
+}
+
 </style>
