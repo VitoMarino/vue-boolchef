@@ -118,37 +118,12 @@ export default {
           </label>
           <textarea name="review" id="review" v-model="review" required class="form-control"></textarea>
 
-<<<<<<< HEAD
-<form @submit.prevent="postVote" >
-    <input type="hidden" name="chef_id" :value="chef_id" > 
-    
-    <select name="votes" id="votes" v-model="vote_id">
-        <option value="1">0.5</option>
-        <option value="2">1</option>
-        <option value="3">1.5</option>
-        <option value="4">2</option>
-        <option value="5">2.5</option>
-        <option value="6">3</option>
-        <option value="7">3.5</option>
-        <option value="8">4</option>
-        <option value="9">4.5</option>
-        <option value="10">5</option>
-    </select>
- 
-<button type="submit">Invia voto!</button>
-
-</form>
-
-</div></section>
-</main>
-=======
           <button type="submit">
             Invia Recensione
           </button>
         </form>
     </section>
   </main>
->>>>>>> 017cd1816dcc7dbebea5c3270daf49720814544c
 </template>
 
 
