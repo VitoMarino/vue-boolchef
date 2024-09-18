@@ -56,8 +56,8 @@ export default {
             <span>{{ item.content }}</span>
           </div>
         </article>
-        <div class="card misure text-center">
-            <h6>Trova lo chef più adatto a te</h6>
+        <div class="card misure text-center color">
+            <h6 class="color-black">Trova lo <span class="my-text-color">chef</span> più adatto a te</h6>
             <router-link :to="{ name: 'search-chef' }">
               <button class="chef-button">Cerca il tuo chef</button>
             </router-link>
@@ -90,9 +90,35 @@ h1 {
   }
 }
 
+h6 {
+  color: #f39b2f;
+  font-weight: 600;
+}
+
+.color-black {
+  color: black;
+  font-weight: 200;
+}
+
+.my-text-color {
+  color: #5f340f;
+  font-weight: 600;
+}
+
+div.card__info {
+
+  span {
+    font-weight: 200;
+  }
+}
+
 
 .misure {
   width:calc((100% / 3) - 25px);
+}
+
+.color {
+  background-color: #f39b2f !important;
 }
 
 .card-info {
@@ -129,21 +155,6 @@ h1 {
     }
 }
 
-
-
-.card:hover .card__img--hover {
-    height: 100%;
-    opacity: 0.3;
-}
-
-.card:hover .card__info {
-    background-color: transparent;
-    position: relative;
-}
-
-.card:hover .card__info-hover {
-    opacity: 0.2;
-}
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -161,7 +172,7 @@ h1 {
   padding: 5px 10px;
   font-size: 14px;
   color: black;
-  background-color: #f39b2f;
+  background-color: #f4e3bd;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -169,6 +180,7 @@ h1 {
   &:hover {
     color: white;
     transform: scale(1.1);
+    background-color: #5f340f;
   }
 }
 @media (max-width: 767px) {

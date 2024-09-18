@@ -24,7 +24,7 @@ export default {
 <template>
   <section class="sponsors-container">
     <div class="content">
-      <h4>Sponsors:</h4>
+      <h2>Si <span>fidano</span> di noi:</h2>
     </div>
 
     <div class="sponsors">
@@ -41,15 +41,22 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 4rem;
-  background-color: goldenrod;
+  background-color: #f39b2f;
+  border-radius: 15px;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
   .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 2rem;
-    h4 {
-      font-size: 2rem;
+    h2 {
+      font-weight: 200;
       padding-bottom: 1rem;
+    }
+
+    span {
+      font-weight: 700;
+      color: #5f340f;
     }
   }
   .sponsors {
@@ -57,6 +64,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     span {
       padding: 3rem;
       img {

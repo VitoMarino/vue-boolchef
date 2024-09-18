@@ -63,6 +63,7 @@ header {
   max-width: 1400px;
   margin: 0 auto;
   padding: 1rem 4rem;
+  
 
   nav {
     width: 100%;
@@ -70,6 +71,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    
     a {
       color: black;
       text-decoration: none;

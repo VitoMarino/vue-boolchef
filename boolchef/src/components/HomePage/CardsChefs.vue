@@ -97,7 +97,7 @@ getChef() {
 
 <template>
   <section class="Chefs">
-    <h1>I nostri chef</h1>
+    <h1>I nostri <span>chef</span></h1>
     <a @click="scrollLeft()" class="left">
       <i class="fa-solid fa-angle-left"></i
     ></a>
@@ -124,6 +124,7 @@ getChef() {
 </template>
 
 <style scoped lang="scss">
+
 .chefs-container {
   overflow: hidden;
   display: flex;
@@ -131,17 +132,26 @@ getChef() {
   width: 100%;
   flex-wrap: nowrap;
   align-items: center;
+  padding: 2rem 0 5rem 0;
   .single-chef {
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    height: 28rem;
+    height: 24rem;
     align-items: center;
-    font-size: 1rem;
+    font-size: 12px;
     min-width: 20rem;
     background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+    margin-left: 1.5rem;
 
-    margin-left: 0.4rem;
-
+    &:hover {
+      box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+      transform: scale(1.10, 1.10);
+    }
     span {
       margin: 1rem;
     }
@@ -162,13 +172,15 @@ getChef() {
 
 .left {
   position: absolute;
-  margin-top: 6rem;
-  left: 4rem;
+  margin-top: 16rem;
+  left: 3rem;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
 }
 .right {
   position: absolute;
-  right: 4rem;
-  margin-top: 6rem;
+  right: 3rem;
+  margin-top: 16rem;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
 }
 
 a {
@@ -176,13 +188,25 @@ a {
   font-size: 3rem;
   color: gray;
   &:hover {
-    color: black;
+    color: #f39b2f;
+    transform: scale(1.10, 1.10);
   }
 }
 
 .Chefs {
-  background-color: goldenrod;
-  padding: 4rem;
+  background-color: #f39b2f;
+  border-radius: 15px;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+
+  h1 {
+    padding-top: 1rem;
+    font-weight: 200;
+
+    span {
+      color: #5f340f;
+      font-weight: 700;
+    }
+  }
 }
 
 @media (max-width: 767px) {
