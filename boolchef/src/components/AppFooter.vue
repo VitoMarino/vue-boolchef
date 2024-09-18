@@ -42,17 +42,17 @@ export default {
         <div class="link-container">
           <ul>
             <li v-for="link in NavLink1">
-              <a href="">{{ link }}</a>
+              <a class="hover-underline-animation" href="">{{ link }}</a>
             </li>
           </ul>
           <ul>
             <li v-for="link in NavLink2">
-              <a href="">{{ link }}</a>
+              <a class="hover-underline-animation" href="">{{ link }}</a>
             </li>
           </ul>
           <ul>
             <li v-for="link in NavLink3">
-              <a href="">{{ link }}</a>
+              <a class="hover-underline-animation" href="">{{ link }}</a>
             </li>
           </ul>
         </div>
@@ -85,12 +85,29 @@ export default {
 </template>
 
 <style scoped>
-a {
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
   text-decoration: none;
-  color: goldenrod;
-    &:hover {
-      text-decoration: underline;
-    }
+  color: #f39b2f;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #f39b2f;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 footer {
@@ -110,16 +127,24 @@ footer {
       justify-content: space-between;
       align-items: center;
       border-bottom: gray 1px solid;
-
+      .logo {
+        align-self: end;
+        width: 30%;
+      }
       img {
-        width: 100%;
-        height: 100%;
+        width: 50%;
+        margin-left: 13rem;
       }
 
       .link-container {
         display: flex;
         flex-direction: row;
         margin-top: 2rem;
+
+        li {
+          margin: 0.5rem 0 0.5rem 0;
+          font-size: 12px;
+        }
       }
     }
   }
@@ -139,8 +164,9 @@ footer {
       display: flex;
       flex-direction: row;
       font-size: 0.8rem;
-      color: lightgray;
+      color: #ec972e;
       margin-top: 2rem;
+      padding-left: 2rem;
 
       ul {
         list-style: none;
@@ -149,12 +175,13 @@ footer {
 
         li {
           margin-left: 1rem;
+          
         }
       }
 
       a {
         text-decoration: none;
-        color: white;
+        color: #ec972e;
         font-size: 16px;
       }
     }
