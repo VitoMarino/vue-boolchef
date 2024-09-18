@@ -3,36 +3,36 @@ import axios from "axios";
 
 export default {
   data() {
-  let specializations = this.$route.query.specialization || [];
-  if (!Array.isArray(specializations)) {
-    specializations = [specializations];
-  }
-  return {
-    chefs: [],
-    specializations: [],
-    users: [],
-    votes: [],
-    reviews: [],
-    selectedVote: null,
-    selectedReview: null,
-    selectedSpecializations: specializations,
-  };
-},
+    let specializations = this.$route.query.specialization || [];
+    if (!Array.isArray(specializations)) {
+      specializations = [specializations];
+    }
+    return {
+      chefs: [],
+      specializations: [],
+      users: [],
+      votes: [],
+      reviews: [],
+      selectedVote: null,
+      selectedReview: null,
+      selectedSpecializations: specializations,
+    };
+  },
   methods: {
     getChefs(specializationId) {
       this.$router.replace({
-      name: 'search-chef',
-      query: {
-        specialization: this.selectedSpecializations,
-        vote: this.selectedVote,
-        reviews: this.selectedReview
+        name: 'search-chef',
+        query: {
+          specialization: this.selectedSpecializations,
+          vote: this.selectedVote,
+          reviews: this.selectedReview
         }
       });
       axios
         .get("http://127.0.0.1:8000/api/specialization/search", {
-          params: { 
+          params: {
             id: this.selectedSpecializations,
-            vote: this.selectedVote || null, 
+            vote: this.selectedVote || null,
             reviews: this.selectedReview || null,
           }, // Pass Filter array as 'id[]' in the query
         })
@@ -92,7 +92,7 @@ export default {
     },
   },
   watch: {
-    
+
   },
   created() {
     this.getSpecializations();
@@ -120,24 +120,18 @@ export default {
 <template>
 
   <section class="chef-card-container">
-    <h1>Trova lo Chef che fa per te</h1>
+    <h1 class="text-center">Trova lo Chef che fa per te</h1>
     <nav class="filters">
       <div class="btn-group" role="group">
         <span v-for="specialization in specializations" :key="specialization.id">
-          <input
-            type="checkbox"
-            class="btn-check"
-            autocomplete="off"
-            :id="specialization.id"
-            :value="specialization.id" 
-            v-model="selectedSpecializations" 
-          />
+          <input type="checkbox" class="btn-check" autocomplete="off" :id="specialization.id" :value="specialization.id"
+            v-model="selectedSpecializations" />
           <label :for="specialization.id" class="btn btn-outline-warning check-chef">
             {{ specialization.name }}
           </label>
         </span>
-
       </div>
+
       <div class="more-filters">
         <div>
           <label for="vote-filter">
@@ -162,15 +156,16 @@ export default {
                 {{  vote.id / 2}}</span>
               <span v-else>{{ vote.id / 2}} </span>
             </option>-->
-
           </select>
         </div>
+
         <div>
           <label for="reviews-filter">
             <strong>
               Filtra per numero di recensioni
             </strong>
           </label>
+
           <select name="reviews-filter" id="reviews-filter" v-model="selectedReview" class="form-select w-25">
             <option value="" selected>Seleziona un numero di recensioni</option>
             <!--Spiegazione:
@@ -183,30 +178,28 @@ export default {
               </span>
             </option>
           </select>
+
           <button @click="getChefs" class="button-search">Filtra</button>
         </div>
       </div>
-
     </nav>
 
+    <section v-if="chefs.length" class="chef-cards">
+      <router-link v-for="chef in chefs" :to="{ name: 'single-chef', params: { id: chef.id } }"
+        class="text-decoration-none">
 
-
-    <section v-if="chefs.length" class="chef-cards" >
-      <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none">
-            
-      <div  class="card">
-        <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
-        <span>{{ chef.user.name }}</span>
-        <span>{{ chef.user.lastname }}</span>
-       <span > 
-        <div v-for="specialization in chef.specializations" :key="specialization.id" >
-           <p> {{ specialization.name }}</p>
-          </div></span> 
-        <span>{{ chef.description_of_dishes }}</span>
-        <div>
-          <strong>Media Voti:</strong>
-
-
+        <div class="card">
+          <span><img :src="chef.photograph" :alt="chef.user.name" /></span>
+          <span>{{ chef.user.name }}</span>
+          <span>{{ chef.user.lastname }}</span>
+          <span>
+            <div v-for="specialization in chef.specializations" :key="specialization.id">
+              <p> {{ specialization.name }}</p>
+            </div>
+          </span>
+          <span>{{ chef.description_of_dishes }}</span>
+          <div>
+            <strong>Media Voti:</strong>
 
             <span v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
               <i class="fa-solid fa-star"></i>
@@ -265,12 +258,10 @@ export default {
           <div>
             <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
           </div>
-
         </div>
-
       </router-link>
     </section>
-    <section v-else >
+    <section v-else>
       <h2>
         La Ricerca non ha prodotto risultati
       </h2>
@@ -300,9 +291,9 @@ export default {
 }
 
 .more-filters {
+  background-color: #f4e3bd;
   width: 30rem;
   padding: 1rem;
-  background-color: lightgray;
   border-radius: 1rem;
   vertical-align: middle;
 
@@ -336,7 +327,11 @@ export default {
     }
 
     span {
-      margin: 1rem;
+      margin: .2rem;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -353,10 +348,10 @@ export default {
     padding: 0rem 1rem;
     height: 30rem;
     display: flex;
-    margin: 0.5rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: .5rem;
 
     span {
       padding-bottom: 1rem;
@@ -400,12 +395,13 @@ export default {
   }
 
 }
-.logo{
-  width:  8rem;
+
+.logo {
+  width: 8rem;
 }
-.flex{
+
+.flex {
   display: flex;
   flex-wrap: wrap;
 }
-
 </style>

@@ -27,8 +27,8 @@ export default {
       <Jumbotron />
       <CardsInfo />
       <CardsChefs />
-      <BecomeAChef />
       <HomeSearchChef/>
+      <BecomeAChef />
       <Sponsors />
       <Reviews />
     </main>
