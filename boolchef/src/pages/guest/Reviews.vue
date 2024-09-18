@@ -277,6 +277,7 @@ LastButton.classList.remove('vote-not-visibile');
         <button class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button>
     </section>
   </main>
+
 </template>
 
 
