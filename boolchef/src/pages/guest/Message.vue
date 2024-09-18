@@ -139,7 +139,7 @@ LastButton.classList.remove('not-visible');
         <div  id="confirm"></div>
         <div  id="not-confirm"> </div>
       </div>
-     <RouterLink class="last-button" > <button id="last-button" class="not-visible">Torna indietro</button></RouterLink>
+     <RouterLink class="last-button" :to="{name:'single-chef', params:{ id: chef_id }}" > <button id="last-button" class="not-visible">Torna indietro</button></RouterLink>
     </section>
   </main>
 </template>

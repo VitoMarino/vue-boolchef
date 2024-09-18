@@ -273,7 +273,7 @@ LastButton.classList.remove('vote-not-visibile');
                <div id="not-confirmReview"></div> 
  
         </div> 
-       <RouterLink class="last-button"> <button class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button></RouterLink>
+       <RouterLink class="last-button" :to="{name:'single-chef', params:{ id: chef_id }}"> <button class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button></RouterLink>
     </section>
   </main>
 </template>
