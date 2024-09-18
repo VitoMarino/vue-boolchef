@@ -8,7 +8,7 @@ export default {
   data() {
     return {
       chefs: [],
-
+      response:null,
     };
   },
   methods: {
@@ -22,9 +22,9 @@ export default {
         })
         .then((response) => {
 
-          console.log(response.data.results);
+          console.log(response.data.success);
           this.chefs.push(response.data.results);
-
+          this.response = response.data.success
         })
         .catch((error) => {
           console.log(error);
@@ -44,7 +44,9 @@ export default {
 
 <main>
   <section class="chef-container card-container">
-<div v-for="chef in chefs" class="card">
+<div v-for="chef in chefs" v-if="response == true">
+
+  <div v-if="chef.visibility == 1" class="card">
  <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph == null"/>
           <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
         <span>{{ chef.user.name }}</span>
@@ -117,6 +119,17 @@ export default {
               chef</button></RouterLink>
         </span>
       </div>
+    <div v-else class="error">
+    <img src="../../assets/img/Error.jpeg">
+
+    </div>
+    
+    
+    </div>
+      <div v-else class="error">
+    <img src="../../assets/img/Error.jpeg">
+ <h1> CHEF NOT FOUND!!</h1>
+    </div>
     </section>
   </main>
 
@@ -183,5 +196,10 @@ button{
 }
 .logo{
   width: 15rem;
+}
+.error{
+  img{
+    width: 20rem;
+  }
 }
 </style>
