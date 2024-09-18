@@ -188,7 +188,7 @@ export default {
 
 
     <section v-if="chefs.length" class="chef-cards" >
-      <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none">
+      <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none" :key="chef.id">
             
       <div  class="card">
         <span><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph == null"/>
@@ -261,6 +261,9 @@ export default {
           </div>
           <div>
             <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
+          </div>
+          <div>
+            <span v-if="chef.is_sponsored" class="">Sponsorizzato</span>
           </div>
         </div>
       </router-link>
