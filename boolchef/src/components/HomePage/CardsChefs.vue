@@ -17,8 +17,8 @@ export default {
     getChef() {
       axios.get('http://127.0.0.1:8000/api/chefs')
         .then((response) => {
-          console.log(response.data.results);
-          this.chefs = response.data.results;
+          console.log(111111,response.data.results.filter(chef => chef.is_sponsored));
+          this.chefs = response.data.results.filter(chef => chef.is_sponsored);
         })
         .catch(function (error) {
           console.log(error);
@@ -97,7 +97,7 @@ export default {
 
 <template>
   <section class="Chefs">
-    <h1>I nostri <span>chef</span></h1>
+    <h1>I nostri migliori <span>chef</span></h1>
     <a @click="scrollLeft()" class="left">
       <i class="fa-solid fa-angle-left"></i></a>
     <a @click="scrollRight()" class="right">
@@ -113,6 +113,7 @@ export default {
         {{ chef.description_of_dishes }}
 
         {{ chef.reviews.length }}
+        <span v-if="chef.is_sponsored" >Sponsorizzato</span>
       </router-link>
     </div>
   </section>
