@@ -187,25 +187,25 @@ export default {
 
 
 
-    <section v-if="chefs.length" class="chef-cards" >
+    <section v-if="chefs.length" class="chef-cards">
 
-      <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none" :key="chef.id">
-
-            
-      <div  class="card" v-if="chef.visibility == 1">
-        <span><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph == null"/>
-          <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-        <span>{{ chef.user.name }}</span>
-        <span>{{ chef.user.lastname }}</span>
-       <span > 
-        <div v-for="specialization in chef.specializations" :key="specialization.id" >
-           <p> {{ specialization.name }}</p>
-          </div></span> 
-        <span>{{ chef.description_of_dishes }}</span>
-        <div>
-          <strong>Media Voti:</strong>
+      <router-link v-for="chef in chefs" :to="{ name: 'single-chef', params: { id: chef.id } }" class="text-decoration-none"
+        :key="chef.id">
 
 
+        <div class="card" v-if="chef.visibility == 1">
+          <span><img :src="chef.photograph" :alt="chef.user.name" v-if="chef.photograph == null" />
+            <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
+          <span>{{ chef.user.name }}</span>
+          <span>{{ chef.user.lastname }}</span>
+          <span>
+            <div v-for="specialization in chef.specializations" :key="specialization.id">
+              <p> {{ specialization.name }}</p>
+            </div>
+          </span>
+          <span>{{ chef.description_of_dishes }}</span>
+          <div>
+            <strong>Media Voti:</strong>
 
             <span v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
               <i class="fa-solid fa-star"></i>

@@ -13,7 +13,7 @@ export default {
       verifyMessage: null,
       verifyVote: null,
       vote_id: null,
-      
+
     };
   },
   methods: {
@@ -29,69 +29,57 @@ export default {
         .then((response) => {
           console.log(response.data.results);
           this.users = response.data.results;
-        
 
-           const ReviewDiv= document.createElement("div");
-  const ContainerConfirm = document.getElementById("confirmReview");
-  const NotConfirmed = document.getElementById("not-confirmReview")
-  ContainerConfirm.classList.add("confirm")
- const Confirm= document.createTextNode("Recensione inviata con successo");
-  const ReviewButton= document.getElementById("review-form");
-  const LastButton= document.getElementById("last-button");
-if(ContainerConfirm == null){
-    const createcontainer = document.createElement("div");
-    const Container = document.getElementById("ReviewValidator")
-  createcontainer.classList.add("confirm")
-ReviewDiv.appendChild(Confirm);
-  
-  createcontainer.appendChild(ReviewDiv);
+          const ReviewDiv = document.createElement("div");
+          const ContainerConfirm = document.getElementById("confirmReview");
+          const NotConfirmed = document.getElementById("not-confirmReview")
+          ContainerConfirm.classList.add("confirm")
+          const Confirm = document.createTextNode("Recensione inviata con successo");
+          const ReviewButton = document.getElementById("review-form");
+          const LastButton = document.getElementById("last-button");
+          if (ContainerConfirm == null) {
+            const createcontainer = document.createElement("div");
+            const Container = document.getElementById("ReviewValidator")
+            createcontainer.classList.add("confirm")
+            ReviewDiv.appendChild(Confirm);
 
-createcontainer.setAttribute('id','confirm')
-Container.appendChild(createcontainer)
- if(NotConfirmed !== null){
-NotConfirmed.remove()
-ReviewButton.classList.add('not-active');
-LastButton.classList.remove('review-not-visible');
-}
-}
+            createcontainer.appendChild(ReviewDiv);
 
-else{
-  
+            createcontainer.setAttribute('id', 'confirm')
+            Container.appendChild(createcontainer)
+            if (NotConfirmed !== null) {
+              NotConfirmed.remove()
+              ReviewButton.classList.add('not-active');
+              LastButton.classList.remove('review-not-visible');
+            }
+          }
 
+          else {
+            ReviewDiv.appendChild(Confirm);
 
+            ContainerConfirm.appendChild(ReviewDiv);
 
-
-
-
-  ReviewDiv.appendChild(Confirm);
-  
-  ContainerConfirm.appendChild(ReviewDiv);
-
-if(NotConfirmed !== null){
-ReviewButton.classList.add('not-active');
-LastButton.classList.remove('review-not-visible');
- NotConfirmed.remove()}}
+            if (NotConfirmed !== null) {
+              ReviewButton.classList.add('not-active');
+              LastButton.classList.remove('review-not-visible');
+              NotConfirmed.remove()
+            }
+          }
 
         })
         .catch((error) => {
           console.log(error);
-          const ReviewDiv= document.createElement("div");
+          const ReviewDiv = document.createElement("div");
 
-  
+          const NotConfirmed = document.getElementById("not-confirmReview");
+          const Confirm = document.createTextNode("Errore Recensione non inviata");
+          NotConfirmed.classList.add("not-confirmed")
 
-  const NotConfirmed= document.getElementById("not-confirmReview");
-    const Confirm= document.createTextNode("Errore Recensione non inviata");
-     NotConfirmed.classList.add("not-confirmed")
+          ReviewDiv.appendChild(Confirm);
 
-        ReviewDiv.appendChild(Confirm);
+          ReviewDiv.appendChild(Confirm);
 
-  ReviewDiv.appendChild(Confirm);
-  
-  NotConfirmed.appendChild(ReviewDiv);
-
-
-
-
+          NotConfirmed.appendChild(ReviewDiv);
         });
     },
     postVote() {
@@ -103,102 +91,73 @@ LastButton.classList.remove('review-not-visible');
         .then((response) => {
           console.log(response.data.success);
           this.users = response.data.results;
-          this.verifyVote= response.data.success;
-    
+          this.verifyVote = response.data.success;
 
-//  --->  Creazione del div di conferma <----
- const VoteDiv= document.createElement("div");
- const LastButton = document.getElementById("last-button")
-  const ContainerConfirm = document.getElementById("confirm");
-  ContainerConfirm.classList.add("confirm")
-  const NotConfirmed = document.getElementById("not-confirm")
- const Confirm= document.createTextNode("Voto inviato con successo");
-  const VoteButton= document.getElementById("vote-form");
-if(ContainerConfirm == null){
-    const createcontainer = document.createElement("div");
-    const Container = document.getElementById("VoteValidator")
-  createcontainer.classList.add("confirm")
-VoteDiv.appendChild(Confirm);
-  
-  createcontainer.appendChild(VoteDiv);
+          //  --->  Creazione del div di conferma <----
+          const VoteDiv = document.createElement("div");
+          const LastButton = document.getElementById("last-button")
+          const ContainerConfirm = document.getElementById("confirm");
+          ContainerConfirm.classList.add("confirm")
+          const NotConfirmed = document.getElementById("not-confirm")
+          const Confirm = document.createTextNode("Voto inviato con successo");
+          const VoteButton = document.getElementById("vote-form");
+          if (ContainerConfirm == null) {
+            const createcontainer = document.createElement("div");
+            const Container = document.getElementById("VoteValidator")
+            createcontainer.classList.add("confirm")
+            VoteDiv.appendChild(Confirm);
 
-createcontainer.setAttribute('id','confirm')
-Container.appendChild(createcontainer)
- if(NotConfirmed !== null){
-NotConfirmed.remove()
-VoteButton.classList.add('not-active');
-LastButton.classList.remove('vote-not-visibile');
-}
-}
+            createcontainer.appendChild(VoteDiv);
 
-else{
-  
+            createcontainer.setAttribute('id', 'confirm')
+            Container.appendChild(createcontainer)
+            if (NotConfirmed !== null) {
+              NotConfirmed.remove()
+              VoteButton.classList.add('not-active');
+              LastButton.classList.remove('vote-not-visibile');
+            }
+          }
 
+          else {
+            VoteDiv.appendChild(Confirm);
 
+            ContainerConfirm.appendChild(VoteDiv);
 
+            if (NotConfirmed !== null) {
+              VoteButton.classList.add('not-active');
+              LastButton.classList.remove('vote-not-visibile');
+              NotConfirmed.remove()
+            }
+          }
 
-
-
-  VoteDiv.appendChild(Confirm);
-  
-  ContainerConfirm.appendChild(VoteDiv);
-
-if(NotConfirmed !== null){
-VoteButton.classList.add('not-active');
-LastButton.classList.remove('vote-not-visibile');
- NotConfirmed.remove()}}
-
-  
         })
         //---> ERRORE NELLA LETTURA DELL'API <---
         .catch((error) => {
           console.log(error);
-          
-//  --->  Creazione del div di conferma <----
- const VoteDiv= document.createElement("div");
 
-  
+          //  --->  Creazione del div di conferma <----
+          const VoteDiv = document.createElement("div");
 
-  const NotConfirmed= document.getElementById("not-confirm");
-  NotConfirmed.classList.add("not-confirmed")
-    const Confirm= document.createTextNode("Errore voto non inviato");
-     
+          const NotConfirmed = document.getElementById("not-confirm");
+          NotConfirmed.classList.add("not-confirmed")
+          const Confirm = document.createTextNode("Errore voto non inviato");
 
-        VoteDiv.appendChild(Confirm);
+          VoteDiv.appendChild(Confirm);
 
-  VoteDiv.appendChild(Confirm);
-  
-  NotConfirmed.appendChild(VoteDiv);
+          VoteDiv.appendChild(Confirm);
 
+          NotConfirmed.appendChild(VoteDiv);
 
-
- ContainerConfirm.remove()
- 
-   
-
-
+          ContainerConfirm.remove()
         });
-      
-  
-  
-
-
-
     },
-
-  
-
-
   },
   created() {
     this.chef_id = this.$route.params.id;
   },
 
 };
-
-
 </script>
-
 
 <template>
   <main>
@@ -209,71 +168,73 @@ LastButton.classList.remove('vote-not-visibile');
 
     <section>
 
-        <form @submit.prevent="postVote" id="vote-form">
-          <input type="hidden" name="chef_id" :value="chef_id">
-          <select class="form-select form-select-sm" name="votes" id="votes" v-model="vote_id">
-            <option value="0">
-              Dai una valutazione
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+      <form @submit.prevent="postVote" id="vote-form">
+        <input type="hidden" name="chef_id" :value="chef_id">
+        <select class="form-select form-select-sm" name="votes" id="votes" v-model="vote_id">
+          <option value="0">
+            Dai una valutazione
+          </option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
 
-          <button type="submit" id="VoteButton">
-            Invia voto
-          </button>
-        </form>
-        <div id="VoteValidator" >
-                <div id="confirm"></div>
-               <div  id="not-confirm"></div> 
- 
-        </div> 
-        
-        <form @submit.prevent="postMessage" class="form-group" id="review-form">
-          <!-- Altri campi del messaggio -->
+        <button type="submit" id="VoteButton">
+          Invia voto
+        </button>
+      </form>
+      <div id="VoteValidator">
+        <div id="confirm"></div>
+        <div id="not-confirm"></div>
 
-          <input type="hidden" name="chef_id" :value="chef_id">
-          <label for="review_title">
-            <strong>
-              Titolo
-            </strong>
-          </label>
-          <input type="text" name="review_title" id="review_title" v-model="review_title" required class="form-control">
+      </div>
 
-          <label for="user_name">
-            <strong>
-              Inserisci il tuo nome e cognome
-            </strong>
-          </label>
-          <input type="text" name="user_name" id="user_name" v-model="user_name" required class="form-control">
+      <form @submit.prevent="postMessage" class="form-group" id="review-form">
+        <!-- Altri campi del messaggio -->
 
-          <label for="email">
-            <strong>
-              Inserisci la tua e-mail
-            </strong>
-          </label>
-          <input type="text" name="email" id="email" v-model="email" required class="form-control">
+        <input type="hidden" name="chef_id" :value="chef_id">
+        <label for="review_title">
+          <strong>
+            Titolo
+          </strong>
+        </label>
+        <input type="text" name="review_title" id="review_title" v-model="review_title" required class="form-control">
 
-          <label for="review">
-            <strong>
-              Inserisci recensione
-            </strong>
-          </label>
-          <textarea name="review" id="review" v-model="review" required class="form-control"></textarea>
+        <label for="user_name">
+          <strong>
+            Inserisci il tuo nome e cognome
+          </strong>
+        </label>
+        <input type="text" name="user_name" id="user_name" v-model="user_name" required class="form-control">
 
-          <button type="submit" @click="ShowConfirmReview">
-            Invia Recensione
-          </button>
-        </form>
-         <div id="ReviewValidator" >
-                <div id="confirmReview"></div>
-               <div id="not-confirmReview"></div> 
- 
-        </div> 
-       <RouterLink class="last-button" :to="{name:'single-chef', params:{ id: chef_id }}"> <button class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button></RouterLink>
+        <label for="email">
+          <strong>
+            Inserisci la tua e-mail
+          </strong>
+        </label>
+        <input type="text" name="email" id="email" v-model="email" required class="form-control">
+
+        <label for="review">
+          <strong>
+            Inserisci recensione
+          </strong>
+        </label>
+        <textarea name="review" id="review" v-model="review" required class="form-control"></textarea>
+
+        <button type="submit" @click="ShowConfirmReview">
+          Invia Recensione
+        </button>
+      </form>
+      <div id="ReviewValidator">
+        <div id="confirmReview"></div>
+        <div id="not-confirmReview"></div>
+
+      </div>
+      <RouterLink class="last-button" :to="{ name: 'single-chef', params: { id: chef_id } }"> <button
+          class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button>
+      </RouterLink>
     </section>
   </main>
 </template>
@@ -322,15 +283,19 @@ section {
   }
 
 }
-.not-active{
+
+.not-active {
   display: none;
 }
-.review-not-visible{
+
+.review-not-visible {
   display: none;
 }
-.vote-not-visibile{
+
+.vote-not-visibile {
   display: none;
 }
+
 @media(max-width:767px) {
 
   section {
@@ -340,23 +305,25 @@ section {
   }
 
 }
-.last-button{
-    button{
-  margin: 1rem;
-      width: 15rem;
-      padding: 0.3rem;
-      border-radius: 1rem;
-      background-color: goldenrod;
-      border: 1px solid goldenrod;
 
-      &:hover {
-        background-color: white;
+.last-button {
+  button {
+    margin: 1rem;
+    width: 15rem;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    background-color: goldenrod;
+    border: 1px solid goldenrod;
 
-        width: 16rem;
-      }}
+    &:hover {
+      background-color: white;
+
+      width: 16rem;
+    }
+  }
 }
 
-.confirm{
+.confirm {
 
   width: 40rem;
   padding: 3rem 1rem;
@@ -365,9 +332,10 @@ section {
   border-radius: 1rem;
 
 }
-.not-confirmed{
 
-    width: 40rem;
+.not-confirmed {
+
+  width: 40rem;
   padding: 3rem 1rem;
   display: flex;
   background-color: #ff5252;

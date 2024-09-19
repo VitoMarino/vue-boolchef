@@ -18,82 +18,68 @@ export default {
           chef_id: this.chef_id,
         })
         .then((response) => {
-         
+
           console.log(response.data.results);
-         
-         
           this.users = response.data.results;
-           
-          
-          const MessageDiv= document.createElement("div");
- 
- 
-            const LastButton = document.getElementById("last-button")
- 
- 
- const ContainerConfirm = document.getElementById("confirm");
- 
- 
-  const NotConfirmed = document.getElementById("not-confirm")
- 
-   ContainerConfirm.classList.add("confirm")
-  const Confirm= document.createTextNode("Messaggio inviato con successo");
-  
- 
- const MessageButton= document.getElementById("messagge-form");
-if(ContainerConfirm == null){
-    const createcontainer = document.createElement("div");
-    const Container = document.getElementById("MessageValidator")
-  createcontainer.classList.add("confirm")
-MessageDiv.appendChild(Confirm);
 
-  createcontainer.appendChild(MessageDiv);
+          const MessageDiv = document.createElement("div");
 
-createcontainer.setAttribute('id','confirm')
-Container.appendChild(createcontainer)
- if(NotConfirmed !== null){
-NotConfirmed.remove()
-MessageButton.classList.add('not-active');
-LastButton.classList.remove('not-visible');
-}
-}
+          const LastButton = document.getElementById("last-button")
 
-else{
-  
+          const ContainerConfirm = document.getElementById("confirm");
 
+          const NotConfirmed = document.getElementById("not-confirm")
 
+          ContainerConfirm.classList.add("confirm")
+          const Confirm = document.createTextNode("Messaggio inviato con successo");
 
+          const MessageButton = document.getElementById("messagge-form");
+          if (ContainerConfirm == null) {
+            const createcontainer = document.createElement("div");
+            const Container = document.getElementById("MessageValidator")
+            createcontainer.classList.add("confirm")
+            MessageDiv.appendChild(Confirm);
 
+            createcontainer.appendChild(MessageDiv);
 
+            createcontainer.setAttribute('id', 'confirm')
+            Container.appendChild(createcontainer)
+            if (NotConfirmed !== null) {
+              NotConfirmed.remove()
+              MessageButton.classList.add('not-active');
+              LastButton.classList.remove('not-visible');
+            }
+          }
 
-  MessageDiv.appendChild(Confirm);
-  
-  ContainerConfirm.appendChild(MessageDiv);
+          else {
+            MessageDiv.appendChild(Confirm);
 
-if(NotConfirmed !== null){
-MessageButton.classList.add('not-active');
-LastButton.classList.remove('not-visible');
- NotConfirmed.remove()}}
-          
+            ContainerConfirm.appendChild(MessageDiv);
+
+            if (NotConfirmed !== null) {
+              MessageButton.classList.add('not-active');
+              LastButton.classList.remove('not-visible');
+              NotConfirmed.remove()
+            }
+          }
+
         })
         .catch((error) => {
           console.log(error);
-          
-  
- const MessageDiv= document.createElement("div");
-  const NotConfirmed= document.getElementById("not-confirm");
-    const Confirm= document.createTextNode("Errore Messaggio non inviato");
-     
-    NotConfirmed.classList.add("not-confirmed");
 
-        MessageDiv.appendChild(Confirm);
+          const MessageDiv = document.createElement("div");
+          const NotConfirmed = document.getElementById("not-confirm");
+          const Confirm = document.createTextNode("Errore Messaggio non inviato");
 
-  MessageDiv.appendChild(Confirm);
-  
-  NotConfirmed.appendChild(MessageDiv);
+          NotConfirmed.classList.add("not-confirmed");
+
+          MessageDiv.appendChild(Confirm);
+
+          MessageDiv.appendChild(Confirm);
+
+          NotConfirmed.appendChild(MessageDiv);
         });
     }
-
 
   },
   created() {
@@ -136,10 +122,11 @@ LastButton.classList.remove('not-visible');
         </button>
       </form>
       <div id="MessageValidator">
-        <div  id="confirm"></div>
-        <div  id="not-confirm"> </div>
+        <div id="confirm"></div>
+        <div id="not-confirm"> </div>
       </div>
-     <RouterLink class="last-button" :to="{name:'single-chef', params:{ id: chef_id }}" > <button id="last-button" class="not-visible">Torna indietro</button></RouterLink>
+      <RouterLink class="last-button" :to="{ name: 'single-chef', params: { id: chef_id } }"> <button id="last-button"
+          class="not-visible">Torna indietro</button></RouterLink>
     </section>
   </main>
 </template>
@@ -155,7 +142,7 @@ section {
 
   form {
     padding: 4rem;
-    
+
     width: 80rem;
 
     input {
@@ -188,30 +175,33 @@ section {
     }
   }
 }
-.not-visible{
+
+.not-visible {
   display: none;
 }
-.not-active{
+
+.not-active {
   display: none;
 }
 
-.last-button{
-    button{
-  margin: 1rem;
-      width: 10rem;
-      padding: 0.3rem;
-      border-radius: 1rem;
-      background-color: goldenrod;
-      border: 1px solid goldenrod;
+.last-button {
+  button {
+    margin: 1rem;
+    width: 10rem;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    background-color: goldenrod;
+    border: 1px solid goldenrod;
 
-      &:hover {
-        background-color: white;
+    &:hover {
+      background-color: white;
 
-        width: 11rem;
-      }}
+      width: 11rem;
+    }
+  }
 }
 
-.confirm{
+.confirm {
 
   width: 40rem;
   padding: 3rem 1rem;
@@ -220,15 +210,15 @@ section {
   border-radius: 1rem;
 
 }
-.not-confirmed{
 
-    width: 40rem;
+.not-confirmed {
+
+  width: 40rem;
   padding: 3rem 1rem;
   display: flex;
   background-color: #ff5252;
   border-radius: 1rem;
   margin-bottom: 2rem;
- 
-}
 
+}
 </style>

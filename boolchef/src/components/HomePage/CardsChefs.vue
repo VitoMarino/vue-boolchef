@@ -28,14 +28,7 @@ export default {
         });
     },
 
-
-
-
-
-
-
-
-    scrollLeft() {
+  scrollLeft() {
       if (this.Mobile.matches) {
         this.indexScroll--;
         if (this.indexScroll >= 0) {
@@ -89,8 +82,6 @@ export default {
 
   }, created() {
     this.getChef();
-
-
   },
 };
 </script>
