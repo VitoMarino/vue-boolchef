@@ -185,104 +185,102 @@ export default {
 
     <section v-if="chefs.length" class="chef-cards">
 
-<<<<<<< HEAD
-      <router-link v-for="chef in chefs" :to="{ name: 'single-chef', params: { id: chef.id } }" class="text-decoration-none"
-        :key="chef.id">
-=======
-      <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none" :key="chef.id">
+<router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none" :key="chef.id">
 
-            
-      <div  class="card" v-if="chef.visibility == 1">
-        <span class="img-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null" class="photo "/>
-          <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-        <span>{{ chef.user.name }} {{ chef.user.lastname }}</span>
-       <span > 
-        <div v-for="specialization in chef.specializations" :key="specialization.id" >
-           <p class="pillow-specialization" > {{ specialization.name }}</p>
-          </div></span> 
-        <span>{{ chef.description_of_dishes }}</span>
-        <div>
-          <strong>Media Voti:</strong>
->>>>>>> 3fba45127a8c7d8862c9a08ff2e5e311eb77f515
+      
+<div  class="card" v-if="chef.visibility == 1">
+  <span class="img-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null" class="photo "/>
+    <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
+  <span>{{ chef.user.name }}</span>
+  <span>{{ chef.user.lastname }}</span>
+ <span> 
+  <div v-for="specialization in chef.specializations" :key="specialization.id" >
+     <p> {{ specialization.name }}</p>
+  </div>
+  </span> 
+  <span>{{ chef.description_of_dishes }}</span>
+  <div>
+    <strong>Media Voti:</strong>
+  </div>
 
+  <div class="card" v-if="chef.visibility == 1">
+    <span><img :src="chef.photograph" :alt="chef.user.name" v-if="chef.photograph == null" />
+      <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
+    <span>{{ chef.user.name }}</span>
+    <span>{{ chef.user.lastname }}</span>
+    <span>
+      <div v-for="specialization in chef.specializations" :key="specialization.id">
+        <p> {{ specialization.name }}</p>
+      </div>
+    </span>
+    <span>{{ chef.description_of_dishes }}</span>
+    <div>
+      <strong>Media Voti:</strong>
 
-        <div class="card" v-if="chef.visibility == 1">
-          <span><img :src="chef.photograph" :alt="chef.user.name" v-if="chef.photograph == null" />
-            <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-          <span>{{ chef.user.name }}</span>
-          <span>{{ chef.user.lastname }}</span>
-          <span>
-            <div v-for="specialization in chef.specializations" :key="specialization.id">
-              <p> {{ specialization.name }}</p>
-            </div>
-          </span>
-          <span>{{ chef.description_of_dishes }}</span>
-          <div>
-            <strong>Media Voti:</strong>
+      <span v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"><i
+          class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"><i
+          class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
 
-            <span v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"><i
-                class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"><i
-                class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </span>
 
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
-
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1.5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1" class="stars">
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-          </div>
-          <div class="weight" >
-            Numero di Recensioni: {{ chef.reviews_count }}
-          </div>
-          <div>
-            <span v-if="chef.is_sponsored" class="">Sponsorizzato</span>
-          </div>
-        </div>
-      </router-link>
-    </section>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1.5" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1" class="stars">
+        <i class="fa-solid fa-star"></i>
+      </span>
+      <span v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+    </div>
+    <div>
+      <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
+    </div>
+    <div>
+      <span v-if="chef.is_sponsored" class="">Sponsorizzato</span>
+    </div>
+  </div>
+</div>
+</router-link>
+</section>
     <section v-else>
       <h2>
         La Ricerca non ha prodotto risultati
