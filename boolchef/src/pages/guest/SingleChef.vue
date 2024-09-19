@@ -47,7 +47,7 @@ export default {
 <div v-for="chef in chefs" v-if="response == true">
 
   <div v-if="chef.visibility == 1" class="card">
- <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null"/>
+    <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null"/>
           <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
           <div class="name">
             <span class="width-name" >{{ chef.user.name }} {{ chef.user.lastname }}</span>
@@ -109,32 +109,28 @@ export default {
                 <i class="fa-solid fa-star-half"></i>
               </p>
 
-            </span>
-            <span class="column">Numero recensioni <span class="review-background review-width">{{ chef.reviews.length }}</span></span>
-            <span class="column">
-              Hai gia provato questo chef?
-              <RouterLink :to="{ name: 'reviews', params: { id: chef.id } }"><button class="review-button">Inserisci recensione
-                  e voto</button></RouterLink>
-            </span>
-            <span class="column">
-              Contatta lo chef
-              <RouterLink :to="{ name: 'message', params: { id: chef.id } }"><button class="message-button"> Contatta lo
-                  chef</button></RouterLink>
-            </span>
-      </div>
-    <div v-else class="error">
-    <img src="../../assets/img/Error.jpeg">
-
-    </div>
-    
-    
-    </div>
-      <div v-else class="error">
-    <img src="../../assets/img/Error.jpeg">
- <h1> CHEF NOT FOUND!!</h1>
-          </div>
+        </span>
+        <span class="column"><strong>Numero recensioni</strong>{{ chef.reviews.length }}</span>
+          <span class="column">
+            Hai gia provato questo chef?
+            <RouterLink :to="{ name: 'reviews', params: { id: chef.id } }"><button class="review-button">Inserisci
+                recensione
+                e voto</button></RouterLink>
+          </span>
+          <span class="column">
+            Contatta lo chef
+            <RouterLink :to="{ name: 'message', params: { id: chef.id } }"><button class="message-button"> Contatta lo
+                chef</button></RouterLink>
+          </span>
         </div>
-    </div>
+        <div v-else class="error">
+          <img src="../../assets/img/Error.jpeg">
+        </div>
+      </div>
+      <div v-else class="error">
+        <img src="../../assets/img/Error.jpeg">
+        <h1> CHEF NOT FOUND!!</h1>
+      </div>
     </section>
   </main>
 </template>
