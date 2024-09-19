@@ -8,7 +8,7 @@ export default {
   data() {
     return {
       chefs: [],
-      response:null,
+      response: null,
     };
   },
   methods: {
@@ -41,45 +41,41 @@ export default {
 </script>
 
 <template>
+  <main>
+    <section class="chef-container card-container">
+      <div v-for="chef in chefs" v-if="response == true">
+        <div v-if="chef.visibility == 1" class="card">
+          <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"
+              v-if="chef.photograph == null" />
+            <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
+          <span>{{ chef.user.name }}</span>
+          <span>{{ chef.user.lastname }}</span>
+          <span>{{ chef.description_of_dishes }}</span>
 
-<main>
-  <section class="chef-container card-container">
-<div v-for="chef in chefs" v-if="response == true">
-
-  <div v-if="chef.visibility == 1" class="card">
-    <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null"/>
-          <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-          <div class="name">
-            <span class="width-name" >{{ chef.user.name }} {{ chef.user.lastname }}</span>
-          </div>
-        <div class="background" >{{ chef.description_of_dishes }}</div>
-
-        <div class="my-container">
-          <div class="row my-border">
-            <span class="column"> Media voti
-              <p v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </p>
-              <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star-half"></i>
-              </p>
-              <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"><i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </p>
-              <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"><i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+          <span class="column"> <strong>Media voti</strong>
+            <p v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </p>
+            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
 
                 <i class="fa-solid fa-star-half"></i>
               </p>
@@ -89,28 +85,28 @@ export default {
                 <i class="fa-solid fa-star"></i>
               </p>
 
-              <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star-half"></i>
-              </p>
-              <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 2" class="stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </p>
-              <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 1.5" class="stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star-half"></i>
-              </p>
-              <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 1" class="stars">
-                <i class="fa-solid fa-star"></i>
-              </p>
-              <p v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
-                <i class="fa-solid fa-star-half"></i>
-              </p>
+                <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half"></i>
+                </p>
+                <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 2" class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </p>
+                <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 1.5" class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half"></i>
+                </p>
+                <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 1" class="stars">
+                  <i class="fa-solid fa-star"></i>
+                </p>
+                <p v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
+                  <i class="fa-solid fa-star-half"></i>
+                </p>
 
-        </span>
-        <span class="column"><strong>Numero recensioni</strong>{{ chef.reviews.length }}</span>
+          </span>
+          <span class="column"><strong>Numero recensioni</strong>{{ chef.reviews.length }}</span>
           <span class="column">
             Hai gia provato questo chef?
             <RouterLink :to="{ name: 'reviews', params: { id: chef.id } }"><button class="review-button">Inserisci
@@ -225,10 +221,12 @@ button{
 .button-review{
   width: 12rem;
 }
-.column{
+
+.column {
   display: flex;
   flex-direction: column;
-  button{
+
+  button {
     margin: 1rem;
   }
 
@@ -237,11 +235,13 @@ button{
     font-size: 20px
   }
 }
-.logo{
+
+.logo {
   width: 15rem;
 }
-.error{
-  img{
+
+.error {
+  img {
     width: 20rem;
   }
 }

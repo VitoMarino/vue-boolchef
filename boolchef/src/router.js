@@ -11,15 +11,7 @@ import HomePage from './pages/HomePage.vue';
 import SearchChef from './pages/guest/SearchChef.vue';
 import SingleChef from './pages/guest/SingleChef.vue';
 import Message from './pages/guest/Message.vue'
-// User
-import Dashboard from './pages/user/Dashboard.vue';
 
-
-import SponsorShip from './pages/user/SponsorShip.vue';
-import Statistics from './pages/user/Statistics.vue';
-import Access from './pages/user/auth/Access.vue';
-import Registration from './pages/user/auth/Registration.vue';
-import Profile from './pages/user/auth/Profile.vue';
 import Reviews from './pages/guest/Reviews.vue';
 //* Con la costante stiamo salvando i dati di Vue Router
 const router = createRouter({
@@ -53,40 +45,9 @@ const router = createRouter({
             component: Error404
         },
         {
-            path: '/dashboard',
-            name: 'dashboard',
-            component: Dashboard
-        },
-        {
             path: '/message/:id',
             name: 'message',
             component: Message
-        },
-      
-        {
-            path: '/sponsorship',
-            name: 'sponsorship',
-            component: SponsorShip
-        },
-        {
-            path: '/statics',
-            name: 'statics',
-            component: Statistics
-        },
-        {
-            path: '/access',
-            name: 'access',
-            component: Access
-        },
-        {
-            path: '/registration',
-            name: 'registration',
-            component: Registration
-        },
-        {
-            path: '/profile',
-            name: 'profile',
-            component: Profile
         },
         {
             path:'/reviews/:id',
