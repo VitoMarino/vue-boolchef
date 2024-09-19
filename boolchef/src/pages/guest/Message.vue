@@ -139,10 +139,11 @@ export default {
         </button>
       </form>
       <div id="MessageValidator">
-        <div  id="confirm"></div>
-        <div  id="not-confirm"> </div>
+        <div id="confirm"></div>
+        <div id="not-confirm"> </div>
       </div>
-     <RouterLink class="last-button" :to="{name:'single-chef', params:{ id: chef_id }}" > <button id="last-button" class="not-visible">Torna indietro</button></RouterLink>
+      <RouterLink class="last-button" :to="{ name: 'single-chef', params: { id: chef_id } }"> <button id="last-button"
+          class="not-visible">Torna indietro</button></RouterLink>
     </section>
   </main>
 </template>
@@ -158,7 +159,7 @@ section {
 
   form {
     padding: 4rem;
-    
+
     width: 80rem;
 
     input {
@@ -191,30 +192,33 @@ section {
     }
   }
 }
-.not-visible{
+
+.not-visible {
   display: none;
 }
-.not-active{
+
+.not-active {
   display: none;
 }
 
-.last-button{
-    button{
-  margin: 1rem;
-      width: 10rem;
-      padding: 0.3rem;
-      border-radius: 1rem;
-      background-color: goldenrod;
-      border: 1px solid goldenrod;
+.last-button {
+  button {
+    margin: 1rem;
+    width: 10rem;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    background-color: goldenrod;
+    border: 1px solid goldenrod;
 
-      &:hover {
-        background-color: white;
+    &:hover {
+      background-color: white;
 
-        width: 11rem;
-      }}
+      width: 11rem;
+    }
+  }
 }
 
-.confirm{
+.confirm {
 
   width: 40rem;
   padding: 3rem 1rem;
@@ -223,15 +227,15 @@ section {
   border-radius: 1rem;
 
 }
-.not-confirmed{
 
-    width: 40rem;
+.not-confirmed {
+
+  width: 40rem;
   padding: 3rem 1rem;
   display: flex;
   background-color: #ff5252;
   border-radius: 1rem;
   margin-bottom: 2rem;
- 
-}
 
+}
 </style>

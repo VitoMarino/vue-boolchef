@@ -150,69 +150,57 @@ export default {
         .then((response) => {
           console.log(response.data.results);
           this.users = response.data.results;
-        
 
-           const ReviewDiv= document.createElement("div");
-  const ContainerConfirm = document.getElementById("confirmReview");
-  const NotConfirmed = document.getElementById("not-confirmReview")
-  ContainerConfirm.classList.add("confirm")
- const Confirm= document.createTextNode("Recensione inviata con successo");
-  const ReviewButton= document.getElementById("review-form");
-  const LastButton= document.getElementById("last-button");
-if(ContainerConfirm == null){
-    const createcontainer = document.createElement("div");
-    const Container = document.getElementById("ReviewValidator")
-  createcontainer.classList.add("confirm")
-ReviewDiv.appendChild(Confirm);
-  
-  createcontainer.appendChild(ReviewDiv);
+          const ReviewDiv = document.createElement("div");
+          const ContainerConfirm = document.getElementById("confirmReview");
+          const NotConfirmed = document.getElementById("not-confirmReview")
+          ContainerConfirm.classList.add("confirm")
+          const Confirm = document.createTextNode("Recensione inviata con successo");
+          const ReviewButton = document.getElementById("review-form");
+          const LastButton = document.getElementById("last-button");
+          if (ContainerConfirm == null) {
+            const createcontainer = document.createElement("div");
+            const Container = document.getElementById("ReviewValidator")
+            createcontainer.classList.add("confirm")
+            ReviewDiv.appendChild(Confirm);
 
-createcontainer.setAttribute('id','confirm')
-Container.appendChild(createcontainer)
- if(NotConfirmed !== null){
-NotConfirmed.remove()
-ReviewButton.classList.add('not-active');
-LastButton.classList.remove('review-not-visible');
-}
-}
+            createcontainer.appendChild(ReviewDiv);
 
-else{
-  
+            createcontainer.setAttribute('id', 'confirm')
+            Container.appendChild(createcontainer)
+            if (NotConfirmed !== null) {
+              NotConfirmed.remove()
+              ReviewButton.classList.add('not-active');
+              LastButton.classList.remove('review-not-visible');
+            }
+          }
 
+          else {
+            ReviewDiv.appendChild(Confirm);
 
+            ContainerConfirm.appendChild(ReviewDiv);
 
-
-
-
-  ReviewDiv.appendChild(Confirm);
-  
-  ContainerConfirm.appendChild(ReviewDiv);
-
-if(NotConfirmed !== null){
-ReviewButton.classList.add('not-active');
-LastButton.classList.remove('review-not-visible');
- NotConfirmed.remove()}}
+            if (NotConfirmed !== null) {
+              ReviewButton.classList.add('not-active');
+              LastButton.classList.remove('review-not-visible');
+              NotConfirmed.remove()
+            }
+          }
 
         })
         .catch((error) => {
           console.log(error);
-          const ReviewDiv= document.createElement("div");
+          const ReviewDiv = document.createElement("div");
 
-  
+          const NotConfirmed = document.getElementById("not-confirmReview");
+          const Confirm = document.createTextNode("Errore Recensione non inviata");
+          NotConfirmed.classList.add("not-confirmed")
 
-  const NotConfirmed= document.getElementById("not-confirmReview");
-    const Confirm= document.createTextNode("Errore Recensione non inviata");
-     NotConfirmed.classList.add("not-confirmed")
+          ReviewDiv.appendChild(Confirm);
 
-        ReviewDiv.appendChild(Confirm);
+          ReviewDiv.appendChild(Confirm);
 
-  ReviewDiv.appendChild(Confirm);
-  
-  NotConfirmed.appendChild(ReviewDiv);
-
-
-
-
+          NotConfirmed.appendChild(ReviewDiv);
         });
     },
   },
@@ -222,10 +210,7 @@ LastButton.classList.remove('review-not-visible');
   },
 
 };
-
-
 </script>
-
 
 <template>
   <main>
@@ -297,16 +282,32 @@ LastButton.classList.remove('review-not-visible');
           <textarea name="review" id="review" v-model="review" required class="form-control"></textarea>
           <p v-if="errors.review" style="color: red;">{{ errors.review }}</p>
 
-          <button type="submit" @click="ShowConfirmReview">
-            Invia Recensione
-          </button>
-        </form>
-         <div id="ReviewValidator" >
-                <div id="confirmReview"></div>
-               <div id="not-confirmReview"></div> 
- 
-        </div> 
-       <RouterLink class="last-button" :to="{name:'single-chef', params:{ id: chef_id }}"> <button class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button></RouterLink>
+        <label for="email">
+          <strong>
+            Inserisci la tua e-mail
+          </strong>
+        </label>
+        <input type="text" name="email" id="email" v-model="email" required class="form-control">
+
+        <label for="review">
+          <strong>
+            Inserisci recensione
+          </strong>
+        </label>
+        <textarea name="review" id="review" v-model="review" required class="form-control"></textarea>
+
+        <button type="submit" @click="ShowConfirmReview">
+          Invia Recensione
+        </button>
+      </form>
+      <div id="ReviewValidator">
+        <div id="confirmReview"></div>
+        <div id="not-confirmReview"></div>
+
+      </div>
+      <RouterLink class="last-button" :to="{ name: 'single-chef', params: { id: chef_id } }"> <button
+          class="vote-not-visibile review-not-visible" id="last-button">Torna alla pagina dello chef</button>
+      </RouterLink>
     </section>
   </main>
 </template>
@@ -355,15 +356,19 @@ section {
   }
 
 }
-.not-active{
+
+.not-active {
   display: none;
 }
-.review-not-visible{
+
+.review-not-visible {
   display: none;
 }
-.vote-not-visibile{
+
+.vote-not-visibile {
   display: none;
 }
+
 @media(max-width:767px) {
 
   section {
@@ -373,23 +378,25 @@ section {
   }
 
 }
-.last-button{
-    button{
-  margin: 1rem;
-      width: 15rem;
-      padding: 0.3rem;
-      border-radius: 1rem;
-      background-color: goldenrod;
-      border: 1px solid goldenrod;
 
-      &:hover {
-        background-color: white;
+.last-button {
+  button {
+    margin: 1rem;
+    width: 15rem;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    background-color: goldenrod;
+    border: 1px solid goldenrod;
 
-        width: 16rem;
-      }}
+    &:hover {
+      background-color: white;
+
+      width: 16rem;
+    }
+  }
 }
 
-.confirm{
+.confirm {
 
   width: 40rem;
   padding: 3rem 1rem;
@@ -398,9 +405,10 @@ section {
   border-radius: 1rem;
 
 }
-.not-confirmed{
 
-    width: 40rem;
+.not-confirmed {
+
+  width: 40rem;
   padding: 3rem 1rem;
   display: flex;
   background-color: #ff5252;
