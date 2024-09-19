@@ -106,7 +106,7 @@ export default {
     <div class="chefs-container" ref="scrollable">
       <router-link :to="{ name: 'single-chef', params: { id: chef.id } }" v-for="chef in chefs" class="single-chef">
         <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"
-            v-if="chef.photograph == null" />
+            v-if="chef.photograph !== null" />
           <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
@@ -228,4 +228,5 @@ a {
 .logo {
   width: 8rem;
 }
+
 </style>

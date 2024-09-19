@@ -193,7 +193,7 @@ export default {
 
             
       <div  class="card" v-if="chef.visibility == 1">
-        <span><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph == null"/>
+        <span class="img-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null" class="photo "/>
           <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
@@ -355,7 +355,7 @@ export default {
   .card {
     width: 20rem;
     padding: 0rem 1rem;
-    height: 30rem;
+    height: 40rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -413,4 +413,19 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
+.img-container{
+ display: flex;
+  border: none !important;
+  border-radius: 100%;
+ max-width:10rem;
+ max-height: 12rem;
+  object-fit:cover;
+
+  
+}
+.photo{
+  border-radius: 100%;
+  border: none;
+}
+
 </style>

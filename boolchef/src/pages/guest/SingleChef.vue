@@ -47,7 +47,7 @@ export default {
 <div v-for="chef in chefs" v-if="response == true">
 
   <div v-if="chef.visibility == 1" class="card">
- <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph == null"/>
+ <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null"/>
           <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
         <span>{{ chef.user.name }}</span>
         <span>{{ chef.user.lastname }}</span>
