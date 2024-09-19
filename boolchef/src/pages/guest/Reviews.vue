@@ -13,13 +13,9 @@ export default {
       verifyMessage: null,
       verifyVote: null,
       vote_id: null,
-<<<<<<< HEAD
-
-=======
       errors: {},
       voteError: null,
       
->>>>>>> 2fdefbd7ed496e1e2b246b1aeddf80f1c264d530
     };
   },
   methods: {
@@ -207,78 +203,6 @@ export default {
           NotConfirmed.appendChild(ReviewDiv);
         });
     },
-<<<<<<< HEAD
-    postVote() {
-      axios
-        .post("http://127.0.0.1:8000/api/votes", {
-          vote_id: this.vote_id,
-          chef_id: this.chef_id,
-        })
-        .then((response) => {
-          console.log(response.data.success);
-          this.users = response.data.results;
-          this.verifyVote = response.data.success;
-
-          //  --->  Creazione del div di conferma <----
-          const VoteDiv = document.createElement("div");
-          const LastButton = document.getElementById("last-button")
-          const ContainerConfirm = document.getElementById("confirm");
-          ContainerConfirm.classList.add("confirm")
-          const NotConfirmed = document.getElementById("not-confirm")
-          const Confirm = document.createTextNode("Voto inviato con successo");
-          const VoteButton = document.getElementById("vote-form");
-          if (ContainerConfirm == null) {
-            const createcontainer = document.createElement("div");
-            const Container = document.getElementById("VoteValidator")
-            createcontainer.classList.add("confirm")
-            VoteDiv.appendChild(Confirm);
-
-            createcontainer.appendChild(VoteDiv);
-
-            createcontainer.setAttribute('id', 'confirm')
-            Container.appendChild(createcontainer)
-            if (NotConfirmed !== null) {
-              NotConfirmed.remove()
-              VoteButton.classList.add('not-active');
-              LastButton.classList.remove('vote-not-visibile');
-            }
-          }
-
-          else {
-            VoteDiv.appendChild(Confirm);
-
-            ContainerConfirm.appendChild(VoteDiv);
-
-            if (NotConfirmed !== null) {
-              VoteButton.classList.add('not-active');
-              LastButton.classList.remove('vote-not-visibile');
-              NotConfirmed.remove()
-            }
-          }
-
-        })
-        //---> ERRORE NELLA LETTURA DELL'API <---
-        .catch((error) => {
-          console.log(error);
-
-          //  --->  Creazione del div di conferma <----
-          const VoteDiv = document.createElement("div");
-
-          const NotConfirmed = document.getElementById("not-confirm");
-          NotConfirmed.classList.add("not-confirmed")
-          const Confirm = document.createTextNode("Errore voto non inviato");
-
-          VoteDiv.appendChild(Confirm);
-
-          VoteDiv.appendChild(Confirm);
-
-          NotConfirmed.appendChild(VoteDiv);
-
-          ContainerConfirm.remove()
-        });
-    },
-=======
->>>>>>> 2fdefbd7ed496e1e2b246b1aeddf80f1c264d530
   },
   
   created() {
@@ -297,48 +221,6 @@ export default {
 
     <section>
 
-<<<<<<< HEAD
-      <form @submit.prevent="postVote" id="vote-form">
-        <input type="hidden" name="chef_id" :value="chef_id">
-        <select class="form-select form-select-sm" name="votes" id="votes" v-model="vote_id">
-          <option value="0">
-            Dai una valutazione
-          </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-
-        <button type="submit" id="VoteButton">
-          Invia voto
-        </button>
-      </form>
-      <div id="VoteValidator">
-        <div id="confirm"></div>
-        <div id="not-confirm"></div>
-
-      </div>
-
-      <form @submit.prevent="postMessage" class="form-group" id="review-form">
-        <!-- Altri campi del messaggio -->
-
-        <input type="hidden" name="chef_id" :value="chef_id">
-        <label for="review_title">
-          <strong>
-            Titolo
-          </strong>
-        </label>
-        <input type="text" name="review_title" id="review_title" v-model="review_title" required class="form-control">
-
-        <label for="user_name">
-          <strong>
-            Inserisci il tuo nome e cognome
-          </strong>
-        </label>
-        <input type="text" name="user_name" id="user_name" v-model="user_name" required class="form-control">
-=======
         <form @submit.prevent="postVote" id="vote-form" novalidate>
           <input type="hidden" name="chef_id" :value="chef_id">
           <select class="form-select form-select-sm" name="votes" id="votes" v-model="vote_id">
@@ -399,7 +281,6 @@ export default {
           </label>
           <textarea name="review" id="review" v-model="review" required class="form-control"></textarea>
           <p v-if="errors.review" style="color: red;">{{ errors.review }}</p>
->>>>>>> 2fdefbd7ed496e1e2b246b1aeddf80f1c264d530
 
         <label for="email">
           <strong>

@@ -51,71 +51,6 @@ export default {
           chef_id: this.chef_id,
         })
         .then((response) => {
-<<<<<<< HEAD
-
-          console.log(response.data.results);
-          this.users = response.data.results;
-
-          const MessageDiv = document.createElement("div");
-
-          const LastButton = document.getElementById("last-button")
-
-          const ContainerConfirm = document.getElementById("confirm");
-
-          const NotConfirmed = document.getElementById("not-confirm")
-
-          ContainerConfirm.classList.add("confirm")
-          const Confirm = document.createTextNode("Messaggio inviato con successo");
-
-          const MessageButton = document.getElementById("messagge-form");
-          if (ContainerConfirm == null) {
-            const createcontainer = document.createElement("div");
-            const Container = document.getElementById("MessageValidator")
-            createcontainer.classList.add("confirm")
-            MessageDiv.appendChild(Confirm);
-
-            createcontainer.appendChild(MessageDiv);
-
-            createcontainer.setAttribute('id', 'confirm')
-            Container.appendChild(createcontainer)
-            if (NotConfirmed !== null) {
-              NotConfirmed.remove()
-              MessageButton.classList.add('not-active');
-              LastButton.classList.remove('not-visible');
-            }
-          }
-
-          else {
-            MessageDiv.appendChild(Confirm);
-
-            ContainerConfirm.appendChild(MessageDiv);
-
-            if (NotConfirmed !== null) {
-              MessageButton.classList.add('not-active');
-              LastButton.classList.remove('not-visible');
-              NotConfirmed.remove()
-            }
-          }
-
-        })
-        .catch((error) => {
-          console.log(error);
-
-          const MessageDiv = document.createElement("div");
-          const NotConfirmed = document.getElementById("not-confirm");
-          const Confirm = document.createTextNode("Errore Messaggio non inviato");
-
-          NotConfirmed.classList.add("not-confirmed");
-
-          MessageDiv.appendChild(Confirm);
-
-          MessageDiv.appendChild(Confirm);
-
-          NotConfirmed.appendChild(MessageDiv);
-        });
-    }
-
-=======
           console.log(response.data.results);
           const MessageDiv = document.createElement("div");
           const LastButton = document.getElementById("last-button");
@@ -162,7 +97,6 @@ export default {
           NotConfirmed.appendChild(MessageDiv);
         });
     }
->>>>>>> 2fdefbd7ed496e1e2b246b1aeddf80f1c264d530
   },
   created() {
     this.chef_id = this.$route.params.id;
