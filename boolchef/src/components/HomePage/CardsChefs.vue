@@ -17,8 +17,8 @@ export default {
     getChef() {
       axios.get('http://127.0.0.1:8000/api/chefs')
         .then((response) => {
-          console.log(response.data.results);
-          this.chefs = response.data.results;
+          console.log(111111,response.data.results.filter(chef => chef.is_sponsored));
+          this.chefs = response.data.results.filter(chef => chef.is_sponsored);
         })
         .catch(function (error) {
           console.log(error);
@@ -106,11 +106,14 @@ export default {
     <div class="chefs-container animate pop delay-1" ref="scrollable">
       <router-link :to="{ name: 'single-chef', params: { id: chef.id } }" v-for="chef in chefs" class="single-chef">
         <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"
-            v-if="chef.photograph == null" />
+            v-if="chef.photograph !== null" />
           <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-        <span>{{ chef.user.name }} {{ chef.user.lastname }}</span>
-        <span>{{ chef.description_of_dishes }}</span>
-        <span>Recensioni:</span>{{ chef.reviews.length }}
+        <span>{{ chef.user.name }}</span>
+        <span>{{ chef.user.lastname }}</span>
+        {{ chef.description_of_dishes }}
+
+        {{ chef.reviews.length }}
+        <span v-if="chef.is_sponsored" >Sponsorizzato</span>
       </router-link>
     </div>
   </section>
