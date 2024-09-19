@@ -22,12 +22,12 @@ export default {
 </script>
 
 <template>
-  <section class="sponsors-container">
+  <section class="sponsors-container animate pop">
     <div class="content">
-      <h2>Si <span>fidano</span> di noi:</h2>
+      <h2 class="animate pop delay-1" >Si <span>fidano</span> di noi:</h2>
     </div>
 
-    <div class="sponsors">
+    <div class="sponsors animate pop delay-3">
       <span v-for="sponsor in sponsors">
         <img :src="sponsor.img" :alt="sponsor.title" />
       </span>
@@ -75,6 +75,30 @@ export default {
 }
 
 @media (max-width: 767px) {
+
+  .sponsors-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  background-color: #f39b2f;
+  border-radius: 15px;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  width: 90%;
+  margin: 0 auto;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    h2 {
+      font-weight: 200;
+      padding-bottom: 1rem;
+    }
+  }
+
+
   .sponsors-container {
     .sponsors {
       span {
@@ -82,5 +106,47 @@ export default {
       }
     }
   }
+}
+}
+
+@media (max-width: 576px) {
+
+.sponsors-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 4rem;
+background-color: #f39b2f;
+border-radius: 15px;
+box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+width: 90%;
+margin: 0 auto;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+  h2 {
+    font-weight: 200;
+    padding-bottom: 1rem;
+  }
+}
+
+.sponsors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    span {
+      padding: 2rem;
+      img {
+        width: 10rem;
+      }
+    }
+  }
+
+}
 }
 </style>
