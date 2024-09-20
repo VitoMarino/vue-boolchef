@@ -87,14 +87,14 @@ export default {
 </script>
 
 <template>
-  <section class="Chefs">
-    <h1>I nostri migliori <span>chef</span></h1>
+  <section class="Chefs animate pop">
+    <h1>I nostri <span>chef</span></h1>
     <a @click="scrollLeft()" class="left">
       <i class="fa-solid fa-angle-left"></i></a>
     <a @click="scrollRight()" class="right">
       <i class="fa-solid fa-angle-right"></i>
     </a>
-    <div class="chefs-container" ref="scrollable">
+    <div class="chefs-container animate pop delay-1" ref="scrollable">
       <router-link :to="{ name: 'single-chef', params: { id: chef.id } }" v-for="chef in chefs" class="single-chef">
         <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"
             v-if="chef.photograph !== null" />
@@ -124,20 +124,25 @@ export default {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    height: 24rem;
+    height: 26rem;
     align-items: center;
     font-size: 12px;
     min-width: 20rem;
     background-color: white;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
     transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
     box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
     margin-left: 1.5rem;
 
+    span {
+      color: black;
+    }
+
     &:hover {
       box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
       transform: scale(1.10, 1.10);
+      border: 2px solid #5f340f;
     }
 
     span {
@@ -204,9 +209,34 @@ a {
 }
 
 @media (max-width: 767px) {
+
+  .Chefs {
+  background-color: #f39b2f;
+  border-radius: 15px;
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  margin-top: 12rem;
+
+  h1 {
+    padding-top: 1rem;
+    font-size: 25px;
+    font-weight: 200;
+
+    span {
+      color: #5f340f;
+      font-weight: 700;
+    }
+  }
+}
+
   .chefs-container {
     width: 20.6rem;
     display: flex;
+
+    .single-chef {
+      min-width: 18rem;
+    }
   }
 }
 
@@ -219,5 +249,49 @@ a {
 .logo {
   width: 8rem;
 }
+
+@media (max-width: 576px) {
+
+  .Chefs {
+  background-color: #f39b2f;
+  border-radius: 15px;
+  width: 70%;
+  margin: 0 auto;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+
+  h1 {
+    padding-top: 1rem;
+    font-size: 25px;
+    font-weight: 200;
+
+    span {
+      color: #5f340f;
+      font-weight: 700;
+    }
+  }
+}
+
+  .chefs-container {
+    width: 20.6rem;
+    display: flex;
+
+    .single-chef {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 21rem;
+      align-items: center;
+      font-size: 9px;
+      width: 20rem;
+      background-color: white;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+      box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+      margin-left: 1.5rem;
+      }
+    }
+}
+
 
 </style>

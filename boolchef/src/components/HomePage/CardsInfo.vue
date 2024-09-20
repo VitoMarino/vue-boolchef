@@ -42,21 +42,23 @@ export default {
 <template>
   <div class="container">
     <div class="row text-center mt-5">
-      <h1>Prenotare il <span class="text-style">proprio chef personale</span> non è mai stato così semplice</h1>
+      <div class="col-lg-12 col-md-8">
+        <h1 class="animate pop" >Prenotare il <span class="text-style">proprio chef personale</span> non è mai stato così semplice</h1>
+      </div>
     </div>
     <div class="row">
-      <div class="cards-container">
-        <article v-for="item in items" class="card card--1" >
+      <div class="cards-container ">
+        <article v-for="item in items" class="card card--1 animate pop" >
           <div class="card__info-hover">
             
           </div>
           
-          <div class="card__info">
+          <div class="card__info animate pop">
             <h6 class="card__title">{{ item.title }}</h6>
             <span>{{ item.content }}</span>
           </div>
         </article>
-        <div class="card misure text-center color">
+        <div class="card misure text-center color animate pop">
             <h6 class="color-black">Trova lo <span class="my-text-color">chef</span> più adatto a te</h6>
             <router-link :to="{ name: 'search-chef' }">
               <button class="chef-button">Cerca il tuo chef</button>
@@ -152,6 +154,7 @@ div.card__info {
     &:hover {
       box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
       transform: scale(1.10, 1.10);
+      border: 2px solid #5f340f;
     }
 }
 
@@ -161,6 +164,7 @@ div.card__info {
   flex-direction: row;
   justify-content: center;
   padding: 3rem 0 3rem 0;
+  margin-bottom: 5rem;
   div {
     display: flex;
     flex-wrap: wrap;
@@ -184,14 +188,53 @@ div.card__info {
   }
 }
 @media (max-width: 767px) {
-  .cards-container {
-    display: flex;
-    flex-direction: column;
+
+  .chef-button {
+  font-size: 9px;
+  color: black;
+  background-color: #f4e3bd;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  &:hover {
+    color: white;
+    transform: scale(1.1);
+    background-color: #5f340f;
+  }
+}
+
+  .card {
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #fff;
+  width:calc((100% / 3));
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+  margin: 0.7rem;
+  padding: 3rem;
+
+  .card__info, .card__title, h6 {
+    font-size: 12px;
   }
 
-  .misure {
-    width: 20rem;
-    height: 20rem;
+    &:hover {
+      box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+      transform: scale(1.10, 1.10);
+      border: 2px solid #5f340f;
+    }
+}
+
+  h1 {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 25px;
+
+  }
+
+  .cards-container {
+    display: flex;
   }
 
   .container {
@@ -202,4 +245,82 @@ div.card__info {
     max-width: 767px;
   }
 }
+
+@media (max-width: 576px) {
+
+  .chef-button {
+  font-size: 10px;
+  color: black;
+  background-color: #f4e3bd;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  &:hover {
+    color: white;
+    transform: scale(1.1);
+    background-color: #5f340f;
+  }
+}
+
+  .chef-button {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: black;
+  background-color: #f4e3bd;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  &:hover {
+    color: white;
+    transform: scale(1.1);
+    background-color: #5f340f;
+  }
+}
+
+  .card {
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #fff;
+  width: 50%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+  margin: 0.7rem;
+  padding: 2rem;
+
+  .card__info, .card__title, h6 {
+    font-size: 12px;
+    display: block;
+    text-align: center;
+  }
+
+    &:hover {
+      box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+      transform: scale(1.10, 1.10);
+      border: 2px solid #5f340f;
+    }
+}
+
+  h1 {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 20px;
+
+  }
+
+  .cards-container {
+    display: flex;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 767px;
+  }
+}
+
 </style>

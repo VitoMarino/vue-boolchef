@@ -120,13 +120,13 @@ export default {
 <template>
 
   <section class="chef-card-container">
-    <h1 class="text-center">Trova lo Chef che fa per te</h1>
+    <h1 class="text-center">Trova lo <span>Chef</span> che fa per te</h1>
     <nav class="filters">
       <div class="btn-group" role="group">
         <span v-for="specialization in specializations" :key="specialization.id">
           <input type="checkbox" class="btn-check" autocomplete="off" :id="specialization.id" :value="specialization.id"
             v-model="selectedSpecializations" />
-          <label :for="specialization.id" class="btn btn-outline-warning check-chef">
+          <label :for="specialization.id" class="btn btn-color check-chef">
             {{ specialization.name }}
           </label>
         </span>
@@ -135,9 +135,7 @@ export default {
       <div class="more-filters">
         <div>
           <label for="vote-filter">
-            <strong>
               Filtra per voto medio
-            </strong>
           </label>
           <select name="vote-filter" id="vote-filter" v-model="selectedVote" class="form-select w-25">
             <option value="" selected>Seleziona un voto</option>
@@ -161,9 +159,7 @@ export default {
 
         <div>
           <label for="reviews-filter">
-            <strong>
               Filtra per numero di recensioni
-            </strong>
           </label>
 
           <select name="reviews-filter" id="reviews-filter" v-model="selectedReview" class="form-select w-25">
@@ -179,7 +175,7 @@ export default {
             </option>
           </select>
 
-          <button @click="getChefs" class="button-search">Filtra</button>
+          <button @click="getChefs" class="submit-button">Filtra</button>
         </div>
       </div>
     </nav>
@@ -189,87 +185,107 @@ export default {
 
     <section v-if="chefs.length" class="chef-cards">
 
+<<<<<<< HEAD
       <router-link v-for="chef in chefs" :to="{ name: 'single-chef', params: { id: chef.id } }" class="text-decoration-none"
         :key="chef.id">
+=======
+<router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none" :key="chef.id">
 
+      
+<div  class="card" v-if="chef.visibility == 1">
+  <span class="img-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null" class="photo "/>
+    <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
+  <span>{{ chef.user.name }}</span>
+  <span>{{ chef.user.lastname }}</span>
+ <span> 
+  <div v-for="specialization in chef.specializations" :key="specialization.id" >
+     <p> {{ specialization.name }}</p>
+  </div>
+  </span> 
+  <span>{{ chef.description_of_dishes }}</span>
+  <div>
+    <strong>Media Voti:</strong>
+  </div>
+>>>>>>> 0f2cb8104bda784b3a194137f646a4f0a82e05df
 
-        <div class="card" v-if="chef.visibility == 1">
-          <span><img :src="chef.photograph" :alt="chef.user.name" v-if="chef.photograph == null" />
-            <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-          <span>{{ chef.user.name }}</span>
-          <span>{{ chef.user.lastname }}</span>
-          <span>
-            <div v-for="specialization in chef.specializations" :key="specialization.id">
-              <p> {{ specialization.name }}</p>
-            </div>
-          </span>
-          <span>{{ chef.description_of_dishes }}</span>
-          <div>
-            <strong>Media Voti:</strong>
+  <div class="card" v-if="chef.visibility == 1">
+    <span><img :src="chef.photograph" :alt="chef.user.name" v-if="chef.photograph == null" />
+      <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
+    <span>{{ chef.user.name }}</span>
+    <span>{{ chef.user.lastname }}</span>
+    <span>
+      <div v-for="specialization in chef.specializations" :key="specialization.id">
+        <p> {{ specialization.name }}</p>
+      </div>
+    </span>
+    <span>{{ chef.description_of_dishes }}</span>
+    <div>
+      <strong>Media Voti:</strong>
 
-            <span v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"><i
-                class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"><i
-                class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+      <span v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4.5" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 4" class="stars"><i
+          class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3.5" class="stars"><i
+          class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
 
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </span>
 
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1.5" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-            <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1" class="stars">
-              <i class="fa-solid fa-star"></i>
-            </span>
-            <span v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
-              <i class="fa-solid fa-star-half"></i>
-            </span>
-          </div>
-          <div>
-            <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
-          </div>
-          <div>
-            <span v-if="chef.is_sponsored" class="">Sponsorizzato</span>
-          </div>
-        </div>
-      </router-link>
-    </section>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 2" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1.5" class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+      <span v-else-if="Number(chef.average_vote).toFixed() / 2 == 1" class="stars">
+        <i class="fa-solid fa-star"></i>
+      </span>
+      <span v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
+        <i class="fa-solid fa-star-half"></i>
+      </span>
+    </div>
+    <div>
+      <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
+    </div>
+    <div>
+      <span v-if="chef.is_sponsored" class="">Sponsorizzato</span>
+    </div>
+  </div>
+</div>
+</router-link>
+</section>
     <section v-else>
       <h2>
         La Ricerca non ha prodotto risultati
@@ -279,24 +295,67 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.stars {
-  color: gold;
+
+h2 {
+  font-weight: 200;
+  margin: 10rem 0 2rem 0;
+  text-align: center
 }
 
-.button-search {
-  border-radius: 1rem;
-  background-color: goldenrod;
-  border: 0;
-  width: 6rem;
-  height: 2rem;
-  margin-top: 1rem;
+.pillow-specialization {
+  border: 2px solid #5f340f;
+  border-radius: 10px;
+  padding: 0.2rem;
+  background-color: #f1d28f;
+}
 
-  &:hover {
-    background-color: white;
-    border: 1px solid goldenrod;
+label {
+  font-weight: 200;
+}
 
+.my-width {
+  width: 30%;
+}
+
+.weight {
+  font-weight: 200;
+}
+
+nav {
+  margin-top: 3rem;
+}
+
+h1 {
+  font-weight: 200;
+
+  span {
+    font-weight: 700;
+    color: #f0992e;
   }
+}
 
+.submit-button {
+
+margin-top: 1rem;
+padding: 5px 10px;
+font-size: 14px;
+color: black;
+background-color: #f1d28f;
+border: none;
+border-radius: 50px;
+cursor: pointer;
+transition: background-color 0.3s, transform 0.3s;
+border: 2px solid #5f340f;
+
+&:hover {
+  background-color: #5f340f;
+  transform: scale(1.1);
+  color: white;
+}
+}
+
+.stars {
+  color: gold;
 }
 
 .more-filters {
@@ -305,6 +364,8 @@ export default {
   padding: 1rem;
   border-radius: 1rem;
   vertical-align: middle;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  border: 2px solid #5f340f;
 
   div {
     display: flex;
@@ -316,6 +377,7 @@ export default {
 
     select {
       margin-left: 0.5rem;
+      border: 2px solid #5f340f;
     }
   }
 }
@@ -333,13 +395,19 @@ export default {
     div {
       display: flex;
       flex-wrap: wrap;
+      width: 50%;
+      
     }
 
     span {
       margin: .2rem;
+      transition: background-color 0.3s, transform 0.3s;
+      background-color: #f4e3bd;
+      border-radius: 10px;
 
       &:hover {
         transform: scale(1.1);
+        border-radius: 10px;
       }
     }
   }
@@ -351,6 +419,7 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
 
   .card {
     width: 20rem;
@@ -360,7 +429,16 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: .5rem;
+    margin: .8rem;
+    border: 2px solid #5f340f;
+    background-color: #f4e3bdd0;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+      transform: scale(1.10, 1.10);
+    }
 
     span {
       padding-bottom: 1rem;
@@ -380,10 +458,6 @@ export default {
         margin: 0.4rem;
       }
     }
-  }
-
-  .check-chef {
-    border: goldenrod !important;
   }
 
 }
