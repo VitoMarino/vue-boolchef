@@ -123,7 +123,9 @@ export default {
             <RouterLink :to="{ name: 'message', params: { id: chef.id } }"><button class="message-button"> Contatta lo
                 chef</button></RouterLink>
           </span>
-           <span v-if="chef.is_sponsored"><span class="color card-sponsorizzata" >Sponsorizzato</span></span>
+          <span v-if="chef.is_sponsored">
+            <div class=" card-sponsorizzata">Sponsorizzato</div>
+          </span>
         </div>
       </div>
         <div v-else class="error">
@@ -140,8 +142,10 @@ export default {
 
 <style lang="scss" scoped>
 
-
-
+.my-card {
+  border: 2px solid #5f340f;
+  background-color: #f4e3bd;
+}
 
 .chef-container {
   max-width: 1400px;
@@ -163,7 +167,6 @@ export default {
 
     span {
       margin-bottom: 1rem;
-      border-bottom: 1px solid lightgray;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -176,8 +179,8 @@ export default {
 button {
   padding: 5px 10px;
       
-      color: black;
-      background-color: #f4e3bd;
+      color: white;
+      background-color: #5f340f;
       border: none;
       border-radius: 50px;
       cursor: pointer;
@@ -225,9 +228,11 @@ button {
 }
 .card-sponsorizzata {
   padding: 0.2rem;
-  background-color: #f4e3bd;
+  background-color: #5f340f;
   border: 2px solid #5f340f;
   border-radius: 15px;
-  border-bottom:2px solid #5f340f ;
+  width: 50% !important;
+  padding: 0.2rem !important;
+  color: white
 }
 </style>

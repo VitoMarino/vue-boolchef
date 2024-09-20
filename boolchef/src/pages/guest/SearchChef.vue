@@ -258,7 +258,7 @@ export default {
         <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
       </div>
       <div v-if="chef.is_sponsored">
-        <p class="mt-3">sponsorizzato</p>
+        <p class="mt-3 card-sponsorizzata ">sponsorizzato</p>
       </div>
     </div>
 </router-link>
@@ -272,6 +272,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.card-sponsorizzata {
+  padding: 0.2rem;
+  background-color: #f4e3bd;
+  border: 2px solid #5f340f;
+  border-radius: 15px;
+  border-bottom:2px solid #5f340f ;
+}
 
 h2 {
   font-weight: 200;
@@ -440,6 +448,14 @@ border: 2px solid #5f340f;
 }
 
 @media(max-width:767px) {
+
+  .card-sponsorizzata {
+  padding: 0.2rem;
+  background-color: #f4e3bd;
+  border: 2px solid #5f340f;
+  border-radius: 15px;
+  border-bottom:2px solid #5f340f ;
+}
 
   .chef-card-container {
     .chef-cards {
