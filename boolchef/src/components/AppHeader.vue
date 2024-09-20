@@ -21,13 +21,13 @@ export default {
     <nav class="navbar bg-body-tertiary hamburgermenu">
     <div class="container-fluid">
       <img src="../assets/img/STRECHED-LOGO.png" class="mobile" alt="logo" />
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <button class="navbar-toggler button-hamburger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Boolchef</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Bool<span>chef</span></h5>
+          <button type="button" class="btn-close me-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <ul>
@@ -134,7 +134,36 @@ header {
 
     .hamburgermenu {
       display: none;
+      padding: 1rem 2rem;
+      background-color: white !important;
+
+      h5 {
+        font-weight: 200;
+      }
+
+      span {
+    color: #f39b2f;
+    font-weight: 600;
+  }
+
+      .button-hamburger {
+        color: #f39b2f;
+      }
+
+      img {
+        width: 13%;
+        height: 100%
+      }
     }
+
+    h3 {
+  display: none;
+
+  span {
+    color: #f39b2f;
+    font-weight: 600;
+  }
+}
 @media (max-width: 767px) {
 
   h3 {
