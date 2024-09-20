@@ -157,7 +157,7 @@ export default {
           </select>
         </div>
 
-        <div>
+        <div class="more-filters-container">
           <label for="reviews-filter">
               Filtra per numero di recensioni
           </label>
@@ -453,6 +453,22 @@ border: 2px solid #5f340f;
   .filters {
     justify-content: center;
   }
+  .more-filters{
+    max-height: 20rem;
+    margin: 1rem;
+  }
+ 
+ .img-container{
+  max-width:5rem;
+ max-height: 6rem;
+
+ img{
+  max-width:7rem;
+ max-height: 8rem;
+ }
+
+  
+}
 
 }
 

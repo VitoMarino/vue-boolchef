@@ -18,9 +18,7 @@
         qualsiasi evento in un’esperienza gastronomica unica, con la comodità di
         avere un professionista che cura ogni dettaglio.
       </p>
-      <router-link :to="{ name: 'search-chef' }" class="button-container">
-        <button class="chef-button">Cerca il tuo chef</button>
-      </router-link>
+     
     </div>
     <div class="image-container">
       <img class="animate pop delay-2" src="@/assets/img/ChefWorking.jpg" />
