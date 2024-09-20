@@ -133,10 +133,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.my-card {
-  width: 35%;
-  margin: 0 auto;
-}
+
 
 
 .chef-container {
@@ -170,16 +167,20 @@ export default {
 }
 
 button {
-  padding: 0.3rem;
-  border-radius: 1rem;
-  background-color: goldenrod;
-  border: 1px solid goldenrod;
+  padding: 5px 10px;
+      
+      color: black;
+      background-color: #f4e3bd;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
 
-  &:hover {
-    background-color: white;
-
-
-  }
+      &:hover {
+        background-color: #5f340f;
+        transform: scale(1.1);
+        color: white;
+      }
 }
 
 .button-review {
@@ -203,5 +204,8 @@ button {
   img {
     width: 20rem;
   }
+}
+.stars{
+  color: gold;
 }
 </style>
