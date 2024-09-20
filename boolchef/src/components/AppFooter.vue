@@ -197,6 +197,46 @@ footer {
 }
 
 @media (max-width: 767px) {
+
+  .hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #f39b2f;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #f39b2f;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+  a {
+        text-decoration: none;
+        color: #ec972e;
+        font-size: 12px;
+
+        svg {
+          transition: all .4s cubic-bezier(0.175, 0.885, 0, 1) !important;
+          
+          &:hover {
+            transform: scale(1.8) !important;
+          }
+        }
+      }
+
   .logo {
     display: none;
   }
@@ -207,13 +247,7 @@ footer {
     }
   }
 
-  a {
-    font-size: 11px;
-    color: goldenrod;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+  
 
 }
 </style>

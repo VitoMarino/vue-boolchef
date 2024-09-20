@@ -101,13 +101,20 @@ export default {
           <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
         <span>{{ chef.user.name }}  {{ chef.user.lastname }}</span>
         <span class="color">{{ chef.description_of_dishes }}</span>
-        <span v-if="chef.is_sponsored"><span class="color" >Sponsorizzato</span></span>
+        <span v-if="chef.is_sponsored"><span class="color card-sponsorizzata" >Sponsorizzato</span></span>
       </router-link>
     </div>
   </section>
 </template>
 
 <style scoped lang="scss">
+
+.card-sponsorizzata {
+  padding: 0.2rem;
+  background-color: #f4e3bd;
+  border: 2px solid #5f340f;
+  border-radius: 15px;
+}
 
 .color {
   color: #5f340f;
@@ -154,15 +161,13 @@ export default {
     .image-container {
 
       height: 100%;
-      width: 100%;
       border-radius: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
 
       img {
-        font-size: 0.5rem;
-        width: 100%;
+        width: 75%;
         border-radius: 15px;
       }
     }
@@ -208,38 +213,6 @@ a {
     span {
       color: #5f340f;
       font-weight: 700;
-    }
-  }
-}
-
-@media (max-width: 767px) {
-
-  .Chefs {
-  background-color: #f39b2f;
-  border-radius: 15px;
-  width: 80%;
-  margin: 0 auto;
-  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
-  margin-top: 12rem;
-
-  h1 {
-    padding-top: 1rem;
-    font-size: 25px;
-    font-weight: 200;
-
-    span {
-      color: #5f340f;
-      font-weight: 700;
-    }
-  }
-}
-
-  .chefs-container {
-    width: 20.6rem;
-    display: flex;
-
-    .single-chef {
-      min-width: 18rem;
     }
   }
 }
@@ -296,6 +269,72 @@ a {
       }
     }
 }
+
+@media (max-width: 767px) {
+
+  .Chefs {
+  background-color: #f39b2f;
+  border-radius: 15px;
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  margin-top: 12rem;
+
+  h1 {
+    padding-top: 1rem;
+    font-size: 25px;
+    font-weight: 200;
+
+    span {
+      color: #5f340f;
+      font-weight: 700;
+    }
+  }
+}
+
+  .chefs-container {
+    width: 20.6rem;
+    display: flex;
+
+    .single-chef {
+      min-width: 18rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+
+.Chefs {
+background-color: #f39b2f;
+border-radius: 15px;
+width: 80%;
+margin: 0 auto;
+box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+margin-top: 12rem;
+
+h1 {
+  padding-top: 1rem;
+  font-size: 25px;
+  font-weight: 200;
+
+  span {
+    color: #5f340f;
+    font-weight: 700;
+  }
+}
+}
+
+.chefs-container {
+  width: 20.6rem;
+  display: flex;
+
+  .single-chef {
+    min-width: 18rem;
+  }
+}
+}
+
+
 
 
 </style>

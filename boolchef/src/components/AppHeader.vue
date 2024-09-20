@@ -32,7 +32,7 @@ export default {
         <div class="offcanvas-body">
           <ul>
             <li class="mb-3 type" v-for="navItem in navLinkNames">
-              <router-link class="type" :to="{ name: navItem.name }">
+              <router-link class="type hover-underline-animation" :to="{ name: navItem.name }">
                 {{ navItem.label }}
               </router-link>
             </li>
@@ -127,6 +127,14 @@ header {
         color: white;
       }
     }
+
+    .mobile {
+      display: none;
+    }
+
+    .hamburgermenu {
+      display: none;
+    }
 @media (max-width: 767px) {
 
   h3 {
@@ -138,6 +146,10 @@ header {
   }
 }
 
+header {
+  display: none;
+}
+
   .mobile {
     display: inline-block;
     width: 4rem;
@@ -146,26 +158,55 @@ header {
   .desktop {
     display: none;
   }
+
+  .hamburgermenu {
+  display: flex;
 }
 
-.nav-button {
-      padding: 5px 10px;
-      font-size: 10px;
-      color: black;
-      background-color: #f4e3bd;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
+ul {
+  list-style: none;
+}
 
-      &:hover {
-        background-color: #5f340f;
-        transform: scale(1.1);
-        color: white;
-      }
-    }
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #f39b2f;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #f39b2f;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+}
+
+
+
 
 @media (max-width: 576px) {
+
+  header {
+    display: none;
+  }
 
   h3 {
   display: inline-block;
@@ -214,41 +255,6 @@ header {
   }
 }
 .mobile {
-  display: none;
-}
-
-.nav-button {
-      padding: 5px 10px;
-      font-size: 14px;
-      color: black;
-      background-color: #f4e3bd;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-
-      &:hover {
-        background-color: #5f340f;
-        transform: scale(1.1);
-        color: white;
-      }
-    }
-
-  header{
-    display: none;
-  }
-
-  .mobile {
-    display: inline-block;
-    width: 13%;
-    height: 100%;
-  }
-
-  
-}
-
-@media (min-width: 576px) and (max-width: 1700.00px) {
-  .mobile {
     display: inline-block;
     width: 25%;
     height: 100%;
@@ -258,8 +264,11 @@ header {
   }
   
   .hamburgermenu {
-    display: none;
+    display: flex;
   }
 
 }
+
+
+
 </style>
