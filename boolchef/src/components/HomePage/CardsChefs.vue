@@ -227,58 +227,39 @@ a {
   width: 8rem;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 767px) {
 
-  .Chefs {
-  background-color: #f39b2f;
-  border-radius: 15px;
-  width: 70%;
-  margin: 0 auto;
-  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  .left {
+  position: absolute;
+  margin-top: 16rem;
+  left: 3rem;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+}
 
-  h1 {
-    padding-top: 1rem;
-    font-size: 25px;
-    font-weight: 200;
+.right {
+  position: absolute;
+  right: 3rem;
+  margin-top: 16rem;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+}
 
-    span {
-      color: #5f340f;
-      font-weight: 700;
-    }
+a {
+  text-decoration: none;
+  font-size: 3rem;
+  color: grey;
+
+  &:hover {
+    color: #f39b2f;
+    transform: scale(1.10, 1.10);
   }
 }
 
-  .chefs-container {
-    width: 20.6rem;
-    display: flex;
-
-    .single-chef {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      height: 21rem;
-      align-items: center;
-      font-size: 9px;
-      width: 20rem;
-      background-color: white;
-      border-radius: 15px;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
-      box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
-      margin-left: 1.5rem;
-      }
-    }
-}
-
-@media (max-width: 767px) {
-
   .Chefs {
   background-color: #f39b2f;
   border-radius: 15px;
-  width: 80%;
+  width: 76%;
   margin: 0 auto;
   box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
-  margin-top: 12rem;
 
   h1 {
     padding-top: 1rem;
@@ -301,40 +282,4 @@ a {
     }
   }
 }
-
-@media (max-width: 576px) {
-
-.Chefs {
-background-color: #f39b2f;
-border-radius: 15px;
-width: 80%;
-margin: 0 auto;
-box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
-margin-top: 12rem;
-
-h1 {
-  padding-top: 1rem;
-  font-size: 25px;
-  font-weight: 200;
-
-  span {
-    color: #5f340f;
-    font-weight: 700;
-  }
-}
-}
-
-.chefs-container {
-  width: 20.6rem;
-  display: flex;
-
-  .single-chef {
-    min-width: 18rem;
-  }
-}
-}
-
-
-
-
 </style>

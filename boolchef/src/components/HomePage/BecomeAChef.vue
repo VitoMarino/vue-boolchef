@@ -47,7 +47,7 @@
     }
 
   .pharagraph {
-    width: 40rem;
+    width: 50%;
 
     h2 {
       font-weight: 200;
@@ -80,8 +80,9 @@
 
 @media (max-width: 767px) {
 
-  .pharagraph {
-    width: 40rem;
+  .become-a-chef {
+    .pharagraph {
+    width: 70%;
 
     p {
       font-size: 12px;
@@ -97,6 +98,8 @@
       font-weight: 700;
     }
   }
+  }
+  
 
   .become-a-chef {
   padding: 10rem 4rem;
