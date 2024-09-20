@@ -274,21 +274,7 @@ export default {
           <textarea name="review" id="review" v-model="review" required class="form-control form-margin"></textarea>
           <p v-if="errors.review" style="color: red;">{{ errors.review }}</p>
 
-        <label for="email">
-          <strong>
-            Inserisci la tua e-mail
-          </strong>
-        </label>
-        <input type="text" name="email" id="email" v-model="email" required class="form-control">
-
-        <label for="review">
-          <strong>
-            Inserisci recensione
-          </strong>
-        </label>
-        <textarea name="review" id="review" v-model="review" required class="form-control"></textarea>
-
-        <button type="submit" @click="ShowConfirmReview">
+        <button class="submit-button" type="submit" @click="ShowConfirmReview">
           Invia Recensione
         </button>
       </form>

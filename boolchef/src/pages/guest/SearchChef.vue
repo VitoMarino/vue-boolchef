@@ -191,32 +191,16 @@ export default {
 <div  class="card" v-if="chef.visibility == 1">
   <span class="img-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null" class="photo "/>
     <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-  <span>{{ chef.user.name }}</span>
-  <span>{{ chef.user.lastname }}</span>
- <span> 
+  <span>{{ chef.user.name }} {{ chef.user.lastname }}</span>
+  <span> 
   <div v-for="specialization in chef.specializations" :key="specialization.id" >
-     <p> {{ specialization.name }}</p>
+    <p> {{ specialization.name }}</p>
   </div>
   </span> 
   <span>{{ chef.description_of_dishes }}</span>
   <div>
     <strong>Media Voti:</strong>
   </div>
-
-  <div class="card" v-if="chef.visibility == 1">
-    <span><img :src="chef.photograph" :alt="chef.user.name" v-if="chef.photograph == null" />
-      <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-    <span>{{ chef.user.name }}</span>
-    <span>{{ chef.user.lastname }}</span>
-    <span>
-      <div v-for="specialization in chef.specializations" :key="specialization.id">
-        <p> {{ specialization.name }}</p>
-      </div>
-    </span>
-    <span>{{ chef.description_of_dishes }}</span>
-    <div>
-      <strong>Media Voti:</strong>
-
       <span v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
@@ -270,15 +254,13 @@ export default {
       <span v-else="Number(chef.average_vote).toFixed() / 2 == 0.5" class="stars">
         <i class="fa-solid fa-star-half"></i>
       </span>
+      <div class="mt-3">
+        <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
+      </div>
+      <div v-if="chef.is_sponsored">
+        <p class="mt-3">sponsorizzato</p>
+      </div>
     </div>
-    <div>
-      <strong>Numero di Recensioni: </strong> {{ chef.reviews_count }}
-    </div>
-    <div>
-      <span v-if="chef.is_sponsored" class="">Sponsorizzato</span>
-    </div>
-  </div>
-</div>
 </router-link>
 </section>
     <section v-else>

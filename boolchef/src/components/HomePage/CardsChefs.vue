@@ -99,18 +99,20 @@ export default {
         <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"
             v-if="chef.photograph !== null" />
           <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-        <span>{{ chef.user.name }}</span>
-        <span>{{ chef.user.lastname }}</span>
-        {{ chef.description_of_dishes }}
-
-        {{ chef.reviews.length }}
-        <span v-if="chef.is_sponsored" >Sponsorizzato</span>
+        <span>{{ chef.user.name }}  {{ chef.user.lastname }}</span>
+        <span class="color">{{ chef.description_of_dishes }}</span>
+        <span v-if="chef.is_sponsored"><span class="color" >Sponsorizzato</span></span>
       </router-link>
     </div>
   </section>
 </template>
 
 <style scoped lang="scss">
+
+.color {
+  color: #5f340f;
+}
+
 .chefs-container {
   overflow: hidden;
   display: flex;
@@ -124,7 +126,7 @@ export default {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    height: 26rem;
+    height: 500px;
     align-items: center;
     font-size: 12px;
     min-width: 20rem;
@@ -136,7 +138,7 @@ export default {
     margin-left: 1.5rem;
 
     span {
-      color: black;
+      color: #5f340f;
     }
 
     &:hover {
@@ -151,8 +153,8 @@ export default {
 
     .image-container {
 
-      height: 3rem;
-      width: 3rem;
+      height: 100%;
+      width: 100%;
       border-radius: 100%;
       display: flex;
       align-items: center;
@@ -160,6 +162,8 @@ export default {
 
       img {
         font-size: 0.5rem;
+        width: 100%;
+        border-radius: 15px;
       }
     }
   }

@@ -88,10 +88,6 @@ header {
     .type {
       background-color: #f39b2f;
     }
-
-      &:hover {
-        color: white;
-      }
     }
 
     img {
@@ -103,6 +99,11 @@ header {
       list-style: none;
       display: flex;
       flex-direction: row;
+
+      a {
+        text-decoration: none;
+        color: black
+      }
     }
   }
 
