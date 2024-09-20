@@ -77,7 +77,6 @@ export default {
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star"></i>
 
-<<<<<<< HEAD
               <i class="fa-solid fa-star-half"></i>
             </p>
             <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
@@ -85,14 +84,6 @@ export default {
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star"></i>
             </p>
-=======
-  <div v-if="chef.visibility == 1" class="card">
- <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"  v-if="chef.photograph !== null"/>
-          <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-        <span>{{ chef.user.name }}</span>
-        <span>{{ chef.user.lastname }}</span>
-        <span>{{ chef.description_of_dishes }}</span>
->>>>>>> 3fba45127a8c7d8862c9a08ff2e5e311eb77f515
 
             <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
               <i class="fa-solid fa-star"></i>
