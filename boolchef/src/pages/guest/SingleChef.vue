@@ -105,6 +105,12 @@ export default {
             </p>
 
           </span>
+                <span class="column"> 
+  <div class="specializations">
+    <strong>Cucine</strong>
+    <p v-for="specialization in chef.specializations" :key="specialization.id" > {{ specialization.name }}</p>
+  </div>
+  </span> 
           <span class="column"><strong>Numero recensioni</strong>{{ chef.reviews.length }}</span>
           <span class="column">
             Hai gia provato questo chef?
@@ -117,6 +123,7 @@ export default {
             <RouterLink :to="{ name: 'message', params: { id: chef.id } }"><button class="message-button"> Contatta lo
                 chef</button></RouterLink>
           </span>
+           <span v-if="chef.is_sponsored"><span class="color card-sponsorizzata" >Sponsorizzato</span></span>
         </div>
       </div>
         <div v-else class="error">
@@ -207,5 +214,20 @@ button {
 }
 .stars{
   color: gold;
+}
+.specializations{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  strong{
+    margin-bottom: 0.5rem;
+  }
+}
+.card-sponsorizzata {
+  padding: 0.2rem;
+  background-color: #f4e3bd;
+  border: 2px solid #5f340f;
+  border-radius: 15px;
+  border-bottom:2px solid #5f340f ;
 }
 </style>
