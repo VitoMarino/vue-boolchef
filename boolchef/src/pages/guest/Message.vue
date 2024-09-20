@@ -108,7 +108,7 @@ export default {
 <template>
   <main>
     <h1 class="text-center">
-      Contatta lo Chef
+      Contatta lo <span>Chef</span> 
     </h1>
 
     <section>
@@ -119,22 +119,18 @@ export default {
         <input type="hidden" name="chef_id" :value="chef_id">
 
         <label for="email_customer">
-          <strong>
             Inserisci la tua e-mail
-          </strong>
         </label>
         <input type="text" name="email_customer" id="email_customer" v-model="email_customer" required class="form-control">
         <p v-if="errors.email_customer" style="color: red;">{{ errors.email_customer }}</p>
 
         <label for="review">
-          <strong>
             Scrivi messaggio
-          </strong>
         </label>
         <textarea name="text_mes" id="text_mes" v-model="text_mes" required class="form-control"></textarea>
         <p v-if="errors.text_mes" style="color: red;">{{ errors.text_mes }}</p>
 
-        <button type="submit">
+        <button class="submit-button" type="submit">
           Invia
         </button>
       </form>
@@ -142,13 +138,49 @@ export default {
         <div id="confirm"></div>
         <div id="not-confirm"> </div>
       </div>
-      <RouterLink class="last-button" :to="{ name: 'single-chef', params: { id: chef_id } }"> <button id="last-button"
-          class="not-visible">Torna indietro</button></RouterLink>
+    <RouterLink class="last-button" :to="{name:'single-chef', params:{ id: chef_id }}" > <button id="last-button" class="not-visible submit-button">Torna indietro</button></RouterLink>
     </section>
   </main>
 </template>
 
 <style lang="scss" scoped>
+
+span {
+    font-weight: 700;
+    color: #f0992e;
+  }
+
+  h1 {
+    font-weight: 200;
+  }
+
+  .form-control {
+  border: var(--bs-border-width) solid #f0992e !important;
+}
+
+label {
+  font-weight: 200;
+}
+
+.submit-button {
+
+margin-top: 1rem;
+padding: 5px 10px;
+font-size: 14px;
+color: black;
+background-color: #f4e3bd;
+border: none;
+border-radius: 50px;
+cursor: pointer;
+transition: background-color 0.3s, transform 0.3s;
+
+&:hover {
+  background-color: #5f340f;
+  transform: scale(1.1);
+  color: white;
+}
+}
+
 section {
   max-width: 1400px;
   margin: 0 auto;
@@ -165,21 +197,6 @@ section {
     input {
       margin-bottom: 0.6rem;
     }
-
-    button {
-      margin-top: 1rem;
-      width: 10rem;
-      padding: 0.3rem;
-      border-radius: 1rem;
-      background-color: goldenrod;
-      border: 1px solid goldenrod;
-
-      &:hover {
-        background-color: white;
-
-        width: 11rem;
-      }
-    }
   }
 
 }
@@ -192,8 +209,7 @@ section {
     }
   }
 }
-
-.not-visible {
+.not-visible{
   display: none;
 }
 
@@ -201,41 +217,42 @@ section {
   display: none;
 }
 
-.last-button {
-  button {
-    margin: 1rem;
-    width: 10rem;
-    padding: 0.3rem;
-    border-radius: 1rem;
-    background-color: goldenrod;
-    border: 1px solid goldenrod;
+.last-button{
+    button{
+  margin: 1rem;
+      width: 10rem;
+      padding: 0.3rem;
+      border-radius: 1rem;
+      background-color: goldenrod;
+      border: 1px solid goldenrod;
 
-    &:hover {
-      background-color: white;
+      &:hover {
+        background-color: white;
 
-      width: 11rem;
-    }
-  }
+        width: 11rem;
+      }}
 }
 
 .confirm {
 
-  width: 40rem;
-  padding: 3rem 1rem;
-  display: flex;
-  background-color: #98fa97;
-  border-radius: 1rem;
+width: 100%;
+padding: 1rem 1rem 1rem 1rem;
+display: flex;
+background-color: rgb(152, 250, 151, 0.7);
+border: 3px solid rgb(152, 250, 151);
+border-radius: 1rem;
+margin: 2rem 0 2rem 0rem;
 
 }
+.not-confirmed{
 
-.not-confirmed {
-
-  width: 40rem;
-  padding: 3rem 1rem;
-  display: flex;
-  background-color: #ff5252;
-  border-radius: 1rem;
-  margin-bottom: 2rem;
-
+width: 100%;
+padding: 1rem 1rem 1rem 1rem;
+display: flex;
+background-color: rgb(255, 82, 82, 0.7);
+border: 3px solid rgb(255, 82, 82);
+border-radius: 15px;
+ 
 }
+
 </style>

@@ -215,8 +215,8 @@ export default {
 <template>
   <main>
 
-    <h1 class="text-center">
-      Invia Recensione e Voto
+    <h1 class="text-center size">
+      Invia <span>Recensione</span> e <span>Voto</span> 
     </h1>
 
     <section>
@@ -236,50 +236,42 @@ export default {
 
           <p v-if="voteError" style="color: red;">{{ voteError }}</p>
 
-          <button type="submit" id="VoteButton">
+
+          <button class="submit-button " type="submit" id="VoteButton">
             Invia voto
           </button>
         </form>
         <div id="VoteValidator" >
                 <div id="confirm"></div>
-               <div  id="not-confirm"></div> 
- 
+                <div  id="not-confirm"></div> 
         </div> 
         
         <form @submit.prevent="submitReview" class="form-group" id="review-form" novalidate>
           <!-- Altri campi del messaggio -->
 
           <input type="hidden" name="chef_id" :value="chef_id">
-          <label for="review_title">
-            <strong>
+          <label class="my-weight" for="review_title">
               Titolo
-            </strong>
           </label>
           <input type="text" name="review_title" id="review_title" v-model="review_title" required class="form-control">
           <p v-if="errors.review_title" style="color: red;">{{ errors.review_title }}</p>
 
-          <label for="user_name">
-            <strong>
+          <label class="my-weight" for="user_name">
               Inserisci il tuo nome e cognome
-            </strong>
           </label>
-          <input type="text" name="user_name" id="user_name" v-model="user_name" required class="form-control">
+          <input type="text" name="user_name" id="user_name" v-model="user_name" required class="form-control form-margin">
           <p v-if="errors.user_name" style="color: red;">{{ errors.user_name }}</p>
 
-          <label for="email">
-            <strong>
+          <label class="my-weight" for="email">
               Inserisci la tua e-mail
-            </strong>
           </label>
-          <input type="text" name="email" id="email" v-model="email" required class="form-control">
+          <input type="text" name="email" id="email" v-model="email" required class="form-control form-margin">
           <p v-if="errors.email" style="color: red;">{{ errors.email }}</p>
 
-          <label for="review">
-            <strong>
+          <label class="my-weight" for="review">
               Inserisci recensione
-            </strong>
           </label>
-          <textarea name="review" id="review" v-model="review" required class="form-control"></textarea>
+          <textarea name="review" id="review" v-model="review" required class="form-control form-margin"></textarea>
           <p v-if="errors.review" style="color: red;">{{ errors.review }}</p>
 
         <label for="email">
@@ -314,6 +306,47 @@ export default {
 
 
 <style lang="scss" scoped>
+
+.form-control, .form-select {
+  border: var(--bs-border-width) solid #f0992e !important;
+}
+
+.form-margin {
+  margin-bottom: 2rem;
+}
+
+.my-weight {
+  font-weight: 200;
+}
+
+.size {
+  font-weight: 200;
+
+  span {
+    font-weight: 700;
+    color: #f0992e;
+  }
+}
+
+.submit-button {
+
+      margin-top: 1rem;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: black;
+      background-color: #f4e3bd;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+
+      &:hover {
+        background-color: #5f340f;
+        transform: scale(1.1);
+        color: white;
+      }
+    }
+
 section {
   max-width: 1400px;
   margin: 0 auto;
@@ -337,21 +370,6 @@ section {
 
     select {
       margin-right: 1rem;
-    }
-
-    button {
-      margin-top: 1rem;
-      width: 10rem;
-      padding: 0.3rem;
-      border-radius: 1rem;
-      background-color: goldenrod;
-      border: 1px solid goldenrod;
-
-      &:hover {
-        background-color: white;
-
-        width: 11rem;
-      }
     }
   }
 
@@ -378,41 +396,46 @@ section {
   }
 
 }
+.last-button{
+    button{
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: black;
+      background-color: #f4e3bd;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
 
-.last-button {
-  button {
-    margin: 1rem;
-    width: 15rem;
-    padding: 0.3rem;
-    border-radius: 1rem;
-    background-color: goldenrod;
-    border: 1px solid goldenrod;
-
-    &:hover {
-      background-color: white;
-
-      width: 16rem;
+      &:hover {
+        background-color: #5f340f;
+        transform: scale(1.1);
+        color: white;
+      }
     }
-  }
 }
 
 .confirm {
 
-  width: 40rem;
-  padding: 3rem 1rem;
+  width: 100%;
+  padding: 1rem 0 1rem 4rem;
   display: flex;
-  background-color: #98fa97;
+  background-color: rgb(152, 250, 151, 0.7);
+  border: 3px solid rgb(152, 250, 151);
   border-radius: 1rem;
+  margin-bottom: 1rem;
 
 }
+.not-confirmed{
 
-.not-confirmed {
-
-  width: 40rem;
-  padding: 3rem 1rem;
+  width: 100%;
+  padding: 1rem 0 1rem 4rem;
   display: flex;
-  background-color: #ff5252;
+  background-color: rgb(255, 82, 82, 0.7);
+  border: 3px solid rgb(255, 82, 82);
   border-radius: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 </style>
