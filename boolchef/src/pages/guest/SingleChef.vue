@@ -77,15 +77,6 @@ export default {
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star"></i>
 
-<<<<<<< HEAD
-              <i class="fa-solid fa-star-half"></i>
-            </p>
-            <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </p>
-=======
                 <i class="fa-solid fa-star-half"></i>
               </p>
               <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 3" class="stars">
@@ -93,7 +84,6 @@ export default {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
               </p>
->>>>>>> 0f2cb8104bda784b3a194137f646a4f0a82e05df
 
                 <p v-else-if="Number(chef.average_vote).toFixed() / 2 == 2.5" class="stars">
                   <i class="fa-solid fa-star"></i>

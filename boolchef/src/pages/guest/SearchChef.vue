@@ -185,10 +185,6 @@ export default {
 
     <section v-if="chefs.length" class="chef-cards">
 
-<<<<<<< HEAD
-      <router-link v-for="chef in chefs" :to="{ name: 'single-chef', params: { id: chef.id } }" class="text-decoration-none"
-        :key="chef.id">
-=======
 <router-link  v-for="chef in chefs" :to="{name:'single-chef', params:{ id: chef.id }}" class="text-decoration-none" :key="chef.id">
 
       
@@ -206,7 +202,6 @@ export default {
   <div>
     <strong>Media Voti:</strong>
   </div>
->>>>>>> 0f2cb8104bda784b3a194137f646a4f0a82e05df
 
   <div class="card" v-if="chef.visibility == 1">
     <span><img :src="chef.photograph" :alt="chef.user.name" v-if="chef.photograph == null" />
