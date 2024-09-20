@@ -44,14 +44,13 @@ export default {
   <main>
     <section class="chef-container card-container">
       <div v-for="chef in chefs" v-if="response == true">
-        <div v-if="chef.visibility == 1" class="card">
+        <div v-if="chef.visibility == 1" class="card my-card">
           <span class="image-container"><img :src="chef.photograph" :alt="chef.user.name"
               v-if="chef.photograph == null" />
             <img v-else src="../../assets/img/LOGO.png" class="logo"></span>
-          <span>{{ chef.user.name }}</span>
-          <span>{{ chef.user.lastname }}</span>
+          <span>{{ chef.user.name }} {{ chef.user.lastname }}</span>
           <span>{{ chef.description_of_dishes }}</span>
-
+        <div>
           <span class="column"> <strong>Media voti</strong>
             <p v-if="Number(chef.average_vote).toFixed() / 2 == 5" class="stars">
               <i class="fa-solid fa-star"></i>
@@ -119,6 +118,7 @@ export default {
                 chef</button></RouterLink>
           </span>
         </div>
+      </div>
         <div v-else class="error">
           <img src="../../assets/img/Error.jpeg">
         </div>
@@ -132,6 +132,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.my-card {
+  width: 35%;
+  margin: 0 auto;
+}
+
+
 .chef-container {
   max-width: 1400px;
   margin: 0 auto;
