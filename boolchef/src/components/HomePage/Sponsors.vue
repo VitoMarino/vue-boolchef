@@ -4,14 +4,17 @@ export default {
   data() {
     return {
       sponsors: [
-        "Boolflix",
-        "Boolzapp",
-        "Booleaner",
-        "Boolean",
-        "Lyricsmus",
-        "Boolean",
-        "Bool-Comics",
-        "ProjeXpert",
+        { title: "Boolflix", img: "/src/assets/img/boolflix-logo.png" },
+        { title: "Boolzapp", img: "/src/assets/img/boolzapp-logo.png" },
+        { title: "Booleaner", img: "/src/assets/img/booleaner-logo.png" },
+        { title: "Boolean", img: "/src/assets/img/Boolean-logo.png" },
+        { title: "Lyricsmus", img: "/src/assets/img/lyricsmus-logo.png" },
+        {
+          title: "Future of Esports",
+          img: "/src/assets/img/future-of-esports-logo.png",
+        },
+        { title: "Bool-Comics", img: "/src/assets/img/bool-comics-logo.png" },
+        { title: "ProjeXpert", img: "/src/assets/img/projexpert-logo.png" },
       ],
     };
   },
@@ -19,50 +22,131 @@ export default {
 </script>
 
 <template>
-  <section class="sponsors-container">
+  <section class="sponsors-container animate pop">
     <div class="content">
-      <h4>Sponsors</h4>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi dolore
-        perferendis nisi, beatae cupiditate assumenda accusamus maiores totam
-        commodi consequatur reiciendis nihil distinctio earum inventore saepe ex
-        fugit maxime. Recusandae.
-      </p>
+      <h2 class="animate pop delay-1" >Si <span>fidano</span> di noi:</h2>
     </div>
 
-    <div class="sponsors">
+    <div class="sponsors animate pop delay-3">
       <span v-for="sponsor in sponsors">
-        {{ sponsor }}
+        <img :src="sponsor.img" :alt="sponsor.title" />
       </span>
     </div>
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .sponsors-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 4rem;
-  background-color: #f29219;
+  background-color: #f39b2f;
+  border-radius: 15px;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
   .content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    h4 {
-      font-size: 2rem;
+    padding-bottom: 2rem;
+    h2 {
+      font-weight: 200;
       padding-bottom: 1rem;
     }
-    padding-bottom: 2rem;
+
+    span {
+      font-weight: 700;
+      color: #5f340f;
+    }
   }
   .sponsors {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    span {
-      padding: 7rem;
-    }
     justify-content: center;
+    align-items: center;
+    span {
+      padding: 3rem;
+      img {
+        width: 10rem;
+      }
+    }
   }
+}
+
+@media (max-width: 767px) {
+
+  .sponsors-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  background-color: #f39b2f;
+  border-radius: 15px;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  width: 90%;
+  margin: 0 auto;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    h2 {
+      font-weight: 200;
+      padding-bottom: 1rem;
+    }
+  }
+
+
+  .sponsors-container {
+    .sponsors {
+      span {
+        padding: 2rem;
+      }
+    }
+  }
+}
+}
+
+@media (max-width: 576px) {
+
+.sponsors-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 4rem;
+background-color: #f39b2f;
+border-radius: 15px;
+box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+width: 90%;
+margin: 0 auto;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+  h2 {
+    font-weight: 200;
+    padding-bottom: 1rem;
+  }
+}
+
+.sponsors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    span {
+      padding: 2rem;
+      img {
+        width: 10rem;
+      }
+    }
+  }
+
+}
 }
 </style>
